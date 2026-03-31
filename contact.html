@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contact Us | SpotlessBubbles - Get in Touch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --pure-white: #FFFFFF;
+      --ivory: #FEFAF5;
+      --soft-pearl: #F9F6F0;
+      --charcoal: #1E1E2A;
+      --dark-charcoal: #14141C;
+      --bubble-teal: #2A9D8F;
+      --bubble-teal-deep: #1E7A6E;
+      --bubble-gold: #E9C46A;
+      --bubble-gold-dark: #D4A843;
+      --taupe: #7A6E5D;
+      --shadow-sm: 0 12px 30px -8px rgba(0,0,0,0.06);
+      --shadow-md: 0 25px 40px -12px rgba(0,0,0,0.1);
+      --shadow-lg: 0 35px 60px -15px rgba(0,0,0,0.15);
+      --transition: all 0.5s cubic-bezier(0.2, 0.95, 0.4, 1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ivory);
+      color: var(--charcoal);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .premium-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 250, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(42, 157, 143, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s ease;
+    }
+
+    .premium-header.scrolled {
+      background: rgba(255, 255, 250, 0.98);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 2rem;
+      gap: 2rem;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover { transform: scale(1.02); }
+    .logo-main { color: var(--charcoal); font-weight: 800; letter-spacing: -0.5px; }
+    .logo-bubble { background: linear-gradient(135deg, #2A9D8F, #48B5A8); background-clip: text; -webkit-background-clip: text; color: transparent; font-weight: 800; }
+    .logo-dot { width: 6px; height: 6px; background: var(--bubble-gold); border-radius: 50%; display: inline-block; margin-left: 4px; animation: pulse 2s infinite; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .desktop-nav {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(42, 157, 143, 0.05);
+      padding: 0.3rem;
+      border-radius: 3rem;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.6rem 1.2rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--charcoal);
+      transition: all 0.3s cubic-bezier(0.2, 0.95, 0.4, 1);
+    }
+
+    .nav-link i { font-size: 0.9rem; transition: transform 0.2s ease; }
+    .nav-link:hover { background: rgba(42, 157, 143, 0.12); color: var(--bubble-teal); }
+    .nav-link:hover i { transform: translateY(-2px); }
+    .nav-link.active-nav { background: var(--bubble-teal); color: white; box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3); }
+    .nav-link.active-nav i { color: white; }
+
+    .btn-primary-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.7rem 1.5rem;
+      border-radius: 2.5rem;
+      background: linear-gradient(135deg, #2A9D8F, #1E7A6E);
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(42, 157, 143, 0.25);
+    }
+
+    .btn-primary-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(42, 157, 143, 0.35);
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: rgba(42, 157, 143, 0.1);
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      color: var(--bubble-teal);
+      cursor: pointer;
+    }
+
+    /* Mobile Navigation */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .mobile-nav-overlay.active { opacity: 1; visibility: visible; }
+    .mobile-nav-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 85%;
+      max-width: 360px;
+      height: 100%;
+      background: linear-gradient(135deg, #FFFFFF, #FEFAF5);
+      box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .mobile-nav-overlay.active .mobile-nav-container { transform: translateX(0); }
+    .mobile-nav-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid rgba(42, 157, 143, 0.1); }
+    .mobile-nav-close { background: rgba(42, 157, 143, 0.1); border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; color: var(--bubble-teal); cursor: pointer; }
+    .mobile-nav-links { flex: 1; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .mobile-nav-link { display: flex; align-items: center; gap: 12px; padding: 1rem; border-radius: 1rem; text-decoration: none; font-weight: 500; color: var(--charcoal); background: rgba(42, 157, 143, 0.03); }
+    .mobile-nav-link i:first-child { width: 24px; color: var(--bubble-teal); }
+    .mobile-nav-link span { flex: 1; }
+    .mobile-nav-footer { padding: 1.5rem; border-top: 1px solid rgba(42, 157, 143, 0.1); }
+    .mobile-quote-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 1rem; border-radius: 2rem; background: linear-gradient(135deg, #2A9D8F, #1E7A6E); color: white; text-decoration: none; font-weight: 600; margin-bottom: 1rem; }
+    .mobile-social { display: flex; justify-content: center; gap: 1.5rem; }
+    .mobile-social a { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(42, 157, 143, 0.1); color: var(--bubble-teal); text-decoration: none; }
+
+    /* Premium Dock */
+    .premium-dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(30, 30, 42, 0.96);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 245, 0.1);
+      padding: 8px 16px 12px;
+      display: none;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 1000;
+    }
+    .dock-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 2rem;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .dock-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 2rem; }
+    .dock-icon i { font-size: 1.2rem; color: rgba(255, 255, 245, 0.6); }
+    .dock-label { font-size: 0.55rem; font-weight: 500; color: rgba(255, 255, 245, 0.6); }
+    .dock-indicator { position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 2px; background: transparent; }
+    .dock-item.active .dock-icon { background: rgba(233, 196, 106, 0.15); }
+    .dock-item.active .dock-icon i { color: var(--bubble-gold); transform: translateY(-2px); }
+    .dock-item.active .dock-label { color: var(--bubble-gold); font-weight: 600; }
+    .dock-item.active .dock-indicator { background: var(--bubble-gold); width: 20px; }
+
+    /* Contact Page Styles - Redesigned */
+    .contact-hero {
+      background: linear-gradient(135deg, var(--bubble-teal) 0%, var(--bubble-teal-deep) 100%);
+      padding: 60px 0;
+      text-align: center;
+      color: white;
+    }
+    .contact-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 3.5rem); margin-bottom: 1rem; }
+    .contact-hero p { max-width: 600px; margin: 0 auto; opacity: 0.9; }
+
+    .section-padding { padding: 80px 0; }
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
+
+    /* Modern Contact Layout */
+    .contact-modern {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* Contact Info Cards - Horizontal Layout */
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .contact-info-item {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid rgba(42, 157, 143, 0.1);
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-info-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--bubble-teal);
+    }
+    .contact-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, rgba(42, 157, 143, 0.1), rgba(42, 157, 143, 0.05));
+      border-radius: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+    .contact-icon i { font-size: 2rem; color: var(--bubble-teal); }
+    .contact-info-item h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .contact-info-item p { color: var(--taupe); font-size: 0.9rem; }
+    .contact-info-item a { color: var(--bubble-teal); text-decoration: none; font-weight: 500; }
+    .contact-info-item a:hover { text-decoration: underline; }
+
+    /* Contact Form - Clean and Modern */
+    .contact-form-modern {
+      background: white;
+      border-radius: 2rem;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+    }
+    .contact-form-modern h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--charcoal);
+    }
+    .form-subtitle {
+      color: var(--taupe);
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--charcoal);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: var(--soft-pearl);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 1rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--bubble-teal);
+      box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 2rem;
+      background: linear-gradient(135deg, #2A9D8F, #1E7A6E);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 0.5rem;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(42, 157, 143, 0.35);
+    }
+
+    /* Map Section */
+    .map-wrapper {
+      background: var(--soft-pearl);
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .map-container {
+      height: 380px;
+      width: 100%;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* FAQ Section */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.2rem 1.5rem;
+      transition: var(--transition);
+      cursor: pointer;
+      border: 1px solid rgba(42, 157, 143, 0.1);
+    }
+    .faq-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    .faq-question i { color: var(--bubble-teal); transition: transform 0.3s ease; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--taupe);
+      margin-top: 0;
+      font-size: 0.9rem;
+    }
+    .faq-item.active .faq-answer { max-height: 150px; margin-top: 1rem; }
+    .faq-item.active .faq-question i { transform: rotate(180deg); }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      z-index: 999;
+      text-decoration: none;
+    }
+    footer { background: var(--dark-charcoal); color: white; padding: 50px 0 30px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; }
+    .badge-light {
+      background: rgba(255,255,245,0.2);
+      color: var(--bubble-gold);
+      padding: 0.3rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.7rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 968px) {
+      .contact-modern { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-info-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .desktop-nav, .btn-primary-nav { display: none; }
+      .mobile-menu-toggle { display: flex; align-items: center; justify-content: center; }
+      .premium-dock { display: flex; }
+      .section-padding { padding: 50px 0; }
+      .contact-info-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .contact-form-modern { padding: 1.5rem; }
+      .whatsapp-float { bottom: 80px; width: 48px; height: 48px; font-size: 1.6rem; }
+    }
+    @media (min-width: 769px) { .premium-dock { display: none; } }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="premium-header">
+  <nav class="nav-container">
+    <a href="index.html" class="logo">
+      <span class="logo-main">SPOTLESS</span>
+      <span class="logo-bubble">BUBBLES</span>
+      <span class="logo-dot"></span>
+    </a>
+    <div class="desktop-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="about.html" class="nav-link"><i class="fas fa-leaf"></i><span>About</span></a>
+      <a href="services.html" class="nav-link"><i class="fas fa-sparkle"></i><span>Services</span></a>
+      <a href="booking.html" class="nav-link"><i class="fas fa-calendar-check"></i><span>Book Now</span></a>
+      <a href="contact.html" class="nav-link active-nav"><i class="fas fa-envelope"></i><span>Contact</span></a>
+    </div>
+    <a href="booking.html" class="btn-primary-nav"><i class="fas fa-gem"></i><span>Request Quote</span><i class="fas fa-arrow-right"></i></a>    
+  </nav>
+</header>
+
+<!-- Mobile Dock -->
+<div class="premium-dock">
+  <a href="index.html" class="dock-item"><div class="dock-icon"><i class="fas fa-home"></i></div><span class="dock-label">Home</span><div class="dock-indicator"></div></a>
+  <a href="about.html" class="dock-item"><div class="dock-icon"><i class="fas fa-leaf"></i></div><span class="dock-label">About</span><div class="dock-indicator"></div></a>
+  <a href="services.html" class="dock-item"><div class="dock-icon"><i class="fas fa-sparkle"></i></div><span class="dock-label">Services</span><div class="dock-indicator"></div></a>
+  <a href="booking.html" class="dock-item"><div class="dock-icon"><i class="fas fa-calendar-check"></i></div><span class="dock-label">Book</span><div class="dock-indicator"></div></a>
+  <a href="contact.html" class="dock-item active"><div class="dock-icon"><i class="fas fa-envelope"></i></div><span class="dock-label">Contact</span><div class="dock-indicator"></div></a>
+</div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/27684867533?text=Hello!%20I%20have%20a%20question%20about%20your%20cleaning%20services" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<!-- Contact Hero -->
+<section class="contact-hero">
+  <div class="container">
+    <span class="badge-light"><i class="fas fa-heart"></i> We'd Love to Hear From You</span>
+    <h1>Let's Connect</h1>
+    <p>Have questions about our services? Need a custom quote? Our team is ready to help make your space spotless.</p>
+  </div>
+</section>
+
+<!-- Main Contact Section - Redesigned -->
+<section class="section-padding">
+  <div class="container">
+    <div class="contact-modern">
+      <!-- Contact Info Cards - Grid Layout -->
+      <div>
+        <div class="contact-info-grid">
+          <div class="contact-info-item">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <h3>Call Us</h3>
+            <p><a href="tel:+27684867533">+27 (0) 68 486 7533</a></p>
+            <p><a href="tel:+27111234567">+27 (0) 11 234 5678</a></p>
+            <p style="font-size: 0.75rem; margin-top: 0.5rem;">Mon-Fri: 8am - 6pm</p>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <h3>Email Us</h3>
+            <p><a href="mailto:hello@spotlessbubbles.co.za">hello@spotlessbubbles.co.za</a></p>
+            <p><a href="mailto:support@spotlessbubbles.co.za">support@spotlessbubbles.co.za</a></p>
+            <p style="font-size: 0.75rem; margin-top: 0.5rem;">Response within 2 hours</p>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <h3>Visit Us</h3>
+            <p>123 Clean Avenue, Sandton</p>
+            <p>Johannesburg, 2196</p>
+            <p>South Africa</p>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/27684867533">+27 (0) 68 486 7533</a></p>
+            <p>Click to chat instantly</p>
+            <p style="font-size: 0.75rem; margin-top: 0.5rem;">24/7 Support</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="contact-form-modern">
+        <h2>Send us a message</h2>
+        <p class="form-subtitle">Fill out the form below and we'll get back to you within 2 hours.</p>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" id="name" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" id="email" required placeholder="hello@example.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="phone" placeholder="+27 123 456 789">
+            </div>
+            <div class="form-group">
+              <label>Subject *</label>
+              <select id="subject" required>
+                <option value="">Select a subject</option>
+                <option>General Inquiry</option>
+                <option>Quote Request</option>
+                <option>Service Information</option>
+                <option>Partnership Opportunity</option>
+                <option>Feedback</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Your Message *</label>
+            <textarea id="message" rows="4" required placeholder="Tell us how we can help you..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Map Section -->
+<section class="section-padding" style="background: var(--soft-pearl);">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <span class="badge" style="background: rgba(42,157,143,0.1); color: var(--bubble-teal); padding: 0.5rem 1.5rem; border-radius: 3rem; font-size: 0.7rem; display: inline-block; margin-bottom: 1rem;">📍 LOCATION</span>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem;">Find Us Here</h2>
+      <div style="width: 70px; height: 2px; background: var(--bubble-teal); margin: 1rem auto;"></div>
+    </div>
+    <div class="map-wrapper">
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.217623425391!2d28.04738731502655!3d-26.13686098348197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c2b8f0e3b7f%3A0x5e5b5f5e5e5e5e5e!2sSandton%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section-padding">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <span class="badge" style="background: rgba(42,157,143,0.1); color: var(--bubble-teal); padding: 0.5rem 1.5rem; border-radius: 3rem; font-size: 0.7rem; display: inline-block; margin-bottom: 1rem;">❓ FAQ</span>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem;">Frequently Asked Questions</h2>
+      <div style="width: 70px; height: 2px; background: var(--bubble-teal); margin: 1rem auto;"></div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item"><div class="faq-question"><span>How quickly can I get a quote?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">We respond to all inquiries within 2 hours during business hours. For urgent requests, please call us directly.</div></div>
+      <div class="faq-item"><div class="faq-question"><span>Are your cleaning products eco-friendly?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes! We use 100% plant-based, biodegradable, and non-toxic products that are safe for children, pets, and the environment.</div></div>
+      <div class="faq-item"><div class="faq-question"><span>Do you service commercial properties?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutely! We offer tailored commercial cleaning solutions for offices, retail spaces, and industrial facilities.</div></div>
+      <div class="faq-item"><div class="faq-question"><span>What areas do you cover?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">We proudly serve Sandton, Cape Town, Durban, and surrounding areas. Contact us to check availability in your location.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="logo" style="color:var(--bubble-gold);font-size:1.5rem; margin-bottom: 1rem;">SPOTLESS BUBBLES</div><p>Ultra-pure, sustainable cleaning.</p></div>
+      <div><h4>Services</h4><p>Residential Deep Clean</p><p>Commercial Office</p><p>Carpet & Upholstery</p><p>Window & Glass</p></div>
+      <div><h4>Support</h4><p><a href="#" style="color: white; text-decoration: none;">FAQ</a></p><p><a href="#" style="color: white; text-decoration: none;">Privacy Policy</a></p><p><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></p></div>
+      <div><h4>Follow Us</h4><div style="display: flex; gap: 1rem; margin-top: 0.5rem;"><a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a><a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a><a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-tiktok"></i></a><a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a></div></div>
+    </div>
+    <div style="text-align:center; margin-top: 3rem; font-size:0.7rem; opacity: 0.7;">© 2026 SpotlessBubbles — The Cleaning Revolution. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const mobileToggle = document.getElementById('mobileMenuToggle');
+  const mobileOverlay = document.getElementById('mobileNavOverlay');
+  const mobileClose = document.getElementById('mobileNavClose');
+  if (mobileToggle) mobileToggle.addEventListener('click', () => { mobileOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; });
+  if (mobileClose) mobileClose.addEventListener('click', () => { mobileOverlay.classList.remove('active'); document.body.style.overflow = ''; });
+  mobileOverlay?.addEventListener('click', (e) => { if (e.target === mobileOverlay) { mobileOverlay.classList.remove('active'); document.body.style.overflow = ''; } });
+  window.addEventListener('scroll', () => { const header = document.querySelector('.premium-header'); if (window.scrollY > 50) header?.classList.add('scrolled'); else header?.classList.remove('scrolled'); });
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => { item.addEventListener('click', () => { item.classList.toggle('active'); }); });
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) { contactForm.addEventListener('submit', (e) => { e.preventDefault(); const name = document.getElementById('name')?.value || ''; alert(`✨ Thank you ${name}! Your message has been sent. Our concierge team will respond within 2 hours.`); contactForm.reset(); }); }
+</script>
+</body>
+</html>

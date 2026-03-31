@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>About | SpotlessBubbles - The Ultra-Pure Philosophy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --pure-white: #FFFFFF;
+      --ivory: #FEFAF5;
+      --soft-pearl: #F9F6F0;
+      --charcoal: #1E1E2A;
+      --dark-charcoal: #14141C;
+      --bubble-teal: #2A9D8F;
+      --bubble-teal-deep: #1E7A6E;
+      --bubble-gold: #E9C46A;
+      --bubble-gold-dark: #D4A843;
+      --taupe: #7A6E5D;
+      --shadow-sm: 0 12px 30px -8px rgba(0,0,0,0.06);
+      --shadow-md: 0 25px 40px -12px rgba(0,0,0,0.1);
+      --shadow-lg: 0 35px 60px -15px rgba(0,0,0,0.15);
+      --transition: all 0.5s cubic-bezier(0.2, 0.95, 0.4, 1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ivory);
+      color: var(--charcoal);
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* Global */
+    .btn {
+      padding: 0.9rem 2.2rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn-primary { background: var(--bubble-teal); color: white; box-shadow: 0 6px 18px rgba(42,157,143,0.3); }
+    .btn-primary:hover { background: var(--bubble-teal-deep); transform: translateY(-3px); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--bubble-teal); color: var(--bubble-teal); }
+    .btn-outline:hover { background: var(--bubble-teal); color: white; }
+    .badge {
+      background: rgba(42, 157, 143, 0.1);
+      color: var(--bubble-teal-deep);
+      padding: 0.5rem 1.5rem;
+      border-radius: 3rem;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(42, 157, 143, 0.3);
+    }
+    .section-padding { padding: 100px 0; }
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
+    .divider { width: 70px; height: 2px; background: var(--bubble-teal); margin: 1rem 0 1.5rem; }
+    .divider-center { margin: 1rem auto 1.5rem; }
+
+    /* Premium Header */
+    .premium-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 250, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(42, 157, 143, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s ease;
+    }
+
+    .premium-header.scrolled {
+      background: rgba(255, 255, 250, 0.98);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 2rem;
+      gap: 2rem;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.02);
+    }
+
+    .logo-main {
+      color: var(--charcoal);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-bubble {
+      background: linear-gradient(135deg, #2A9D8F, #48B5A8);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+
+    .logo-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--bubble-gold);
+      border-radius: 50%;
+      display: inline-block;
+      margin-left: 4px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .desktop-nav {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(42, 157, 143, 0.05);
+      padding: 0.3rem;
+      border-radius: 3rem;
+    }
+
+    .desktop-nav a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.6rem 1.2rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--charcoal);
+      transition: all 0.3s cubic-bezier(0.2, 0.95, 0.4, 1);
+    }
+
+    .desktop-nav a i {
+      font-size: 0.9rem;
+      transition: transform 0.2s ease;
+    }
+
+    .desktop-nav a:hover {
+      background: rgba(42, 157, 143, 0.12);
+      color: var(--bubble-teal);
+    }
+
+    .desktop-nav a:hover i {
+      transform: translateY(-2px);
+    }
+
+    .desktop-nav a.active-nav {
+      background: var(--bubble-teal);
+      color: white;
+      box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
+    }
+
+    .desktop-nav a.active-nav i {
+      color: white;
+    }
+
+    .btn-primary-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.7rem 1.5rem;
+      border-radius: 2.5rem;
+      background: linear-gradient(135deg, #2A9D8F, #1E7A6E);
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(42, 157, 143, 0.25);
+    }
+
+    .btn-primary-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(42, 157, 143, 0.35);
+      background: linear-gradient(135deg, #1E7A6E, #16685D);
+    }
+
+    .btn-primary-nav i:last-child {
+      transition: transform 0.2s ease;
+    }
+
+    .btn-primary-nav:hover i:last-child {
+      transform: translateX(4px);
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: rgba(42, 157, 143, 0.1);
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      color: var(--bubble-teal);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile Navigation Overlay */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 85%;
+      max-width: 360px;
+      height: 100%;
+      background: linear-gradient(135deg, #FFFFFF, #FEFAF5);
+      box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-nav-overlay.active .mobile-nav-container {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(42, 157, 143, 0.1);
+    }
+
+    .mobile-nav-close {
+      background: rgba(42, 157, 143, 0.1);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      color: var(--bubble-teal);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-nav-close:hover {
+      background: rgba(42, 157, 143, 0.2);
+      transform: rotate(90deg);
+    }
+
+    .mobile-nav-links {
+      flex: 1;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 1rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      color: var(--charcoal);
+      transition: all 0.2s ease;
+      background: rgba(42, 157, 143, 0.03);
+    }
+
+    .mobile-nav-link i:first-child {
+      width: 24px;
+      color: var(--bubble-teal);
+      font-size: 1.1rem;
+    }
+
+    .mobile-nav-link span {
+      flex: 1;
+    }
+
+    .mobile-nav-link i:last-child {
+      font-size: 0.7rem;
+      color: var(--taupe);
+      transition: transform 0.2s ease;
+    }
+
+    .mobile-nav-link:hover {
+      background: rgba(42, 157, 143, 0.1);
+      transform: translateX(4px);
+    }
+
+    .mobile-nav-footer {
+      padding: 1.5rem;
+      border-top: 1px solid rgba(42, 157, 143, 0.1);
+    }
+
+    .mobile-quote-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 2rem;
+      background: linear-gradient(135deg, #2A9D8F, #1E7A6E);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .mobile-social {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .mobile-social a {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(42, 157, 143, 0.1);
+      color: var(--bubble-teal);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-social a:hover {
+      background: var(--bubble-teal);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Premium Dock */
+    .premium-dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(30, 30, 42, 0.96);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 245, 0.1);
+      padding: 8px 16px 12px;
+      display: none;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .dock-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 2rem;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .dock-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2rem;
+      transition: all 0.2s ease;
+    }
+
+    .dock-icon i {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 245, 0.6);
+    }
+
+    .dock-label {
+      font-size: 0.55rem;
+      font-weight: 500;
+      color: rgba(255, 255, 245, 0.6);
+    }
+
+    .dock-indicator {
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 2px;
+      background: transparent;
+      transition: all 0.2s ease;
+    }
+
+    .dock-item.active .dock-icon {
+      background: rgba(233, 196, 106, 0.15);
+    }
+
+    .dock-item.active .dock-icon i {
+      color: var(--bubble-gold);
+      transform: translateY(-2px);
+    }
+
+    .dock-item.active .dock-label {
+      color: var(--bubble-gold);
+      font-weight: 600;
+    }
+
+    .dock-item.active .dock-indicator {
+      background: var(--bubble-gold);
+      width: 20px;
+    }
+
+    .dock-item:hover .dock-icon {
+      transform: translateY(-2px);
+    }
+
+    .dock-item:hover .dock-icon i {
+      color: var(--bubble-gold);
+    }
+
+    /* About Page Specific Styles */
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .stats-mini {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-circle {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--bubble-teal);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .team-card {
+      text-align: center;
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid rgba(42, 157, 143, 0.1);
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--bubble-teal);
+    }
+
+    .team-card i {
+      transition: transform 0.3s ease;
+    }
+
+    .team-card:hover i {
+      transform: scale(1.1);
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 30px;
+      font-size: 5rem;
+      color: var(--bubble-teal);
+      opacity: 0.2;
+      font-family: serif;
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .whatsapp-float:hover { transform: scale(1.08); }
+
+    /* Footer */
+    footer {
+      background: var(--dark-charcoal);
+      color: white;
+      padding: 50px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .desktop-nav, .btn-primary-nav { display: none; }
+      .mobile-menu-toggle { display: flex; align-items: center; justify-content: center; }
+      .premium-dock { display: flex; }
+      .section-padding { padding: 60px 0; }
+      .section-title { font-size: 2rem; }
+      .about-split { grid-template-columns: 1fr; gap: 2rem; }
+      .whatsapp-float { bottom: 80px; width: 48px; height: 48px; font-size: 1.6rem; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 769px) {
+      .premium-dock { display: none; }
+      .mobile-menu-toggle { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Premium Header -->
+<header class="premium-header">
+  <nav class="nav-container">
+    <a href="index.html" class="logo">
+      <span class="logo-main">SPOTLESS</span>
+      <span class="logo-bubble">BUBBLES</span>
+      <span class="logo-dot"></span>
+    </a>
+    
+    <div class="desktop-nav">
+      <a href="index.html">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="about.html" class="active-nav">
+        <i class="fas fa-leaf"></i>
+        <span>About</span>
+      </a>
+      <a href="services.html">
+        <i class="fas fa-sparkle"></i>
+        <span>Services</span>
+      </a>
+      <a href="booking.html">
+        <i class="fas fa-calendar-check"></i>
+        <span>Book Now</span>
+      </a>
+      <a href="contact.html">
+        <i class="fas fa-envelope"></i>
+        <span>Contact</span>
+      </a>
+    </div>
+    
+    <a href="booking.html" class="btn-primary-nav">
+      <i class="fas fa-gem"></i>
+      <span>Request Quote</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+    
+    
+  </nav>
+</header>
+
+
+
+<!-- Premium Mobile Dock -->
+<div class="premium-dock">
+  <a href="index.html" class="dock-item">
+    <div class="dock-icon"><i class="fas fa-home"></i></div>
+    <span class="dock-label">Home</span>
+    <div class="dock-indicator"></div>
+  </a>
+  <a href="about.html" class="dock-item active">
+    <div class="dock-icon"><i class="fas fa-leaf"></i></div>
+    <span class="dock-label">About</span>
+    <div class="dock-indicator"></div>
+  </a>
+  <a href="services.html" class="dock-item">
+    <div class="dock-icon"><i class="fas fa-sparkle"></i></div>
+    <span class="dock-label">Services</span>
+    <div class="dock-indicator"></div>
+  </a>
+  <a href="booking.html" class="dock-item">
+    <div class="dock-icon"><i class="fas fa-calendar-check"></i></div>
+    <span class="dock-label">Book</span>
+    <div class="dock-indicator"></div>
+  </a>
+  <a href="contact.html" class="dock-item">
+    <div class="dock-icon"><i class="fas fa-envelope"></i></div>
+    <span class="dock-label">Contact</span>
+    <div class="dock-indicator"></div>
+  </a>
+</div>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/27684867533?text=Tell%20me%20more%20about%20SpotlessBubbles" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<!-- About Main Section -->
+<section class="section-padding">
+  <div class="container">
+    <div class="about-split">
+      <div>
+        <span class="badge"><i class="fas fa-droplet"></i> OUR STORY</span>
+        <h2 class="section-title">Purity Meets Precision</h2>
+        <div class="divider"></div>
+        <p style="color: var(--taupe); margin-bottom: 1rem; line-height: 1.6;">Founded in 2022, SpotlessBubbles emerged from a simple belief: cleaning should be transformative, not just surface-level. We pioneered nano-bubble technology paired with botanical chemistry to deliver the deepest clean without toxins.</p>
+        <p style="color: var(--taupe); margin-bottom: 1rem;">Every specialist is trained in the "Bubble Code" — a 32-point checklist that ensures no corner is overlooked. We're carbon-neutral, 100% plastic-negative, and obsessed with radiance.</p>
+        <div class="stats-mini">
+          <div class="stat-circle">
+            <div class="stat-number">100%</div>
+            <div>Eco-Certified</div>
+          </div>
+          <div class="stat-circle">
+            <div class="stat-number">24/7</div>
+            <div>Concierge</div>
+          </div>
+          <div class="stat-circle">
+            <div class="stat-number">0%</div>
+            <div>Chemicals</div>
+          </div>
+        </div>
+        <a href="booking.html" class="btn btn-primary" style="margin-top: 1.5rem;">
+          <i class="fas fa-gem"></i> Experience the difference →
+        </a>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-right" style="font-size: 2.5rem; color: var(--bubble-teal); opacity: 0.6; margin-bottom: 1rem; display: block;"></i>
+        <p style="font-style: italic; margin: 1rem 0; font-size: 1.1rem; line-height: 1.6;">“My home has never felt so pure. The attention to detail is unmatched — from the baseboards to the air quality. SpotlessBubbles completely transformed my living space.”</p>
+        <p style="font-weight: 600;">— Olivia Chen, Verified Client</p>
+        <hr style="margin: 1.5rem 0;">
+        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+          <div><i class="fas fa-award" style="color: var(--bubble-teal);"></i> Best of Houzz 2024</div>
+          <div><i class="fas fa-leaf" style="color: var(--bubble-teal);"></i> Green Business Bureau Certified</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Values Section -->
+<section style="background: var(--soft-pearl); padding: 80px 0;">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <span class="badge"><i class="fas fa-heart"></i> OUR VALUES</span>
+      <h2 class="section-title">What Drives Us</h2>
+      <div class="divider divider-center"></div>
+      <p style="color: var(--taupe); max-width: 700px; margin: 0 auto;">Every decision we make is guided by our commitment to excellence, sustainability, and your satisfaction.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+      <div class="team-card" style="text-align: left;">
+        <i class="fas fa-hand-sparkles" style="font-size: 2.5rem; color: var(--bubble-teal); margin-bottom: 1rem;"></i>
+        <h3>Uncompromising Quality</h3>
+        <p style="color: var(--taupe); margin-top: 0.5rem;">We don't cut corners. Our 32-point checklist ensures every surface sparkles.</p>
+      </div>
+      <div class="team-card" style="text-align: left;">
+        <i class="fas fa-seedling" style="font-size: 2.5rem; color: var(--bubble-teal); margin-bottom: 1rem;"></i>
+        <h3>Planet First</h3>
+        <p style="color: var(--taupe); margin-top: 0.5rem;">Carbon-neutral operations, biodegradable products, and zero-waste practices.</p>
+      </div>
+      <div class="team-card" style="text-align: left;">
+        <i class="fas fa-clock" style="font-size: 2.5rem; color: var(--bubble-teal); margin-bottom: 1rem;"></i>
+        <h3>On-Time Guarantee</h3>
+        <p style="color: var(--taupe); margin-top: 0.5rem;">We respect your time with punctual arrival and efficient service delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="section-padding">
+  <div class="container">
+    <div style="text-align: center;">
+      <span class="badge"><i class="fas fa-users"></i> THE EXPERTS</span>
+      <h2 class="section-title">Masters of Clean</h2>
+      <div class="divider divider-center"></div>
+      <p style="color: var(--taupe); max-width: 700px; margin: 0 auto;">Meet the passionate professionals behind the SpotlessBubbles revolution.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <i class="fas fa-user-tie" style="font-size: 2.5rem; color: var(--bubble-teal);"></i>
+        <h3 style="margin: 1rem 0;">Elena Voss</h3>
+        <p style="font-weight: 500;">Founder & Head of Innovation</p>
+        <small style="color: var(--taupe);">15 years in eco-cleaning tech</small>
+      </div>
+      <div class="team-card">
+        <i class="fas fa-broom" style="font-size: 2.5rem; color: var(--bubble-teal);"></i>
+        <h3 style="margin: 1rem 0;">Marcus Thompson</h3>
+        <p style="font-weight: 500;">Lead Field Specialist</p>
+        <small style="color: var(--taupe);">Certified Master Cleaner, 10+ years</small>
+      </div>
+      <div class="team-card">
+        <i class="fas fa-flask" style="font-size: 2.5rem; color: var(--bubble-teal);"></i>
+        <h3 style="margin: 1rem 0;">Dr. Priya Sharma</h3>
+        <p style="font-weight: 500;">Chemistry Advisor</p>
+        <small style="color: var(--taupe);">Nano-solutions expert, PhD in Green Chemistry</small>
+      </div>
+      <div class="team-card">
+        <i class="fas fa-chart-line" style="font-size: 2.5rem; color: var(--bubble-teal);"></i>
+        <h3 style="margin: 1rem 0;">David Okafor</h3>
+        <p style="font-weight: 500;">Operations Director</p>
+        <small style="color: var(--taupe);">Quality assurance specialist</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:var(--bubble-gold);font-size:1.5rem; margin-bottom: 1rem;">SPOTLESS BUBBLES</div>
+        <p>Ultra-pure, sustainable cleaning.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <p>Residential Deep Clean</p>
+        <p>Commercial Office</p>
+        <p>Carpet & Upholstery</p>
+        <p>Window & Glass</p>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <p><a href="#" style="color: white; text-decoration: none;">FAQ</a></p>
+        <p><a href="#" style="color: white; text-decoration: none;">Privacy Policy</a></p>
+        <p><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></p>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+          <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+          <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-tiktok"></i></a>
+          <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 3rem; font-size:0.7rem; opacity: 0.7;">
+      © 2026 SpotlessBubbles — The Cleaning Revolution. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu functionality
+  const mobileToggle = document.getElementById('mobileMenuToggle');
+  const mobileOverlay = document.getElementById('mobileNavOverlay');
+  const mobileClose = document.getElementById('mobileNavClose');
+
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', () => {
+      mobileOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  if (mobileClose) {
+    mobileClose.addEventListener('click', () => {
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
+
+  mobileOverlay?.addEventListener('click', (e) => {
+    if (e.target === mobileOverlay) {
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.premium-header');
+    if (window.scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+</script>
+</body>
+</html>

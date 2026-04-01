@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Services | SpotlessBubbles - Premium Cleaning Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Services | SpotlessBubbles — Premium Cleaning Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
@@ -15,237 +15,271 @@
 
     :root {
       --pure-white: #FFFFFF;
-      --ivory: #FEFAF5;
-      --soft-pearl: #F9F6F0;
-      --charcoal: #1E1E2A;
-      --dark-charcoal: #14141C;
-      --bubble-teal: #2A9D8F;
-      --bubble-teal-deep: #1E7A6E;
-      --bubble-gold: #E9C46A;
-      --bubble-gold-dark: #D4A843;
-      --taupe: #7A6E5D;
-      --shadow-sm: 0 12px 30px -8px rgba(0,0,0,0.06);
-      --shadow-md: 0 25px 40px -12px rgba(0,0,0,0.1);
-      --shadow-lg: 0 35px 60px -15px rgba(0,0,0,0.15);
-      --transition: all 0.5s cubic-bezier(0.2, 0.95, 0.4, 1);
+      --off-white: #FCFAF8;
+      --gray-50: #F9F9FB;
+      --gray-100: #F1F2F4;
+      --gray-200: #E4E6E9;
+      --gray-700: #40434A;
+      --gray-900: #1B1E24;
+      --primary-teal: #1A7F6E;
+      --primary-teal-dark: #0F5E51;
+      --primary-teal-soft: rgba(26, 127, 110, 0.08);
+      --accent-gold: #CFA64B;
+      --accent-gold-dark: #B3862E;
+      --shadow-xs: 0 1px 2px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.02);
+      --shadow-sm: 0 4px 8px -2px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.02);
+      --shadow-md: 0 10px 20px -6px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 30px -10px rgba(0,0,0,0.1);
+      --transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--ivory);
-      color: var(--charcoal);
+      background: var(--off-white);
+      color: var(--gray-900);
       line-height: 1.5;
       scroll-behavior: smooth;
     }
 
-    /* Global */
-    .btn {
-      padding: 0.9rem 2.2rem;
-      border-radius: 3rem;
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-padding {
+      padding: 96px 0;
+    }
+
+    .section-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 2.25rem;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      color: var(--gray-900);
+    }
+
+    .badge-modern {
+      background: var(--primary-teal-soft);
+      color: var(--primary-teal-dark);
+      padding: 0.35rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
       font-weight: 600;
+      letter-spacing: 0.3px;
+      display: inline-block;
+      margin-bottom: 1.25rem;
+      border: none;
+    }
+
+    .divider-clean {
+      width: 56px;
+      height: 2px;
+      background: var(--primary-teal);
+      margin: 1rem 0 1.5rem;
+      opacity: 0.5;
+    }
+
+    .divider-center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      gap: 0.625rem;
+      padding: 0.7rem 1.8rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 48px;
       transition: var(--transition);
       cursor: pointer;
       border: none;
       font-family: 'Inter', sans-serif;
       text-decoration: none;
     }
-    .btn-primary { background: var(--bubble-teal); color: white; box-shadow: 0 6px 18px rgba(42,157,143,0.3); }
-    .btn-primary:hover { background: var(--bubble-teal-deep); transform: translateY(-3px); }
-    .btn-outline { background: transparent; border: 1.5px solid var(--bubble-teal); color: var(--bubble-teal); }
-    .btn-outline:hover { background: var(--bubble-teal); color: white; }
-    .badge {
-      background: rgba(42, 157, 143, 0.1);
-      color: var(--bubble-teal-deep);
-      padding: 0.5rem 1.5rem;
-      border-radius: 3rem;
-      font-weight: 700;
-      font-size: 0.7rem;
-      letter-spacing: 1.5px;
-      display: inline-block;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(42, 157, 143, 0.3);
-    }
-    .section-padding { padding: 100px 0; }
-    .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
-    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
-    .divider { width: 70px; height: 2px; background: var(--bubble-teal); margin: 1rem 0 1.5rem; }
-    .divider-center { margin: 1rem auto 1.5rem; }
 
-    /* Premium Header */
-    .premium-header {
+    .btn-primary {
+      background: var(--primary-teal);
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-teal-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--gray-200);
+      color: var(--gray-900);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary-teal);
+      background: var(--primary-teal-soft);
+      color: var(--primary-teal);
+    }
+
+    /* ===== PROFESSIONAL HEADER & NAVBAR ===== */
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 250, 0.98);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(42, 157, 143, 0.2);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease;
     }
 
-    .premium-header.scrolled {
-      background: rgba(255, 255, 250, 0.98);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    .site-header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-xs);
+      border-bottom-color: rgba(0, 0, 0, 0.08);
     }
 
-    .nav-container {
-      max-width: 1400px;
-      margin: 0 auto;
+    .navbar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 0.9rem 2rem;
+      justify-content: space-between;
+      padding: 0.875rem 2rem;
+      max-width: 1440px;
+      margin: 0 auto;
       gap: 2rem;
     }
 
-    .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: 1.6rem;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+    .logo-link {
       text-decoration: none;
-      transition: transform 0.3s ease;
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.3px;
+      transition: opacity 0.2s;
     }
 
-    .logo:hover {
-      transform: scale(1.02);
+    .logo-word {
+      color: var(--gray-900);
     }
 
-    .logo-main {
-      color: var(--charcoal);
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-
-    .logo-bubble {
-      background: linear-gradient(135deg, #2A9D8F, #48B5A8);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+    .logo-highlight {
+      color: var(--primary-teal);
       font-weight: 800;
     }
 
-    .logo-dot {
+    .logo-mark {
       width: 6px;
       height: 6px;
-      background: var(--bubble-gold);
+      background: var(--accent-gold);
       border-radius: 50%;
       display: inline-block;
       margin-left: 4px;
-      animation: pulse 2s infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 0.4; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
-
-    .desktop-nav {
+    .nav-links {
       display: flex;
+      align-items: center;
       gap: 0.5rem;
-      background: rgba(42, 157, 143, 0.05);
-      padding: 0.3rem;
-      border-radius: 3rem;
+      background: transparent;
     }
 
-    .desktop-nav a {
-      display: flex;
+    .nav-item {
+      position: relative;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 0.6rem 1.2rem;
-      border-radius: 2rem;
-      text-decoration: none;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 0.85rem;
-      color: var(--charcoal);
-      transition: all 0.3s cubic-bezier(0.2, 0.95, 0.4, 1);
-    }
-
-    .desktop-nav a i {
+      padding: 0.5rem 1rem;
       font-size: 0.9rem;
-      transition: transform 0.2s ease;
+      font-weight: 500;
+      color: var(--gray-700);
+      text-decoration: none;
+      border-radius: 40px;
+      transition: var(--transition);
     }
 
-    .desktop-nav a:hover {
-      background: rgba(42, 157, 143, 0.12);
-      color: var(--bubble-teal);
+    .nav-item i {
+      font-size: 0.9rem;
+      margin-right: 6px;
+      opacity: 0.7;
     }
 
-    .desktop-nav a:hover i {
-      transform: translateY(-2px);
+    .nav-item:hover {
+      background: var(--gray-100);
+      color: var(--primary-teal);
     }
 
-    .desktop-nav a.active-nav {
-      background: var(--bubble-teal);
+    .nav-item.active {
+      background: var(--primary-teal-soft);
+      color: var(--primary-teal-dark);
+      font-weight: 600;
+    }
+
+    .nav-item.active i {
+      opacity: 1;
+      color: var(--primary-teal);
+    }
+
+    .btn-nav-cta {
+      background: var(--gray-900);
       color: white;
-      box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
-    }
-
-    .desktop-nav a.active-nav i {
-      color: white;
-    }
-
-    .btn-primary-nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0.7rem 1.5rem;
-      border-radius: 2.5rem;
-      background: linear-gradient(135deg, #2A9D8F, #1E7A6E);
-      color: white;
+      padding: 0.55rem 1.4rem;
+      border-radius: 40px;
       font-weight: 600;
       font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(42, 157, 143, 0.25);
+      transition: var(--transition);
+      box-shadow: var(--shadow-xs);
     }
 
-    .btn-primary-nav:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(42, 157, 143, 0.35);
-      background: linear-gradient(135deg, #1E7A6E, #16685D);
+    .btn-nav-cta i {
+      font-size: 0.8rem;
     }
 
-    .btn-primary-nav i:last-child {
-      transition: transform 0.2s ease;
+    .btn-nav-cta:hover {
+      background: var(--primary-teal-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
     }
 
-    .btn-primary-nav:hover i:last-child {
-      transform: translateX(4px);
-    }
-
-    .mobile-menu-toggle {
+    .mobile-menu-btn {
       display: none;
-      background: rgba(42, 157, 143, 0.1);
+      background: transparent;
       border: none;
       width: 42px;
       height: 42px;
       border-radius: 50%;
-      font-size: 1.2rem;
-      color: var(--bubble-teal);
+      font-size: 1.25rem;
+      color: var(--gray-900);
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background 0.2s;
     }
 
-    /* Mobile Navigation Overlay */
+    .mobile-menu-btn:hover {
+      background: var(--gray-100);
+    }
+
+    /* Mobile overlay */
     .mobile-nav-overlay {
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(8px);
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
       z-index: 2000;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s ease;
+      transition: 0.25s ease;
     }
 
     .mobile-nav-overlay.active {
@@ -253,14 +287,14 @@
       visibility: visible;
     }
 
-    .mobile-nav-container {
+    .mobile-panel {
       position: fixed;
       top: 0;
       right: 0;
       width: 85%;
-      max-width: 360px;
+      max-width: 340px;
       height: 100%;
-      background: linear-gradient(135deg, #FFFFFF, #FEFAF5);
+      background: white;
       box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
       transform: translateX(100%);
       transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
@@ -268,209 +302,100 @@
       flex-direction: column;
     }
 
-    .mobile-nav-overlay.active .mobile-nav-container {
+    .mobile-nav-overlay.active .mobile-panel {
       transform: translateX(0);
     }
 
-    .mobile-nav-header {
+    .mobile-panel-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem;
-      border-bottom: 1px solid rgba(42, 157, 143, 0.1);
+      border-bottom: 1px solid var(--gray-200);
     }
 
-    .mobile-nav-close {
-      background: rgba(42, 157, 143, 0.1);
-      border: none;
-      width: 40px;
-      height: 40px;
+    .mobile-panel-close {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      font-size: 1.2rem;
-      color: var(--bubble-teal);
+      background: var(--gray-100);
+      border: none;
       cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .mobile-nav-close:hover {
-      background: rgba(42, 157, 143, 0.2);
-      transform: rotate(90deg);
+      transition: 0.2s;
     }
 
     .mobile-nav-links {
-      flex: 1;
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+      flex: 1;
     }
 
     .mobile-nav-link {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 1rem;
-      border-radius: 1rem;
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
       text-decoration: none;
-      font-family: 'Inter', sans-serif;
       font-weight: 500;
-      color: var(--charcoal);
-      transition: all 0.2s ease;
-      background: rgba(42, 157, 143, 0.03);
+      color: var(--gray-900);
+      transition: all 0.2s;
     }
 
     .mobile-nav-link i:first-child {
       width: 24px;
-      color: var(--bubble-teal);
-      font-size: 1.1rem;
-    }
-
-    .mobile-nav-link span {
-      flex: 1;
-    }
-
-    .mobile-nav-link i:last-child {
-      font-size: 0.7rem;
-      color: var(--taupe);
-      transition: transform 0.2s ease;
+      color: var(--primary-teal);
     }
 
     .mobile-nav-link:hover {
-      background: rgba(42, 157, 143, 0.1);
-      transform: translateX(4px);
+      background: var(--gray-100);
     }
 
-    .mobile-nav-footer {
-      padding: 1.5rem;
-      border-top: 1px solid rgba(42, 157, 143, 0.1);
+    .mobile-cta {
+      margin: 1rem 1.5rem 1.5rem;
     }
 
-    .mobile-quote-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+    .mobile-cta .btn-primary {
       width: 100%;
-      padding: 1rem;
-      border-radius: 2rem;
-      background: linear-gradient(135deg, #2A9D8F, #1E7A6E);
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .mobile-social {
-      display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      padding: 0.9rem;
     }
 
-    .mobile-social a {
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: rgba(42, 157, 143, 0.1);
-      color: var(--bubble-teal);
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .mobile-social a:hover {
-      background: var(--bubble-teal);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    /* Premium Dock */
-    .premium-dock {
+    /* Bottom dock (mobile) */
+    .bottom-dock {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(30, 30, 42, 0.96);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(255, 255, 245, 0.1);
-      padding: 8px 16px 12px;
+      border-top: 1px solid var(--gray-200);
       display: none;
       justify-content: space-around;
-      align-items: center;
+      padding: 0.6rem 1rem 0.9rem;
       z-index: 1000;
     }
 
-    .dock-item {
+    .dock-btn {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 4px;
       text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 2rem;
-      transition: all 0.2s ease;
-      position: relative;
-    }
-
-    .dock-icon {
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 2rem;
-      transition: all 0.2s ease;
-    }
-
-    .dock-icon i {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 245, 0.6);
-    }
-
-    .dock-label {
-      font-size: 0.55rem;
+      font-size: 0.7rem;
       font-weight: 500;
-      color: rgba(255, 255, 245, 0.6);
+      color: var(--gray-700);
+      transition: 0.2s;
     }
 
-    .dock-indicator {
-      position: absolute;
-      bottom: -4px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 4px;
-      height: 4px;
-      border-radius: 2px;
-      background: transparent;
-      transition: all 0.2s ease;
+    .dock-btn i {
+      font-size: 1.2rem;
     }
 
-    .dock-item.active .dock-icon {
-      background: rgba(233, 196, 106, 0.15);
-    }
-
-    .dock-item.active .dock-icon i {
-      color: var(--bubble-gold);
-      transform: translateY(-2px);
-    }
-
-    .dock-item.active .dock-label {
-      color: var(--bubble-gold);
-      font-weight: 600;
-    }
-
-    .dock-item.active .dock-indicator {
-      background: var(--bubble-gold);
-      width: 20px;
-    }
-
-    .dock-item:hover .dock-icon {
-      transform: translateY(-2px);
-    }
-
-    .dock-item:hover .dock-icon i {
-      color: var(--bubble-gold);
+    .dock-btn.active {
+      color: var(--primary-teal);
     }
 
     /* Services Page Specific Styles */
@@ -478,7 +403,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 2rem;
-      margin-top: 3rem;
+      margin-top: 2.5rem;
     }
 
     .service-card {
@@ -486,229 +411,191 @@
       border-radius: 1.5rem;
       padding: 2rem;
       transition: var(--transition);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(42, 157, 143, 0.1);
+      box-shadow: var(--shadow-xs);
+      border: 1px solid var(--gray-200);
     }
 
     .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--bubble-teal);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-teal-soft);
     }
 
     .service-icon {
-      width: 65px;
-      height: 65px;
-      background: linear-gradient(135deg, rgba(42, 157, 143, 0.1), rgba(42, 157, 143, 0.05));
-      border-radius: 1rem;
+      width: 56px;
+      height: 56px;
+      background: var(--primary-teal-soft);
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
-      color: var(--bubble-teal);
+      font-size: 1.5rem;
+      color: var(--primary-teal);
       margin-bottom: 1.2rem;
     }
 
     .service-price {
-      color: var(--bubble-teal);
+      color: var(--primary-teal);
       font-weight: 700;
-      margin: 1rem 0 0.5rem;
+      margin: 0.75rem 0 0.5rem;
       font-size: 1.1rem;
     }
 
-    .category-badge {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      background: rgba(42, 157, 143, 0.1);
-      border-radius: 2rem;
-      font-size: 0.7rem;
-      color: var(--bubble-teal);
-      margin-bottom: 0.75rem;
+    .category-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-xs);
     }
 
-    /* WhatsApp Float */
+    .category-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary-teal-soft);
+      box-shadow: var(--shadow-md);
+    }
+
     .whatsapp-float {
       position: fixed;
       bottom: 90px;
-      right: 20px;
+      right: 24px;
       background: #25D366;
-      color: white;
-      width: 55px;
-      height: 55px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 999;
-      text-decoration: none;
-      transition: transform 0.2s;
-    }
-
-    .whatsapp-float:hover { transform: scale(1.08); }
-
-    /* Footer */
-    footer {
-      background: var(--dark-charcoal);
+      font-size: 1.8rem;
       color: white;
-      padding: 50px 0 30px;
+      box-shadow: var(--shadow-md);
+      z-index: 998;
+      transition: transform 0.2s;
+      text-decoration: none;
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 2rem;
+    .whatsapp-float:hover {
+      transform: scale(1.06);
     }
 
-    /* Responsive */
+    footer {
+      background: var(--gray-900);
+      color: #CFD5DE;
+      padding: 3rem 0 2rem;
+      font-size: 0.85rem;
+    }
+
     @media (max-width: 768px) {
-      .desktop-nav, .btn-primary-nav { display: none; }
-      .mobile-menu-toggle { display: flex; align-items: center; justify-content: center; }
-      .premium-dock { display: flex; }
-      .section-padding { padding: 60px 0; }
-      .section-title { font-size: 2rem; }
-      .whatsapp-float { bottom: 80px; width: 48px; height: 48px; font-size: 1.6rem; }
+      .nav-links, .btn-nav-cta { display: none; }
+      .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+      .bottom-dock { display: flex; }
+      .section-padding { padding: 64px 0; }
+      .section-title { font-size: 1.85rem; }
+      .whatsapp-float { bottom: 80px; width: 48px; height: 48px; font-size: 1.5rem; }
       .services-grid { grid-template-columns: 1fr; }
+      .navbar { padding: 0.7rem 1.5rem; }
     }
 
     @media (min-width: 769px) {
-      .premium-dock { display: none; }
-      .mobile-menu-toggle { display: none; }
+      .bottom-dock { display: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- Premium Header -->
-<header class="premium-header">
-  <nav class="nav-container">
-    <a href="index.html" class="logo">
-      <span class="logo-main">SPOTLESS</span>
-      <span class="logo-bubble">BUBBLES</span>
-      <span class="logo-dot"></span>
+<!-- ===== PROFESSIONAL HEADER ===== -->
+<header class="site-header" id="siteHeader">
+  <div class="navbar">
+    <a href="index.html" class="logo-link">
+      <span class="logo-word">SPOTLESS</span>
+      <span class="logo-highlight">BUBBLES</span>
+      <span class="logo-mark"></span>
     </a>
     
-    <div class="desktop-nav">
-      <a href="index.html">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="about.html">
-        <i class="fas fa-leaf"></i>
-        <span>About</span>
-      </a>
-      <a href="services.html" class="active-nav">
-        <i class="fas fa-sparkle"></i>
-        <span>Services</span>
-      </a>
-      <a href="booking.html">
-        <i class="fas fa-calendar-check"></i>
-        <span>Book Now</span>
-      </a>
-      <a href="contact.html">
-        <i class="fas fa-envelope"></i>
-        <span>Contact</span>
-      </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html" class="nav-item"><i class="fas fa-leaf"></i> About</a>
+      <a href="services.html" class="nav-item active"><i class="fas fa-sparkle"></i> Services</a>
+      <a href="booking.html" class="nav-item"><i class="fas fa-calendar-check"></i> Book</a>
+      <a href="contact.html" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
     </div>
     
-    <a href="booking.html" class="btn-primary-nav">
-      <i class="fas fa-gem"></i>
-      <span>Request Quote</span>
-      <i class="fas fa-arrow-right"></i>
-    </a>
+    <a href="booking.html" class="btn-nav-cta"><i class="fas fa-file-invoice"></i> Get Quote</a>
     
- 
-  </nav>
+
+  </div>
 </header>
 
-<!-- Premium Mobile Dock -->
-<div class="premium-dock">
-  <a href="index.html" class="dock-item">
-    <div class="dock-icon"><i class="fas fa-home"></i></div>
-    <span class="dock-label">Home</span>
-    <div class="dock-indicator"></div>
-  </a>
-  <a href="about.html" class="dock-item">
-    <div class="dock-icon"><i class="fas fa-leaf"></i></div>
-    <span class="dock-label">About</span>
-    <div class="dock-indicator"></div>
-  </a>
-  <a href="services.html" class="dock-item active">
-    <div class="dock-icon"><i class="fas fa-sparkle"></i></div>
-    <span class="dock-label">Services</span>
-    <div class="dock-indicator"></div>
-  </a>
-  <a href="booking.html" class="dock-item">
-    <div class="dock-icon"><i class="fas fa-calendar-check"></i></div>
-    <span class="dock-label">Book</span>
-    <div class="dock-indicator"></div>
-  </a>
-  <a href="contact.html" class="dock-item">
-    <div class="dock-icon"><i class="fas fa-envelope"></i></div>
-    <span class="dock-label">Contact</span>
-    <div class="dock-indicator"></div>
-  </a>
+
+
+<!-- Mobile Dock -->
+<div class="bottom-dock">
+  <a href="index.html" class="dock-btn"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="about.html" class="dock-btn"><i class="fas fa-leaf"></i><span>About</span></a>
+  <a href="services.html" class="dock-btn active"><i class="fas fa-sparkle"></i><span>Services</span></a>
+  <a href="booking.html" class="dock-btn"><i class="fas fa-calendar-check"></i><span>Book</span></a>
+  <a href="contact.html" class="dock-btn"><i class="fas fa-envelope"></i><span>Contact</span></a>
 </div>
 
-<!-- WhatsApp Floating Button -->
 <a href="https://wa.me/27684867533?text=Hello!%20I%20need%20a%20cleaning%20service%20quote" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-<!-- Services Main Section -->
-<section class="section-padding" style="background: linear-gradient(135deg, var(--ivory) 0%, white 100%);">
+<!-- Services Hero Section -->
+<section class="section-padding" style="padding-bottom: 40px;">
   <div class="container">
     <div style="text-align: center;">
-      <span class="badge"><i class="fas fa-feather"></i> PREMIUM OFFERINGS</span>
+      <span class="badge-modern"><i class="fas fa-feather"></i> PREMIUM OFFERINGS</span>
       <h2 class="section-title">Our Complete Service Menu</h2>
-      <div class="divider divider-center"></div>
-      <p style="max-width: 700px; margin: 0 auto; color: var(--taupe);">Each service utilizes nano-bubble technology, eco-certified products, and the Spotless 32-point checklist for unparalleled results.</p>
+      <div class="divider-clean divider-center"></div>
+      <p style="max-width: 700px; margin: 0 auto; color: var(--gray-700);">Each service utilizes nano-bubble technology, eco-certified products, and the Spotless 32-point checklist for unparalleled results. All prices in South African Rand (ZAR).</p>
     </div>
     <div class="services-grid" id="servicesGrid"></div>
   </div>
 </section>
 
 <!-- Service Categories Section -->
-<section style="background: var(--soft-pearl); padding: 80px 0;">
+<section style="background: var(--gray-50); padding: 80px 0;">
   <div class="container">
     <div style="text-align: center; margin-bottom: 3rem;">
-      <span class="badge"><i class="fas fa-tags"></i> BY CATEGORY</span>
+      <span class="badge-modern"><i class="fas fa-tags"></i> BY CATEGORY</span>
       <h2 class="section-title">Choose Your Clean</h2>
-      <div class="divider divider-center"></div>
+      <div class="divider-clean divider-center"></div>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-      <div class="service-card" style="text-align: center;">
+      <div class="category-card">
         <div class="service-icon" style="margin: 0 auto 1.2rem auto;"><i class="fas fa-home"></i></div>
-        <h3>Residential</h3>
-        <p style="color: var(--taupe); margin: 0.5rem 0;">Deep cleans for apartments, houses, and estates.</p>
-        <p class="service-price">From $189</p>
-        <a href="booking.html" class="btn-outline" style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; text-decoration: none; font-size: 0.8rem;">Explore →</a>
+        <h3 style="font-weight: 700;">Residential</h3>
+        <p style="color: var(--gray-700); margin: 0.5rem 0;">Deep cleans for apartments, houses, and estates.</p>
+        <p class="service-price">From R 3,490</p>
+        <a href="booking.html" class="btn-outline" style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; text-decoration: none; font-size: 0.8rem; border-radius: 40px;">Explore →</a>
       </div>
-      <div class="service-card" style="text-align: center;">
+      <div class="category-card">
         <div class="service-icon" style="margin: 0 auto 1.2rem auto;"><i class="fas fa-building"></i></div>
-        <h3>Commercial</h3>
-        <p style="color: var(--taupe); margin: 0.5rem 0;">Office buildings, retail spaces, and warehouses.</p>
-        <p class="service-price">From $299</p>
-        <a href="booking.html" class="btn-outline" style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; text-decoration: none; font-size: 0.8rem;">Explore →</a>
+        <h3 style="font-weight: 700;">Commercial</h3>
+        <p style="color: var(--gray-700); margin: 0.5rem 0;">Office buildings, retail spaces, and warehouses.</p>
+        <p class="service-price">From R 5,500</p>
+        <a href="booking.html" class="btn-outline" style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; text-decoration: none; font-size: 0.8rem; border-radius: 40px;">Explore →</a>
       </div>
-      <div class="service-card" style="text-align: center;">
+      <div class="category-card">
         <div class="service-icon" style="margin: 0 auto 1.2rem auto;"><i class="fas fa-couch"></i></div>
-        <h3>Specialty</h3>
-        <p style="color: var(--taupe); margin: 0.5rem 0;">Carpet, upholstery, marble, and more.</p>
-        <p class="service-price">From $79</p>
-        <a href="booking.html" class="btn-outline" style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; text-decoration: none; font-size: 0.8rem;">Explore →</a>
+        <h3 style="font-weight: 700;">Specialty</h3>
+        <p style="color: var(--gray-700); margin: 0.5rem 0;">Carpet, upholstery, marble, and more.</p>
+        <p class="service-price">From R 1,450</p>
+        <a href="booking.html" class="btn-outline" style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; text-decoration: none; font-size: 0.8rem; border-radius: 40px;">Explore →</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Custom Package CTA -->
-<section class="section-padding">
+<section class="section-padding" style="padding-top: 0;">
   <div class="container">
-    <div style="text-align: center; max-width: 800px; margin: 0 auto; background: linear-gradient(135deg, var(--bubble-teal), var(--bubble-teal-deep)); border-radius: 2rem; padding: 3rem; color: white;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto; background: linear-gradient(135deg, var(--primary-teal), var(--primary-teal-dark)); border-radius: 2rem; padding: 3rem; color: white;">
       <i class="fas fa-gem" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
-      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1rem;">Customize Your Clean</h3>
-      <p style="margin-bottom: 1.5rem;">Combine any services for a tailored package. Our team will create a personalized plan for your space.</p>
-      <a href="booking.html" class="btn" style="background: white; color: var(--bubble-teal); padding: 0.8rem 2rem; text-decoration: none; border-radius: 2rem; font-weight: 600;"><i class="fas fa-calendar-alt"></i> Build Your Package →</a>
+      <h3 style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.8rem; margin-bottom: 1rem;">Customize Your Clean</h3>
+      <p style="margin-bottom: 1.5rem; opacity: 0.9;">Combine any services for a tailored package. Our team will create a personalized plan for your space.</p>
+      <a href="booking.html" class="btn" style="background: white; color: var(--primary-teal); padding: 0.8rem 2rem; text-decoration: none; border-radius: 48px; font-weight: 600;"><i class="fas fa-calendar-alt"></i> Build Your Package →</a>
     </div>
   </div>
 </section>
@@ -716,119 +603,116 @@
 <!-- Footer -->
 <footer>
   <div class="container">
-    <div class="footer-grid">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
       <div>
-        <div class="logo" style="color:var(--bubble-gold);font-size:1.5rem; margin-bottom: 1rem;">SPOTLESS BUBBLES</div>
-        <p>Ultra-pure, sustainable cleaning.</p>
+        <div style="font-weight: 700; font-size: 1.2rem; letter-spacing: -0.3px; margin-bottom: 0.75rem;">SPOTLESS BUBBLES</div>
+        <p style="color: #BEC3CC;">Ultra-pure, sustainable cleaning for modern spaces.</p>
       </div>
-      <div>
-        <h4>Services</h4>
-        <p>Residential Deep Clean</p>
-        <p>Commercial Office</p>
-        <p>Carpet & Upholstery</p>
-        <p>Window & Glass</p>
-      </div>
-      <div>
-        <h4>Support</h4>
-        <p><a href="#" style="color: white; text-decoration: none;">FAQ</a></p>
-        <p><a href="#" style="color: white; text-decoration: none;">Privacy Policy</a></p>
-        <p><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></p>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
-          <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
-          <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-tiktok"></i></a>
-          <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
+      <div><h4 style="font-weight: 600; margin-bottom: 0.8rem;">Services</h4><p>Residential deep clean</p><p>Commercial offices</p><p>Carpet & upholstery</p><p>Window & glass</p></div>
+      <div><h4 style="font-weight: 600; margin-bottom: 0.8rem;">Support</h4><p>FAQ</p><p>Privacy policy</p><p>Terms of service</p></div>
+      <div><h4 style="font-weight: 600; margin-bottom: 0.8rem;">Connect</h4><div style="display: flex; gap: 1rem; font-size: 1.2rem;"><i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i> <i class="fab fa-linkedin-in"></i></div></div>
     </div>
-    <div style="text-align:center; margin-top: 3rem; font-size:0.7rem; opacity: 0.7;">
-      © 2026 SpotlessBubbles — The Cleaning Revolution. All rights reserved.
-    </div>
+    <div style="text-align: center; padding-top: 1rem; border-top: 1px solid rgba(255,255,245,0.08); font-size: 0.7rem;">© 2026 SpotlessBubbles — The Cleaning Revolution. All rights reserved.</div>
   </div>
 </footer>
 
 <script>
-  // Services Data
+  // Services Data with prices in South African Rand (ZAR)
   const servicesData = [
-    { name: "Residential Deep Clean", icon: "home", desc: "Whole-home sanitization with HEPA filtration and botanical disinfectants.", price: "From $189" },
-    { name: "Commercial Office Radiance", icon: "building", desc: "Workspace refresh, desk-to-ceiling detail, high-touch sanitation.", price: "From $299" },
-    { name: "Carpet & Rug Spa", icon: "carpet", desc: "Hot water extraction, stain removal, deodorizing.", price: "From $129" },
-    { name: "Upholstery Revival", icon: "couch", desc: "Deep foam clean for sofas, chairs, and fabric surfaces.", price: "From $99" },
-    { name: "Window & Glass Prism", icon: "window-maximize", desc: "Streak-free interior/exterior glass, tracks, and sills.", price: "From $149" },
-    { name: "Post-Construction Cleanup", icon: "hammer", desc: "Dust removal, debris clearance, final polish.", price: "From $399" },
-    { name: "Move-In/Move-Out", icon: "truck", desc: "Comprehensive clean for seamless transitions.", price: "From $249" },
-    { name: "Green Eco-Seal", icon: "leaf", desc: "100% plant-based, zero-waste, carbon-neutral cleaning.", price: "From $179" },
-    { name: "Marble & Stone Care", icon: "gem", desc: "Sealing, polishing, and gentle restoration.", price: "From $219" },
-    { name: "Hardwood Floor Renewal", icon: "wood", desc: "Buffing, deep cleaning, and protective coating.", price: "From $159" },
-    { name: "High-Touch Sanitization", icon: "microscope", desc: "Electrostatic spray + UV-C for germ-free zones.", price: "From $139" },
-    { name: "Recurring Maintenance", icon: "calendar-week", desc: "Weekly/bi-weekly scheduled perfection.", price: "From $119/visit" },
-    { name: "Airbnb Turnover", icon: "hotel", desc: "Guest-ready sparkle, fast turnaround.", price: "From $99" },
-    { name: "Oven & Appliance Detailing", icon: "oven", desc: "Deep degreasing, stainless steel shine.", price: "From $79" },
-    { name: "Pressure Washing", icon: "water", desc: "Exterior surfaces, driveways, patios.", price: "From $199" }
+    { name: "Residential Deep Clean", icon: "home", desc: "Whole-home sanitization with HEPA filtration and botanical disinfectants.", price: "R 3,490" },
+    { name: "Commercial Office Radiance", icon: "building", desc: "Workspace refresh, desk-to-ceiling detail, high-touch sanitation.", price: "R 5,500" },
+    { name: "Carpet & Rug Spa", icon: "carpet", desc: "Hot water extraction, stain removal, deodorizing.", price: "R 2,390" },
+    { name: "Upholstery Revival", icon: "couch", desc: "Deep foam clean for sofas, chairs, and fabric surfaces.", price: "R 1,820" },
+    { name: "Window & Glass Prism", icon: "window-maximize", desc: "Streak-free interior/exterior glass, tracks, and sills.", price: "R 2,750" },
+    { name: "Post-Construction Cleanup", icon: "hammer", desc: "Dust removal, debris clearance, final polish.", price: "R 7,350" },
+    { name: "Move-In/Move-Out", icon: "truck", desc: "Comprehensive clean for seamless transitions.", price: "R 4,590" },
+    { name: "Green Eco-Seal", icon: "leaf", desc: "100% plant-based, zero-waste, carbon-neutral cleaning.", price: "R 3,290" },
+    { name: "Marble & Stone Care", icon: "gem", desc: "Sealing, polishing, and gentle restoration.", price: "R 4,030" },
+    { name: "Hardwood Floor Renewal", icon: "wood", desc: "Buffing, deep cleaning, and protective coating.", price: "R 2,930" },
+    { name: "High-Touch Sanitization", icon: "microscope", desc: "Electrostatic spray + UV-C for germ-free zones.", price: "R 2,560" },
+    { name: "Recurring Maintenance", icon: "calendar-week", desc: "Weekly/bi-weekly scheduled perfection.", price: "From R 2,190/visit" },
+    { name: "Airbnb Turnover", icon: "hotel", desc: "Guest-ready sparkle, fast turnaround.", price: "R 1,820" },
+    { name: "Oven & Appliance Detailing", icon: "oven", desc: "Deep degreasing, stainless steel shine.", price: "R 1,450" },
+    { name: "Pressure Washing", icon: "water", desc: "Exterior surfaces, driveways, patios.", price: "R 3,660" }
   ];
 
-  const iconsMap = { 
-    home: "home", building: "building", carpet: "carpet", couch: "couch", 
-    "window-maximize": "window-maximize", hammer: "hammer", truck: "truck", 
-    leaf: "leaf", gem: "gem", wood: "wood", microscope: "microscope", 
-    "calendar-week": "calendar-week", hotel: "hotel", oven: "oven", water: "water" 
+  const iconMap = {
+    home: "home", building: "building", carpet: "carpet", couch: "couch",
+    "window-maximize": "window-maximize", hammer: "hammer", truck: "truck",
+    leaf: "leaf", gem: "gem", wood: "wood", microscope: "microscope",
+    "calendar-week": "calendar-week", hotel: "hotel", oven: "oven", water: "water"
   };
 
   const grid = document.getElementById('servicesGrid');
   if (grid) {
     servicesData.forEach(s => {
-      const iconKey = iconsMap[s.icon] || "sparkle";
+      const iconKey = iconMap[s.icon] || "sparkle";
       const card = document.createElement('div');
       card.className = 'service-card';
       card.innerHTML = `
         <div class="service-icon"><i class="fas fa-${iconKey}"></i></div>
-        <h3>${s.name}</h3>
-        <p>${s.desc}</p>
+        <h3 style="font-weight: 700; margin-bottom: 0.5rem;">${s.name}</h3>
+        <p style="color: var(--gray-700); line-height: 1.5;">${s.desc}</p>
         <div class="service-price">${s.price}</div>
-        <a href="booking.html?service=${encodeURIComponent(s.name)}" class="btn-outline" style="display:inline-block; margin-top:1rem; padding:0.6rem 1.2rem; text-decoration:none; font-size:0.8rem;">Book This →</a>
+        <a href="booking.html?service=${encodeURIComponent(s.name)}" class="btn-outline" style="display:inline-block; margin-top: 0.75rem; padding:0.5rem 1.2rem; text-decoration:none; font-size:0.8rem; border-radius:40px;">Book This →</a>
       `;
       grid.appendChild(card);
     });
   }
 
   // Mobile menu functionality
-  const mobileToggle = document.getElementById('mobileMenuToggle');
-  const mobileOverlay = document.getElementById('mobileNavOverlay');
-  const mobileClose = document.getElementById('mobileNavClose');
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const overlay = document.getElementById('mobileOverlay');
+  const closePanel = document.getElementById('closeMobilePanel');
 
-  if (mobileToggle) {
-    mobileToggle.addEventListener('click', () => {
-      mobileOverlay.classList.add('active');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      overlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
   }
 
-  if (mobileClose) {
-    mobileClose.addEventListener('click', () => {
-      mobileOverlay.classList.remove('active');
+  if (closePanel) {
+    closePanel.addEventListener('click', () => {
+      overlay.classList.remove('active');
       document.body.style.overflow = '';
     });
   }
 
-  mobileOverlay?.addEventListener('click', (e) => {
-    if (e.target === mobileOverlay) {
-      mobileOverlay.classList.remove('active');
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove('active');
       document.body.style.overflow = '';
     }
   });
 
   // Header scroll effect
+  const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => {
-    const header = document.querySelector('.premium-header');
-    if (window.scrollY > 50) {
+    if (window.scrollY > 20) {
       header?.classList.add('scrolled');
     } else {
       header?.classList.remove('scrolled');
     }
   });
+
+  // Active state for dock and nav based on current page
+  const currentPath = window.location.pathname.split('/').pop() || 'services.html';
+  const dockBtns = document.querySelectorAll('.dock-btn');
+  const navItems = document.querySelectorAll('.nav-item');
+  
+  function setActive(links, activeFile) {
+    links.forEach(link => {
+      const href = link.getAttribute('href') || '';
+      if (href === activeFile || (activeFile === 'services.html' && href === 'services.html')) {
+        link.classList.add('active');
+      } else if (link.classList.contains('active')) {
+        link.classList.remove('active');
+      }
+    });
+  }
+  setActive(dockBtns, currentPath);
+  setActive(navItems, currentPath);
 </script>
 </body>
 </html>

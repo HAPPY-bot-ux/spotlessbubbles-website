@@ -1,485 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Contact | SpotlessBubbles — Get in Touch</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Contact | SpotlessBubbles — The Science of Curation</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    :root {
-      --pure-white: #FFFFFF;
-      --off-white: #FCFAF8;
-      --gray-50: #F9F9FB;
-      --gray-100: #F1F2F4;
-      --gray-200: #E4E6E9;
-      --gray-700: #40434A;
-      --gray-900: #1B1E24;
-      --primary-teal: #1A7F6E;
-      --primary-teal-dark: #0F5E51;
-      --primary-teal-soft: rgba(26, 127, 110, 0.08);
-      --accent-gold: #CFA64B;
-      --shadow-xs: 0 1px 2px rgba(0,0,0,0.03);
-      --shadow-sm: 0 4px 8px -2px rgba(0,0,0,0.05);
-      --shadow-md: 0 10px 20px -6px rgba(0,0,0,0.08);
-      --transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
+    <style>
+        :root {
+            --primary-teal: #1A7F6E;
+            --primary-teal-dark: #0F5E51;
+            --primary-teal-soft: rgba(26, 127, 110, 0.08);
+            --accent-gold: #CFA64B;
+            --bg-dark: #0B0E11;
+            --surface: #161A1F;
+            --text-main: #F9FAFB;
+            --text-dim: #9CA3AF;
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--off-white);
-      color: var(--gray-900);
-      line-height: 1.5;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    .section-padding {
-      padding: 80px 0;
-    }
+        /* ========== SHARED HEADER & NAV ========== */
+        .site-header {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(11, 14, 17, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .navbar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.875rem 2rem; max-width: 1440px; margin: 0 auto;
+        }
+        .logo-link { text-decoration: none; display: flex; align-items: baseline; gap: 2px; font-weight: 700; font-size: 1.35rem; color: var(--text-main); }
+        .logo-highlight { color: var(--primary-teal); font-weight: 800; }
+        .logo-mark { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; margin-left: 4px; }
+        .nav-links { display: flex; align-items: center; gap: 0.5rem; }
+        .nav-item { padding: 0.5rem 1rem; font-size: 0.9rem; font-weight: 500; color: var(--text-dim); text-decoration: none; border-radius: 40px; transition: 0.3s; }
+        .nav-item:hover, .nav-item.active { background: var(--primary-teal-soft); color: var(--primary-teal); }
+        .btn-nav-cta { background: var(--primary-teal); color: white; padding: 0.6rem 1.4rem; border-radius: 40px; font-weight: 600; text-decoration: none; transition: 0.3s; border: none; cursor: pointer; display: inline-block; }
+        .btn-nav-cta:hover { background: var(--primary-teal-dark); transform: translateY(-2px); }
 
-    .section-title {
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 2.25rem;
-      letter-spacing: -0.02em;
-      line-height: 1.25;
-      margin-bottom: 1rem;
-    }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
-    .badge-modern {
-      background: var(--primary-teal-soft);
-      color: var(--primary-teal-dark);
-      padding: 0.35rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      display: inline-block;
-      margin-bottom: 1.25rem;
-    }
+        /* ========== CONTACT HERO & GRID ========== */
+        .contact-hero { padding: 80px 0 40px; text-align: center; }
+        .hero-tag { color: var(--accent-gold); letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        
+        .contact-wrapper {
+            display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px;
+            padding-bottom: 100px; align-items: start;
+        }
 
-    .divider-clean {
-      width: 56px;
-      height: 2px;
-      background: var(--primary-teal);
-      margin: 1rem auto 1.5rem;
-      opacity: 0.5;
-    }
+        /* ========== CONTACT INFO ========== */
+        .info-panel h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 30px; }
+        .contact-method { margin-bottom: 40px; display: flex; gap: 20px; }
+        .method-icon { 
+            width: 50px; height: 50px; background: var(--primary-teal-soft); 
+            border: 1px solid var(--border); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary-teal); font-size: 1.2rem; flex-shrink: 0;
+        }
+        .method-text h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 5px; }
+        .method-text p { font-size: 1.1rem; color: var(--text-main); }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.625rem;
-      padding: 0.7rem 1.8rem;
-      font-weight: 600;
-      font-size: 0.9rem;
-      border-radius: 48px;
-      transition: var(--transition);
-      cursor: pointer;
-      border: none;
-      text-decoration: none;
-    }
+        /* ========== CONTACT FORM ========== */
+        .form-card {
+            background: var(--surface); border: 1px solid var(--border);
+            padding: 50px; border-radius: 4px; position: relative;
+        }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); margin-bottom: 10px; }
+        .form-control {
+            width: 100%; background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+            padding: 15px; color: var(--text-main); font-family: inherit; font-size: 0.95rem;
+            transition: 0.3s;
+        }
+        .form-control:focus { outline: none; border-color: var(--primary-teal); background: rgba(255,255,255,0.05); }
+        textarea.form-control { min-height: 150px; resize: none; }
+        
+        .btn-submit {
+            width: 100%; background: var(--primary-teal); color: white; border: none;
+            padding: 18px; border-radius: 4px; font-weight: 700; font-size: 1rem;
+            text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s;
+        }
+        .btn-submit:hover { background: var(--primary-teal-dark); transform: translateY(-2px); }
 
-    .btn-primary {
-      background: var(--primary-teal);
-      color: white;
-    }
-    .btn-primary:hover {
-      background: var(--primary-teal-dark);
-      transform: translateY(-1px);
-    }
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid var(--gray-200);
-      color: var(--gray-700);
-    }
-    .btn-secondary:hover {
-      border-color: var(--primary-teal);
-      background: var(--primary-teal-soft);
-      color: var(--primary-teal);
-    }
+        /* ========== DOCKER STYLE BOTTOM NAVIGATION (EXACT MATCH FROM SERVICES PAGE) ========== */
+        .bottom-dock {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(11, 14, 17, 0.98); backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border); display: none;
+            justify-content: space-around; align-items: center;
+            padding: 0.7rem 1rem; z-index: 1000;
+        }
+        .dock-btn {
+            display: flex; flex-direction: column; align-items: center;
+            text-decoration: none; font-size: 0.7rem; color: var(--text-dim);
+            transition: all 0.3s ease; padding: 0.4rem 0.6rem;
+            border-radius: 40px; gap: 4px;
+        }
+        .dock-btn i { font-size: 1.2rem; }
+        .dock-btn span { font-size: 0.65rem; font-weight: 500; }
+        .dock-btn:hover { color: var(--primary-teal); background: var(--primary-teal-soft); transform: translateY(-2px); }
+        .dock-btn.active { color: var(--primary-teal); background: var(--primary-teal-soft); }
 
-    /* Header */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-    .site-header.scrolled {
-      background: rgba(255, 255, 255, 0.98);
-      box-shadow: var(--shadow-xs);
-    }
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.875rem 2rem;
-      max-width: 1440px;
-      margin: 0 auto;
-      gap: 2rem;
-    }
-    .logo-link {
-      text-decoration: none;
-      display: flex;
-      align-items: baseline;
-      gap: 2px;
-      font-weight: 700;
-      font-size: 1.35rem;
-    }
-    .logo-word { color: var(--gray-900); }
-    .logo-highlight { color: var(--primary-teal); font-weight: 800; }
-    .logo-mark { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; display: inline-block; margin-left: 4px; }
-    .nav-links { display: flex; align-items: center; gap: 0.5rem; }
-    .nav-item {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--gray-700);
-      text-decoration: none;
-      border-radius: 40px;
-      transition: var(--transition);
-    }
-    .nav-item i { margin-right: 6px; opacity: 0.7; }
-    .nav-item:hover { background: var(--gray-100); color: var(--primary-teal); }
-    .nav-item.active { background: var(--primary-teal-soft); color: var(--primary-teal-dark); font-weight: 600; }
-    .btn-nav-cta {
-      background: var(--gray-900);
-      color: white;
-      padding: 0.55rem 1.4rem;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-    .btn-nav-cta:hover { background: var(--primary-teal-dark); }
-    .mobile-menu-btn {
-      display: none;
-      background: transparent;
-      border: none;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      font-size: 1.25rem;
-      cursor: pointer;
-    }
+        /* Desktop hides dock, mobile shows (EXACT MATCH) */
+        @media (min-width: 993px) {
+            .bottom-dock { display: none; }
+        }
 
-    /* Mobile Overlay */
-    .mobile-nav-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(4px);
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.25s ease;
-    }
-    .mobile-nav-overlay.active { opacity: 1; visibility: visible; }
-    .mobile-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 85%;
-      max-width: 340px;
-      height: 100%;
-      background: white;
-      box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
-      transform: translateX(100%);
-      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
-      display: flex;
-      flex-direction: column;
-    }
-    .mobile-nav-overlay.active .mobile-panel { transform: translateX(0); }
-    .mobile-panel-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid var(--gray-200); }
-    .mobile-panel-close { width: 36px; height: 36px; border-radius: 50%; background: var(--gray-100); border: none; cursor: pointer; }
-    .mobile-nav-links { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
-    .mobile-nav-link { display: flex; align-items: center; gap: 12px; padding: 0.85rem 1rem; border-radius: 14px; text-decoration: none; font-weight: 500; color: var(--gray-900); }
-    .mobile-nav-link i:first-child { width: 24px; color: var(--primary-teal); }
-    .mobile-cta { margin: 1rem 1.5rem 1.5rem; }
-    .mobile-cta .btn-primary { width: 100%; justify-content: center; padding: 0.9rem; }
+        @media (max-width: 992px) {
+            .nav-links, .btn-nav-cta { display: none; }
+            .bottom-dock { display: flex; }
+        }
 
-    /* Bottom Dock */
-    .bottom-dock {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(20px);
-      border-top: 1px solid var(--gray-200);
-      display: none;
-      justify-content: space-around;
-      padding: 0.6rem 1rem 0.9rem;
-      z-index: 1000;
-    }
-    .dock-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      text-decoration: none;
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: var(--gray-700);
-    }
-    .dock-btn i { font-size: 1.2rem; }
-    .dock-btn.active { color: var(--primary-teal); }
+        /* ========== WHATSAPP FLOATING BUTTON (MATCHING SERVICES PAGE) ========== */
+        .whatsapp-float {
+            position: fixed; bottom: 100px; right: 30px; background: #25D366;
+            width: 55px; height: 55px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 1.8rem; color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 999; text-decoration: none;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background: #20b358; }
 
-    /* Hero Section */
-    .contact-hero {
-      background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-teal-dark) 100%);
-      padding: 60px 0;
-      text-align: center;
-      color: white;
-    }
-    .contact-hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 700; margin-bottom: 1rem; }
-    .contact-hero p { max-width: 600px; margin: 0 auto; opacity: 0.9; }
-    .badge-light { background: rgba(255,255,245,0.2); padding: 0.3rem 1rem; border-radius: 2rem; font-size: 0.7rem; display: inline-block; margin-bottom: 1rem; }
+        @media (max-width: 992px) {
+            .whatsapp-float { bottom: 90px; }
+        }
 
-    /* Contact Info Cards */
-    .contact-info-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-    .contact-info-item {
-      background: white;
-      border-radius: 1.5rem;
-      padding: 1.8rem;
-      text-align: center;
-      transition: var(--transition);
-      border: 1px solid var(--gray-200);
-      box-shadow: var(--shadow-sm);
-    }
-    .contact-info-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary-teal-soft); }
-    .contact-icon {
-      width: 64px;
-      height: 64px;
-      background: var(--primary-teal-soft);
-      border-radius: 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-    }
-    .contact-icon i { font-size: 1.8rem; color: var(--primary-teal); }
-    .contact-info-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-    .contact-info-item p { color: var(--gray-700); font-size: 0.85rem; }
-    .contact-info-item a { color: var(--primary-teal); text-decoration: none; }
+        @media (max-width: 480px) {
+            .dock-btn span { font-size: 0.6rem; }
+            .dock-btn i { font-size: 1rem; }
+            .bottom-dock { padding: 0.6rem 0.8rem; }
+        }
 
-    /* Multi-Step Contact Form */
-    .multi-step-container {
-      background: white;
-      border-radius: 2rem;
-      padding: 2.5rem;
-      box-shadow: var(--shadow-md);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .step-indicator {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .step-indicator::before {
-      content: '';
-      position: absolute;
-      top: 28px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: var(--gray-200);
-      z-index: 0;
-    }
-    .step {
-      text-align: center;
-      position: relative;
-      z-index: 1;
-      flex: 1;
-    }
-    .step-circle {
-      width: 56px;
-      height: 56px;
-      background: white;
-      border: 2px solid var(--gray-200);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 0.75rem;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--gray-700);
-      transition: all 0.3s;
-    }
-    .step.active .step-circle {
-      background: var(--primary-teal);
-      border-color: var(--primary-teal);
-      color: white;
-      box-shadow: 0 0 0 4px rgba(26, 127, 110, 0.15);
-    }
-    .step.completed .step-circle {
-      background: var(--primary-teal);
-      border-color: var(--primary-teal);
-      color: white;
-    }
-    .step.completed .step-circle i { font-size: 1.2rem; }
-    .step-label { font-size: 0.75rem; font-weight: 500; color: var(--gray-700); }
-    .step.active .step-label { color: var(--primary-teal); font-weight: 600; }
+        /* ========== SHARED FOOTER ========== */
+        footer { background: #06080A; padding: 100px 0 40px; border-top: 1px solid var(--border); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; }
+        .footer-link { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; font-size: 0.9rem; transition: 0.3s; }
+        .footer-link:hover { color: var(--primary-teal); padding-left: 5px; }
 
-    .form-step {
-      display: none;
-    }
-    .form-step.active-step {
-      display: block;
-      animation: fadeInUp 0.4s ease;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        /* Modal for elegant confirmation */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 14, 17, 0.98); z-index: 2000;
+            display: none; align-items: center; justify-content: center;
+            backdrop-filter: blur(12px);
+        }
+        .modal-content {
+            text-align: center; max-width: 500px; width: 90%;
+            padding: 60px 40px; border: 1px solid var(--primary-teal);
+            background: var(--surface); transform: scale(0.9); opacity: 0;
+            transition: var(--transition); border-radius: 12px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-overlay.active .modal-content { transform: scale(1); opacity: 1; }
+        .success-icon {
+            width: 80px; height: 80px; border: 2px solid var(--primary-teal);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; color: var(--primary-teal); margin: 0 auto 30px;
+        }
+        .loading-bar { width: 100px; height: 2px; background: var(--border); margin: 0 auto; position: relative; overflow: hidden; border-radius: 2px; }
+        .loading-progress { position: absolute; left: 0; top: 0; height: 100%; background: var(--accent-gold); width: 0%; animation: progressRun 2.5s linear forwards; }
+        @keyframes progressRun { to { width: 100%; } }
 
-    .form-group { margin-bottom: 1.25rem; }
-    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.85rem; color: var(--gray-900); }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      padding: 0.9rem 1rem;
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: 1rem;
-      font-family: 'Inter', sans-serif;
-      transition: all 0.2s;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      outline: none;
-      border-color: var(--primary-teal);
-      box-shadow: 0 0 0 3px rgba(26, 127, 110, 0.1);
-    }
+        .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-    .service-options-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-    .service-chip {
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: 2rem;
-      padding: 0.75rem 1rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-    .service-chip:hover { border-color: var(--primary-teal); background: var(--primary-teal-soft); }
-    .service-chip.selected { background: var(--primary-teal); color: white; border-color: var(--primary-teal); }
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .contact-wrapper, .footer-grid { grid-template-columns: 1fr; }
+            .form-card { padding: 30px; }
+            .container { padding: 0 20px; }
+            footer { padding-bottom: 100px; }
+        }
 
-    .btn-nav { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
-    .btn-nav button { padding: 0.8rem 1.8rem; }
-
-    .map-wrapper {
-      background: var(--gray-50);
-      border-radius: 2rem;
-      overflow: hidden;
-      margin-top: 3rem;
-    }
-    .map-container { height: 380px; width: 100%; }
-    .map-container iframe { width: 100%; height: 100%; border: none; }
-
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .faq-item {
-      background: white;
-      border-radius: 1rem;
-      padding: 1.2rem 1.5rem;
-      cursor: pointer;
-      border: 1px solid var(--gray-200);
-      transition: var(--transition);
-    }
-    .faq-item:hover { box-shadow: var(--shadow-sm); }
-    .faq-question { display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
-    .faq-question i { color: var(--primary-teal); transition: transform 0.3s; }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      color: var(--gray-700);
-      margin-top: 0;
-      font-size: 0.85rem;
-    }
-    .faq-item.active .faq-answer { max-height: 150px; margin-top: 1rem; }
-    .faq-item.active .faq-question i { transform: rotate(180deg); }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 90px;
-      right: 24px;
-      background: #25D366;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      color: white;
-      box-shadow: var(--shadow-md);
-      z-index: 998;
-      text-decoration: none;
-    }
-    footer { background: var(--gray-900); color: #CFD5DE; padding: 3rem 0 2rem; font-size: 0.85rem; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 2rem; }
-
-    @media (max-width: 968px) {
-      .contact-info-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .nav-links, .btn-nav-cta { display: none; }
-      .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
-      .bottom-dock { display: flex; }
-      .section-padding { padding: 48px 0; }
-      .contact-info-grid { grid-template-columns: 1fr; }
-      .multi-step-container { padding: 1.5rem; }
-      .step-circle { width: 44px; height: 44px; font-size: 1rem; }
-      .step-label { font-size: 0.65rem; }
-      .whatsapp-float { bottom: 80px; width: 48px; height: 48px; font-size: 1.5rem; }
-    }
-    @media (min-width: 769px) { .bottom-dock { display: none; } }
-  </style>
+        @media (max-width: 480px) {
+            .contact-hero { padding: 60px 0 30px; }
+            .method-icon { width: 40px; height: 40px; font-size: 1rem; }
+            .method-text p { font-size: 0.9rem; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- Header -->
+<!-- Elegant modal for confirmation -->
+<div class="modal-overlay" id="successModal">
+    <div class="modal-content">
+        <div class="success-icon"><i class="fas fa-check"></i></div>
+        <h2 class="playfair" style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 15px;">Message Delivered</h2>
+        <p style="color: var(--text-dim); margin-bottom: 30px;">Your inquiry has been received. A concierge will respond within 2 hours. Thank you for trusting SpotlessBubbles.</p>
+        <div class="loading-bar"><div class="loading-progress"></div></div>
+    </div>
+</div>
+
 <header class="site-header" id="siteHeader">
   <div class="navbar">
     <a href="index.html" class="logo-link">
@@ -494,12 +220,124 @@
       <a href="booking.html" class="nav-item"><i class="fas fa-calendar-check"></i> Book</a>
       <a href="contact.html" class="nav-item active"><i class="fas fa-envelope"></i> Contact</a>
     </div>
-    <a href="booking.html" class="btn-nav-cta"><i class="fas fa-file-invoice"></i> Get Quote</a>    
+    <a href="booking.html" class="btn-nav-cta"><i class="fas fa-file-invoice"></i> Get Quote</a>
   </div>
 </header>
 
+<section class="container contact-hero reveal">
+    <span class="hero-tag">Inquiries & Concierge</span>
+    <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 6vw, 3rem);">Connect with the <span style="color: var(--primary-teal); font-style: italic;">Artisans</span>.</h1>
+</section>
 
+<section class="container contact-wrapper">
+    <div class="info-panel reveal">
+        <h1>Curated communication <br>for <span style="color: var(--accent-gold);">discerning spaces</span>.</h1>
+        <p style="color: var(--text-dim); margin-bottom: 50px; font-size: 1.1rem;">Whether you are looking for recurring estate maintenance or a specialized restoration, our experts are ready to curate your solution. Reach out via any channel — we respond with precision.</p>
+        
+        <div class="contact-method">
+            <div class="method-icon"><i class="fas fa-location-dot"></i></div>
+            <div class="method-text">
+                <h4>Principal Office</h4>
+                <p>Sandton, South Africa</p>
+            </div>
+        </div>
 
+        <div class="contact-method">
+            <div class="method-icon"><i class="fas fa-phone-volume"></i></div>
+            <div class="method-text">
+                <h4>Direct Line</h4>
+                <p>068 486 7533</p>
+            </div>
+        </div>
+
+        <div class="contact-method">
+            <div class="method-icon"><i class="fas fa-envelope-open-text"></i></div>
+            <div class="method-text">
+                <h4>Digital Inquiries</h4>
+                <p>concierge@spotlessbubbles.co.za</p>
+            </div>
+        </div>
+
+        <div class="contact-method">
+            <div class="method-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="method-text">
+                <h4>WhatsApp Concierge</h4>
+                <p>+27 68 486 7533</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-card reveal">
+        <form id="contactForm">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" placeholder="Johnathan Doe" id="fullName" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" class="form-control" placeholder="client@estate.com" id="emailAddr" required>
+            </div>
+            <div class="form-group">
+                <label>Service Category</label>
+                <select class="form-control" id="serviceSelect">
+                    <option>Residential Deep Clean</option>
+                    <option>Commercial Portfolio</option>
+                    <option>Textile Restoration</option>
+                    <option>Post-Construction Polish</option>
+                    <option>Marble & Stone Care</option>
+                    <option>Other / Specialty Inquiry</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Brief Message</label>
+                <textarea class="form-control" id="briefMsg" placeholder="Tell us about your space, square footage, or specific requirements..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Dispatch Inquiry</button>
+        </form>
+        <p style="font-size: 0.7rem; text-align: center; margin-top: 20px; color: var(--text-dim);">All inquiries are protected under our privacy protocol.</p>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" class="logo-link footer-logo">
+                    <span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span>
+                </a>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 15px;">Setting the benchmark for high-end hygiene and space curation since 2026.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Navigation</h4>
+                <a href="index.html" class="footer-link">Experience</a>
+                <a href="about.html" class="footer-link">The Science</a>
+                <a href="#" class="footer-link">Sustainability</a>
+                <a href="booking.html" class="footer-link">Concierge</a>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Services</h4>
+                <a href="services.html" class="footer-link">Estate Care</a>
+                <a href="services.html" class="footer-link">Corporate Portfolio</a>
+                <a href="services.html" class="footer-link">Textile Spa</a>
+                <a href="services.html" class="footer-link">Deep-Hygienics</a>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Contact</h4>
+                <p style="color: var(--text-dim); margin-bottom: 10px;"><i class="fas fa-map-marker-alt"></i> Sandton, South Africa</p>
+                <p style="color: var(--text-dim); margin-bottom: 20px;"><i class="fas fa-phone"></i> 068 486 7533</p>
+                <div style="display: flex; gap: 20px; font-size: 1.2rem;">
+                    <a href="#" style="color: var(--text-dim); transition: 0.3s;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: var(--text-dim); transition: 0.3s;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.8rem;">
+            © 2026 SpotlessBubbles — Precision cleaning for the discerning client.
+        </div>
+    </div>
+</footer>
+
+<!-- DOCKER STYLE BOTTOM NAVIGATION (EXACT MATCH FROM SERVICES PAGE - same dimensions, padding, hover effects) -->
 <div class="bottom-dock">
   <a href="index.html" class="dock-btn"><i class="fas fa-home"></i><span>Home</span></a>
   <a href="about.html" class="dock-btn"><i class="fas fa-leaf"></i><span>About</span></a>
@@ -508,294 +346,86 @@
   <a href="contact.html" class="dock-btn active"><i class="fas fa-envelope"></i><span>Contact</span></a>
 </div>
 
-<a href="https://wa.me/27684867533?text=Hello!%20I%20have%20a%20question%20about%20your%20cleaning%20services" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-<!-- Hero Section -->
-<section class="contact-hero">
-  <div class="container">
-    <span class="badge-light"><i class="fas fa-heart"></i> We'd Love to Hear From You</span>
-    <h1>Let's Connect</h1>
-    <p>Have questions about our services? Need a custom quote? Our team is ready to help make your space spotless.</p>
-  </div>
-</section>
-
-<!-- Contact Info Cards -->
-<section class="section-padding" style="padding-bottom: 0;">
-  <div class="container">
-    <div class="contact-info-grid">
-      <div class="contact-info-item">
-        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-        <h3>Call Us</h3>
-        <p><a href="tel:+27684867533">+27 (0) 68 486 7533</a></p>
-        <p><a href="tel:+27111234567">+27 (0) 11 234 5678</a></p>
-        <p style="font-size: 0.7rem; margin-top: 0.5rem;">Mon-Fri: 8am - 6pm</p>
-      </div>
-      <div class="contact-info-item">
-        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-        <h3>Email Us</h3>
-        <p><a href="mailto:hello@spotlessbubbles.co.za">hello@spotlessbubbles.co.za</a></p>
-        <p><a href="mailto:support@spotlessbubbles.co.za">support@spotlessbubbles.co.za</a></p>
-        <p style="font-size: 0.7rem;">Response within 2 hours</p>
-      </div>
-      <div class="contact-info-item">
-        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-        <h3>Visit Us</h3>
-        <p>123 Clean Avenue, Sandton</p>
-        <p>Johannesburg, 2196</p>
-        <p>South Africa</p>
-      </div>
-      <div class="contact-info-item">
-        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-        <h3>WhatsApp</h3>
-        <p><a href="https://wa.me/27684867533">+27 (0) 68 486 7533</a></p>
-        <p>Click to chat instantly</p>
-        <p style="font-size: 0.7rem;">24/7 Support</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Multi-Step Contact Form Section -->
-<section class="section-padding">
-  <div class="container">
-    <div style="text-align: center; margin-bottom: 2rem;">
-      <span class="badge-modern"><i class="fas fa-comment-dots"></i> GET IN TOUCH</span>
-      <h2 class="section-title">Send Us a Message</h2>
-      <div class="divider-clean"></div>
-      <p style="color: var(--gray-700);">Fill out the form below and we'll respond within 2 hours.</p>
-    </div>
-
-    <div class="multi-step-container">
-      <!-- Step Indicators -->
-      <div class="step-indicator">
-        <div class="step active" id="step1Indicator"><div class="step-circle">1</div><div class="step-label">Contact Info</div></div>
-        <div class="step" id="step2Indicator"><div class="step-circle">2</div><div class="step-label">Service Interest</div></div>
-        <div class="step" id="step3Indicator"><div class="step-circle">3</div><div class="step-label">Your Message</div></div>
-      </div>
-
-      <!-- Step 1: Contact Information -->
-      <div class="form-step active-step" id="step1">
-        <div class="form-group">
-          <label>Full Name *</label>
-          <input type="text" id="contactName" placeholder="John Doe">
-        </div>
-        <div class="form-group">
-          <label>Email Address *</label>
-          <input type="email" id="contactEmail" placeholder="hello@example.com">
-        </div>
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" id="contactPhone" placeholder="+27 123 456 789">
-        </div>
-        <div class="form-group">
-          <label>Preferred Contact Method</label>
-          <select id="contactMethod">
-            <option value="Email">Email</option>
-            <option value="Phone">Phone</option>
-            <option value="WhatsApp">WhatsApp</option>
-          </select>
-        </div>
-        <div class="btn-nav">
-          <button class="btn-primary" id="nextToStep2" style="margin-left: auto;">Next →</button>
-        </div>
-      </div>
-
-      <!-- Step 2: Service Interest -->
-      <div class="form-step" id="step2">
-        <div class="form-group">
-          <label>What service are you interested in? *</label>
-          <div class="service-options-grid" id="serviceOptionsGrid">
-            <div class="service-chip" data-service="Residential Deep Clean">🏠 Residential Deep Clean</div>
-            <div class="service-chip" data-service="Commercial Office">🏢 Commercial Office</div>
-            <div class="service-chip" data-service="Carpet & Upholstery">🛋️ Carpet & Upholstery</div>
-            <div class="service-chip" data-service="Window & Glass">🪟 Window & Glass</div>
-            <div class="service-chip" data-service="Move In/Out">🚚 Move In/Out</div>
-            <div class="service-chip" data-service="Eco Green Package">🌿 Eco Green Package</div>
-            <div class="service-chip" data-service="Not Sure / Consultation">💬 Not Sure / Consultation</div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Property Type</label>
-          <select id="propertyType">
-            <option value="">Select one</option>
-            <option>Residential House</option>
-            <option>Apartment / Condo</option>
-            <option>Commercial Office</option>
-            <option>Retail Space</option>
-            <option>Industrial / Warehouse</option>
-          </select>
-        </div>
-        <div class="btn-nav">
-          <button class="btn-secondary" id="backToStep1">← Back</button>
-          <button class="btn-primary" id="nextToStep3">Next →</button>
-        </div>
-      </div>
-
-      <!-- Step 3: Message & Submit -->
-      <div class="form-step" id="step3">
-        <div class="form-group">
-          <label>Your Message *</label>
-          <textarea id="contactMessage" rows="4" placeholder="Tell us about your cleaning needs, preferred dates, or any questions..."></textarea>
-        </div>
-        <div class="form-group">
-          <label>How did you hear about us?</label>
-          <select id="hearAbout">
-            <option value="">Select an option</option>
-            <option>Google Search</option>
-            <option>Social Media</option>
-            <option>Friend / Family Referral</option>
-            <option>Advertisement</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="btn-nav">
-          <button class="btn-secondary" id="backToStep2">← Back</button>
-          <button class="btn-primary" id="submitMultiStepForm">Send Message →</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Map Section -->
-<section style="background: var(--gray-50); padding: 80px 0;">
-  <div class="container">
-    <div style="text-align: center; margin-bottom: 2rem;">
-      <span class="badge-modern">📍 LOCATION</span>
-      <h2 class="section-title">Find Us Here</h2>
-      <div class="divider-clean"></div>
-    </div>
-    <div class="map-wrapper">
-      <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.217623425391!2d28.04738731502655!3d-26.13686098348197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c2b8f0e3b7f%3A0x5e5b5f5e5e5e5e5e!2sSandton%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ Section -->
-<section class="section-padding">
-  <div class="container">
-    <div style="text-align: center; margin-bottom: 2rem;">
-      <span class="badge-modern">❓ FAQ</span>
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <div class="divider-clean"></div>
-    </div>
-    <div class="faq-grid">
-      <div class="faq-item"><div class="faq-question"><span>How quickly can I get a quote?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">We respond to all inquiries within 2 hours during business hours. For urgent requests, please call us directly.</div></div>
-      <div class="faq-item"><div class="faq-question"><span>Are your cleaning products eco-friendly?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes! We use 100% plant-based, biodegradable, and non-toxic products that are safe for children, pets, and the environment.</div></div>
-      <div class="faq-item"><div class="faq-question"><span>Do you service commercial properties?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutely! We offer tailored commercial cleaning solutions for offices, retail spaces, and industrial facilities.</div></div>
-      <div class="faq-item"><div class="faq-question"><span>What areas do you cover?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">We proudly serve Sandton, Cape Town, Durban, and surrounding areas. Contact us to check availability.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div><div style="font-weight: 700; font-size: 1.2rem;">SPOTLESS BUBBLES</div><p style="color: #BEC3CC;">Ultra-pure, sustainable cleaning.</p></div>
-      <div><h4>Services</h4><p>Residential</p><p>Commercial</p><p>Carpet Care</p></div>
-      <div><h4>Support</h4><p>FAQ</p><p>Privacy</p><p>Terms</p></div>
-      <div><h4>Follow</h4><div style="display: flex; gap: 1rem;"><i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i> <i class="fab fa-tiktok"></i></div></div>
-    </div>
-    <div style="text-align:center; margin-top: 2rem; font-size:0.7rem;">© 2026 SpotlessBubbles — The Cleaning Revolution</div>
-  </div>
-</footer>
+<!-- WHATSAPP FLOATING BUTTON (MATCHING SERVICES PAGE STYLE & SIZE) -->
+<a href="https://wa.me/27684867533" class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-  // Multi-step form state
-  let selectedService = null;
-  let currentStep = 1;
-  const stepContents = {1: document.getElementById('step1'), 2: document.getElementById('step2'), 3: document.getElementById('step3')};
-  const stepIndicators = {1: document.getElementById('step1Indicator'), 2: document.getElementById('step2Indicator'), 3: document.getElementById('step3Indicator')};
+    // Intersection Observer for reveal animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  function showStep(step) {
-    Object.values(stepContents).forEach(content => content.classList.remove('active-step'));
-    stepContents[step].classList.add('active-step');
-    Object.keys(stepIndicators).forEach(s => {
-      const stepNum = parseInt(s);
-      if (stepNum < step) {
-        stepIndicators[stepNum].classList.add('completed');
-        stepIndicators[stepNum].classList.remove('active');
-        const circle = stepIndicators[stepNum].querySelector('.step-circle');
-        circle.innerHTML = '<i class="fas fa-check"></i>';
-      } else if (stepNum === step) {
-        stepIndicators[stepNum].classList.add('active');
-        stepIndicators[stepNum].classList.remove('completed');
-        const circle = stepIndicators[stepNum].querySelector('.step-circle');
-        circle.innerHTML = stepNum.toString();
-      } else {
-        stepIndicators[stepNum].classList.remove('active', 'completed');
-        const circle = stepIndicators[stepNum].querySelector('.step-circle');
-        circle.innerHTML = stepNum.toString();
-      }
+    // Elegant modal & form handling
+    const modal = document.getElementById('successModal');
+    const contactForm = document.getElementById('contactForm');
+
+    function resetForm() {
+        document.getElementById('fullName').value = '';
+        document.getElementById('emailAddr').value = '';
+        document.getElementById('serviceSelect').selectedIndex = 0;
+        document.getElementById('briefMsg').value = '';
+    }
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('fullName');
+        const emailInput = document.getElementById('emailAddr');
+        
+        if (!nameInput.value.trim() || !emailInput.value.trim()) {
+            const btn = this.querySelector('.btn-submit');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Name & Email Required';
+            btn.style.background = '#b33b2c';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = 'var(--primary-teal)';
+            }, 1800);
+            return;
+        }
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const service = document.getElementById('serviceSelect').value;
+        const message = document.getElementById('briefMsg').value || "No additional details provided.";
+        
+        modal.classList.add('active');
+        
+        setTimeout(() => {
+            const waMsg = `Hello SpotlessBubbles, I'm ${name} (${email}). I'm interested in the "${service}" category. Message: ${message.substring(0, 180)}. Please get back to me.`;
+            window.open(`https://wa.me/27684867533?text=${encodeURIComponent(waMsg)}`, '_blank');
+            
+            modal.classList.remove('active');
+            resetForm();
+            
+            const btn = contactForm.querySelector('.btn-submit');
+            const originalBtnText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check-circle"></i> Inquiry Sent → WhatsApp';
+            btn.style.background = '#25D366';
+            setTimeout(() => {
+                btn.innerHTML = originalBtnText;
+                btn.style.background = 'var(--primary-teal)';
+            }, 2500);
+        }, 2500);
     });
-    currentStep = step;
-    // REMOVED: window.scrollTo - this was causing the page to jump to top
-  }
 
-  // Service selection
-  const serviceChips = document.querySelectorAll('.service-chip');
-  serviceChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      serviceChips.forEach(c => c.classList.remove('selected'));
-      chip.classList.add('selected');
-      selectedService = chip.getAttribute('data-service');
-    });
-  });
-
-  // Navigation
-  document.getElementById('nextToStep2')?.addEventListener('click', () => {
-    const name = document.getElementById('contactName')?.value;
-    const email = document.getElementById('contactEmail')?.value;
-    if (!name || !email) { alert('Please enter your name and email address to continue.'); return; }
-    showStep(2);
-  });
-  document.getElementById('nextToStep3')?.addEventListener('click', () => {
-    if (!selectedService) { alert('Please select a service you are interested in.'); return; }
-    showStep(3);
-  });
-  document.getElementById('backToStep1')?.addEventListener('click', () => showStep(1));
-  document.getElementById('backToStep2')?.addEventListener('click', () => showStep(2));
-
-  document.getElementById('submitMultiStepForm')?.addEventListener('click', () => {
-    const name = document.getElementById('contactName')?.value;
-    const email = document.getElementById('contactEmail')?.value;
-    const message = document.getElementById('contactMessage')?.value;
-    if (!message) { alert('Please enter your message.'); return; }
+    // Set active state for dock based on current page
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('contact')) {
+        document.querySelectorAll('.dock-btn').forEach(btn => btn.classList.remove('active'));
+        const contactDock = document.querySelector('.dock-btn:last-child');
+        if(contactDock) contactDock.classList.add('active');
+    }
     
-    alert(`✨ Thank you ${name}! Your message has been sent.\n\nService: ${selectedService}\nEmail: ${email}\n\nOur concierge team will respond within 2 hours.`);
-    
-    // Reset form
-    document.getElementById('contactName').value = '';
-    document.getElementById('contactEmail').value = '';
-    document.getElementById('contactPhone').value = '';
-    document.getElementById('contactMessage').value = '';
-    document.getElementById('propertyType').value = '';
-    document.getElementById('hearAbout').value = '';
-    selectedService = null;
-    serviceChips.forEach(c => c.classList.remove('selected'));
-    showStep(1);
-  });
-
-  // FAQ accordion
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    item.addEventListener('click', () => item.classList.toggle('active'));
-  });
-
-  // Mobile menu
-  const menuBtn = document.getElementById('mobileMenuBtn');
-  const overlay = document.getElementById('mobileOverlay');
-  const closePanel = document.getElementById('closeMobilePanel');
-  if (menuBtn) menuBtn.addEventListener('click', () => { overlay.classList.add('active'); document.body.style.overflow = 'hidden'; });
-  if (closePanel) closePanel.addEventListener('click', () => { overlay.classList.remove('active'); document.body.style.overflow = ''; });
-  overlay?.addEventListener('click', (e) => { if (e.target === overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; } });
-  
-  // Header scroll
-  const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => { if (window.scrollY > 20) header?.classList.add('scrolled'); else header?.classList.remove('scrolled'); });
+    // Update footer year dynamically
+    const footerYearSpan = document.querySelector('footer .container div:last-child');
+    if (footerYearSpan) {
+        const currentYear = new Date().getFullYear();
+        if (currentYear !== 2026) {
+            footerYearSpan.innerHTML = footerYearSpan.innerHTML.replace('2026', currentYear);
+        }
+    }
 </script>
 </body>
 </html>

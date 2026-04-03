@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>SpotlessBubbles | Professional Clarity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>SpotlessBubbles | Precision Hygiene — The Science of Clean</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,14 +12,12 @@
         :root {
             --primary-teal: #1A7F6E;
             --primary-teal-dark: #0F5E51;
-            --primary-teal-soft: rgba(26, 127, 110, 0.08);
             --accent-gold: #CFA64B;
             --bg-dark: #0B0E11;
-            --surface: #161A1F;
             --text-main: #F9FAFB;
             --text-dim: #9CA3AF;
             --border: rgba(255, 255, 255, 0.08);
-            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,414 +26,833 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
-        /* ========== HEADER & NAV STYLES ========== */
-        .site-header {
-            position: sticky; top: 0; z-index: 1000;
-            background: rgba(11, 14, 17, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-        }
-        .navbar {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0.875rem 2rem; max-width: 1440px; margin: 0 auto; gap: 2rem;
+        /* ========== SIMPLE HEADER ========== */
+        .minimal-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            padding: 1.5rem 2rem;
+            background: transparent;
         }
         .logo-link {
-            text-decoration: none; display: flex; align-items: baseline; gap: 2px;
-            font-weight: 700; font-size: 1.35rem; color: var(--text-main);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 2px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         .logo-highlight { color: var(--primary-teal); font-weight: 800; }
-        .logo-mark { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; margin-left: 4px; }
-        .nav-links { display: flex; align-items: center; gap: 0.5rem; }
-        .nav-item {
-            padding: 0.5rem 1rem; font-size: 0.9rem; font-weight: 500;
-            color: var(--text-dim); text-decoration: none; border-radius: 40px; transition: 0.3s;
-        }
-        .nav-item:hover, .nav-item.active { background: var(--primary-teal-soft); color: var(--primary-teal); }
-        .btn-nav-cta {
-            background: var(--primary-teal); color: white; padding: 0.6rem 1.4rem;
-            border-radius: 40px; font-weight: 600; text-decoration: none; transition: 0.3s;
-        }
-        .btn-nav-cta:hover { background: var(--primary-teal-dark); transform: translateY(-2px); }
+        .logo-mark { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; display: inline-block; margin-left: 4px; }
 
-        /* ========== ENHANCED DOCKER STYLE BOTTOM NAVIGATION (matching services page) ========== */
-        .bottom-dock {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(11, 14, 17, 0.98); backdrop-filter: blur(20px);
-            border-top: 1px solid var(--border); display: none;
-            justify-content: space-around; align-items: center;
-            padding: 0.7rem 1rem; z-index: 1000;
-            transition: all 0.3s ease;
+        /* ========== FULLSCREEN AUTO SLIDER - NO ARROWS ========== */
+        .hero-slider {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
         }
-        .dock-btn {
-            display: flex; flex-direction: column; align-items: center;
-            text-decoration: none; font-size: 0.7rem; color: var(--text-dim);
-            transition: all 0.3s ease; padding: 0.4rem 0.6rem;
-            border-radius: 40px; gap: 4px;
-        }
-        .dock-btn i { font-size: 1.2rem; transition: transform 0.2s ease; }
-        .dock-btn span { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3px; }
-        .dock-btn:hover { 
-            color: var(--primary-teal); 
-            background: var(--primary-teal-soft); 
-            transform: translateY(-2px);
-        }
-        .dock-btn:hover i { transform: scale(1.05); }
-        .dock-btn.active { 
-            color: var(--primary-teal); 
-            background: var(--primary-teal-soft);
-        }
-
-        /* Desktop hides dock, mobile shows */
-        @media (min-width: 993px) {
-            .bottom-dock { display: none; }
-        }
-
-        @media (max-width: 992px) {
-            .nav-links, .btn-nav-cta { display: none; }
-            .bottom-dock { display: flex; }
-        }
-
-        @media (max-width: 480px) {
-            .dock-btn span { font-size: 0.6rem; }
-            .dock-btn i { font-size: 1rem; }
-            .bottom-dock { padding: 0.6rem 0.8rem; }
-        }
-
-        /* ========== WHATSAPP FLOATING BUTTON (Enhanced styling) ========== */
-        .whatsapp-float {
-            position: fixed; bottom: 100px; right: 30px; background: #25D366;
-            width: 55px; height: 55px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 1.8rem; color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 999; text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); background: #20b358; }
-
-        @media (max-width: 992px) {
-            .whatsapp-float { bottom: 90px; right: 20px; width: 50px; height: 50px; font-size: 1.5rem; }
-        }
-
-        /* ========== PREMIUM LAYOUT ELEMENTS ========== */
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 40px; }
-
-        .hero {
-            height: 85vh; display: flex; align-items: center;
-            background: linear-gradient(to right, rgba(11,14,17,0.85), rgba(11,14,17,0.4)), 
-                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format');
-            background-size: cover; background-position: center;
+        .slider-container {
+            width: 100%;
+            height: 100%;
             position: relative;
         }
-        .hero h1 {
-            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5.5rem);
-            line-height: 1.1; margin-bottom: 24px;
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            /* ===== SLIDER FADE TRANSITION SPEED ===== */
+            /* Change the value below (currently 0.8s) to adjust how fast images fade between each other */
+            /* FASTER = 0.5s | NORMAL = 1.0s | SLOWER = 1.8s */
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1;
+            will-change: opacity;
         }
-        .hero h1 span { color: var(--primary-teal); font-style: italic; font-weight: 400; }
-
-        /* --- Professional Image Grid (Bento Style) --- */
-        .bento-grid {
-            display: grid; grid-template-columns: repeat(12, 1fr);
-            grid-auto-rows: 300px; gap: 24px; margin: 80px 0;
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
         }
-        .bento-item {
-            background: var(--surface); border-radius: 24px;
-            overflow: hidden; position: relative; border: 1px solid var(--border);
-            transition: var(--transition); cursor: pointer;
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(11,14,17,0.75) 0%, rgba(11,14,17,0.45) 100%);
+            z-index: 1;
         }
-        .bento-item img {
-            width: 100%; height: 100%; object-fit: cover;
-            opacity: 0.6; transition: var(--transition);
-        }
-        .bento-item:hover { transform: translateY(-5px); border-color: var(--primary-teal); }
-        .bento-item:hover img { transform: scale(1.05); opacity: 0.8; }
         
-        .bento-overlay {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            padding: 32px; background: linear-gradient(transparent, rgba(0,0,0,0.85));
-        }
-        .bento-overlay h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 8px; }
-        .bento-overlay p { font-size: 0.85rem; color: var(--text-dim); }
-
-        .col-8 { grid-column: span 8; }
-        .col-4 { grid-column: span 4; }
-        .row-2 { grid-row: span 2; min-height: 620px; }
-
-        /* --- Feature Section --- */
-        .features-section { padding: 80px 0; background: #06080A; }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
-        .feature-card {
-            text-align: center; padding: 40px 30px;
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 20px; transition: var(--transition);
-        }
-        .feature-card:hover { border-color: var(--accent-gold); transform: translateY(-8px); }
-        .feature-icon { font-size: 2.5rem; color: var(--primary-teal); margin-bottom: 20px; display: inline-block; }
-        .feature-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 15px; }
-
-        /* --- CTA Section --- */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary-teal-dark), var(--primary-teal));
-            margin: 80px 0; border-radius: 32px; padding: 80px 60px;
+        /* Content styling - smooth reveal animation */
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
             text-align: center;
+            z-index: 3;
+            padding: 0 24px;
+            max-width: 850px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(-40%);
+            transition: opacity 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
-        .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; }
-        .cta-btn { background: white; color: var(--primary-teal); padding: 16px 40px; border-radius: 60px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; transition: 0.3s; }
-        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-
-        /* --- Footer --- */
-        footer {
-            background: #06080A; padding: 100px 0 40px;
-            border-top: 1px solid var(--border); margin-top: 60px;
+        .slide.active .slide-content {
+            opacity: 1;
+            transform: translateY(-50%);
         }
-        .footer-grid {
-            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px;
+        .service-badge {
+            display: inline-block;
+            background: rgba(26, 127, 110, 0.9);
+            backdrop-filter: blur(4px);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            transition: all 0.5s ease 0.1s;
+            opacity: 0;
+            transform: translateY(15px);
         }
-        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: inline-block; text-decoration: none; }
-        .footer-link { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
-        .footer-link:hover { color: var(--primary-teal); padding-left: 5px; }
-
-        /* --- Animations --- */
-        .reveal { opacity: 0; transform: translateY(30px); transition: 1s var(--transition); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        .hero-tag {
-            color: var(--accent-gold); letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: inline-block;
+        .slide.active .service-badge {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.5s ease 0.1s;
+        }
+        .slide-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease 0.2s;
+        }
+        .slide.active .slide-content h2 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-content p {
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            color: rgba(255,255,255,0.95);
+            max-width: 650px;
+            margin: 0 auto 1rem;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease 0.3s;
+        }
+        .slide.active .slide-content p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease 0.4s;
+        }
+        .slide.active .service-features {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .feature-tag {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(4px);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent-gold);
+            letter-spacing: 0.5px;
+            transition: transform 0.3s ease;
+        }
+        .feature-tag i {
+            margin-right: 6px;
+            font-size: 0.7rem;
+        }
+        .feature-tag:hover {
+            transform: translateY(-2px);
+            background: rgba(207, 166, 75, 0.2);
         }
 
+        /* Main CTA Button */
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--primary-teal);
+            color: white;
+            padding: 14px 38px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .hero-cta:hover {
+            background: var(--primary-teal-dark);
+            transform: translateY(-4px);
+            gap: 16px;
+        }
+        .hero-cta i {
+            transition: transform 0.2s;
+        }
+        .hero-cta:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Dots Pagination - clean and minimal */
+        .dots-container {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 20;
+            flex-wrap: wrap;
+            padding: 0 16px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .dot.active {
+            background: var(--accent-gold);
+            width: 28px;
+            border-radius: 10px;
+        }
+        .dot:hover {
+            background: var(--primary-teal);
+            transform: scale(1.2);
+        }
+
+        /* Brand tag */
+        .brand-tag {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            z-index: 50;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Footer note */
+        .footer-note {
+            text-align: center;
+            padding: 16px 20px;
+            background: #06080A;
+            border-top: 1px solid var(--border);
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+
+        /* ========== PROFESSIONAL LOADING SCREEN ========== */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #0a0e12 0%, #030506 100%);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1), visibility 0.5s ease;
+        }
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .loader-container {
+            text-align: center;
+            transform: scale(0.95);
+            animation: fadeInScale 0.6s ease-out forwards;
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .logo-image-wrapper {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        .logo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1A7F6E, #0F5E51);
+            padding: 15px;
+            box-shadow: 0 0 40px rgba(26, 127, 110, 0.4);
+            animation: logoPulse 2s ease-in-out infinite;
+        }
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(26, 127, 110, 0.3); }
+            50% { transform: scale(1.03); box-shadow: 0 0 45px rgba(26, 127, 110, 0.7); }
+        }
+        
+        .bubbles-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle, rgba(26,127,110,0.15), rgba(207,166,75,0.05));
+            border-radius: 50%;
+            animation: floatBubble linear infinite;
+        }
+        @keyframes floatBubble {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.4; }
+            100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
+        }
+        
+        .loading-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            letter-spacing: 6px;
+            color: var(--accent-gold);
+            margin: 15px 0 8px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #FFFFFF, var(--accent-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .loading-subtitle {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+        
+        .progress-container {
+            width: 300px;
+            height: 2px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 auto 15px;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-teal), var(--accent-gold));
+            border-radius: 4px;
+            animation: loadingProgress 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        @keyframes loadingProgress {
+            0% { width: 0%; }
+            20% { width: 15%; }
+            40% { width: 38%; }
+            60% { width: 62%; }
+            80% { width: 85%; }
+            100% { width: 100%; }
+        }
+        
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+            margin: 0 auto;
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+        
+        .loading-message {
+            margin-top: 20px;
+            font-size: 0.7rem;
+            color: var(--primary-teal);
+            letter-spacing: 1px;
+            animation: messageFade 1.5s ease-in-out infinite;
+        }
+        @keyframes messageFade {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* ========== RESPONSIVE ========== */
         @media (max-width: 992px) {
-            .bento-grid { display: flex; flex-direction: column; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            .container { padding: 0 24px; }
-            .features-grid { grid-template-columns: 1fr; gap: 24px; }
-            .cta-section { padding: 50px 30px; margin: 40px 0; }
-            .hero { height: 70vh; background-position: 70% center; }
-            .bento-overlay h3 { font-size: 1.4rem; }
-            .bento-overlay { padding: 24px; }
-            footer { padding-bottom: 100px; }
+            .minimal-header { padding: 1.2rem 1.5rem; }
+            .service-features { gap: 0.8rem; }
+            .feature-tag { font-size: 0.7rem; padding: 0.3rem 0.8rem; }
         }
-
+        
+        @media (max-width: 768px) {
+            .hero-slider { height: 100vh; }
+            .slide-content h2 { font-size: 1.8rem; }
+            .slide-content p { font-size: 0.9rem; }
+            .hero-cta { padding: 12px 28px; font-size: 0.9rem; }
+            .dots-container { bottom: 20px; gap: 8px; }
+            .dot { width: 8px; height: 8px; }
+            .dot.active { width: 24px; }
+            .brand-tag { top: 20px; right: 20px; font-size: 0.6rem; padding: 4px 12px; }
+            .service-features { margin-top: 1rem; gap: 0.6rem; }
+            .feature-tag { font-size: 0.65rem; padding: 0.25rem 0.7rem; }
+            .service-badge { margin-bottom: 1rem; padding: 0.35rem 1.2rem; font-size: 0.7rem; }
+            .logo-image-wrapper { width: 100px; height: 100px; }
+            .loading-title { font-size: 1.4rem; letter-spacing: 4px; }
+            .progress-container { width: 250px; }
+            .progress-stats { width: 250px; }
+        }
+        
         @media (max-width: 480px) {
-            .hero h1 { font-size: 2.5rem; }
-            .cta-section h2 { font-size: 1.8rem; }
-            .feature-card { padding: 30px 20px; }
+            .minimal-header .logo-link { font-size: 1.1rem; }
+            .minimal-header { padding: 1rem 1.2rem; }
+            .slide-content h2 { font-size: 1.5rem; }
+            .slide-content p { font-size: 0.8rem; }
+            .service-badge { font-size: 0.65rem; padding: 0.3rem 1rem; }
+            .hero-cta { padding: 10px 22px; font-size: 0.8rem; }
+            .dots-container { gap: 8px; bottom: 15px; }
+            .feature-tag { font-size: 0.6rem; padding: 0.2rem 0.6rem; }
+            .logo-image-wrapper { width: 80px; height: 80px; }
+            .loading-title { font-size: 1.1rem; letter-spacing: 3px; }
+            .progress-container { width: 200px; }
+            .progress-stats { width: 200px; font-size: 0.55rem; }
+            .loading-subtitle { font-size: 0.6rem; letter-spacing: 2px; }
         }
     </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="navbar">
-    <a href="index.html" class="logo-link">
-      <span class="logo-word">SPOTLESS</span>
-      <span class="logo-highlight">BUBBLES</span>
-      <span class="logo-mark"></span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-item active"><i class="fas fa-home"></i> Home</a>
-      <a href="about.html" class="nav-item"><i class="fas fa-leaf"></i> About</a>
-      <a href="services.html" class="nav-item"><i class="fas fa-sparkle"></i> Services</a>
-      <a href="booking.html" class="nav-item"><i class="fas fa-calendar-check"></i> Book</a>
-      <a href="contact.html" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
+<!-- Professional Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="bubbles-bg" id="bubblesBg"></div>
+    <div class="loader-container">
+        <div class="logo-image-wrapper">
+            <img src="./images/logo.jpeg" alt="SpotlessBubbles Logo" class="logo-image" id="loadingLogo" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1A7F6E/FFFFFF?text=SB'; this.style.background='linear-gradient(135deg, #1A7F6E, #0F5E51)';">
+        </div>
+        <div class="loading-title">SPOTLESS BUBBLES</div>
+        <div class="loading-subtitle">THE SCIENCE OF CURATION</div>
+        <div class="progress-container">
+            <div class="progress-fill"></div>
+        </div>
+        <div class="progress-stats">
+            <span>LOADING EXPERIENCE</span>
+            <span id="progressPercent">0%</span>
+        </div>
+        <div class="loading-message" id="loadingMessage">
+            <i class="fas fa-sparkle"></i> PREPARING PRECISION HYGIENE
+        </div>
     </div>
-    <a href="booking.html" class="btn-nav-cta"><i class="fas fa-file-invoice"></i> Get Quote</a>
-  </div>
-</header>
-
-<!-- ENHANCED DOCKER STYLE BOTTOM NAVIGATION (Matches services page exactly - refined styling) -->
-<div class="bottom-dock">
-  <a href="index.html" class="dock-btn active"><i class="fas fa-home"></i><span>Home</span></a>
-  <a href="about.html" class="dock-btn"><i class="fas fa-leaf"></i><span>About</span></a>
-  <a href="services.html" class="dock-btn"><i class="fas fa-sparkle"></i><span>Services</span></a>
-  <a href="booking.html" class="dock-btn"><i class="fas fa-calendar-check"></i><span>Book</span></a>
-  <a href="contact.html" class="dock-btn"><i class="fas fa-envelope"></i><span>Contact</span></a>
 </div>
 
-<!-- WHATSAPP FLOATING BUTTON (Enhanced with consistent styling) -->
-<a href="https://wa.me/27684867533" class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+<!-- Minimal header with logo -->
+<div class="minimal-header">
+    <a href="javascript:void(0);" class="logo-link" id="logoLink">
+        <span class="logo-word">SPOTLESS</span>
+        <span class="logo-highlight">BUBBLES</span>
+        <span class="logo-mark"></span>
+    </a>
+</div>
+<div class="brand-tag">
+    <i class="fas fa-certificate"></i> The Science of Curation
+</div>
 
-<section class="hero">
-    <div class="container">
-        <div class="reveal">
-            <p style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 0.8rem; margin-bottom: 15px;">Elite Hygiene Services</p>
-            <h1>The New <span>Standard</span><br>of Architectural Purity.</h1>
-            <p style="max-width: 500px; color: var(--text-dim); margin-bottom: 40px; font-size: 1.1rem;">
-                Experience deep-tissue cleaning for your home and workspace using proprietary nano-bubble technology.
-            </p>
-            <a href="booking.html" class="btn-nav-cta" style="padding: 18px 40px; font-size: 1rem;"><i class="fas fa-calendar-check"></i> Reserve a Session</a>
-        </div>
-    </div>
-</section>
-
-<section class="container" style="padding-top: 100px;">
-    <div style="text-align: center; margin-bottom: 60px;" class="reveal">
-        <span class="hero-tag" style="color: var(--accent-gold); letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 20px;">Portfolio</span>
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem;">Bespoke Solutions</h2>
-        <p style="color: var(--text-dim); max-width: 600px; margin: 15px auto 0;">Engineered clarity for every surface, from residential estates to corporate environments.</p>
-    </div>
-
-    <div class="bento-grid">
-        <div class="bento-item col-8 row-2 reveal">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format" alt="Luxury Living">
-            <div class="bento-overlay">
-                <p style="color: var(--primary-teal); font-weight: 600; letter-spacing: 2px;">01</p>
-                <h3>Estate Curation</h3>
-                <p style="font-size: 0.9rem; color: var(--text-dim);">Full-spectrum residential hygiene with HEPA filtration.</p>
-            </div>
-        </div>
-
-        <div class="bento-item col-4 row-2 reveal">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2070&auto=format" alt="Corporate Office">
-            <div class="bento-overlay">
-                <p style="color: var(--primary-teal); font-weight: 600; letter-spacing: 2px;">02</p>
-                <h3>Corporate Clarity</h3>
-                <p style="font-size: 0.9rem; color: var(--text-dim);">Pristine workspace environments for peak productivity.</p>
-            </div>
-        </div>
-
-        <div class="bento-item col-4 reveal">
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format" alt="Sanitization">
-            <div class="bento-overlay">
-                <p style="color: var(--primary-teal); font-weight: 600; letter-spacing: 2px;">03</p>
-                <h3>Deep Sanitization</h3>
-                <p style="font-size: 0.85rem;">Electrostatic & botanical protocols.</p>
-            </div>
-        </div>
-
-        <div class="bento-item col-8 reveal" style="background: linear-gradient(135deg, var(--primary-teal-dark), var(--primary-teal)); border: none;">
-            <div style="padding: 60px; height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                <i class="fas fa-quote-left" style="font-size: 2.5rem; opacity: 0.5; margin-bottom: 20px;"></i>
-                <h2 style="font-family: 'Playfair Display', serif; color: white; font-size: 2rem; line-height: 1.3;">"We don't just clean spaces; we restore atmospheres."</h2>
-                <p style="color: rgba(255,255,255,0.8); margin-top: 20px;">— Founder, SpotlessBubbles</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="features-section">
-    <div class="container">
-        <div style="text-align: center;" class="reveal">
-            <span class="hero-tag" style="color: var(--accent-gold); letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 20px;">The Science</span>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Why Discerning Clients Choose Us</h2>
-            <p style="color: var(--text-dim); max-width: 600px; margin: 15px auto 0;">Precision, sustainability, and architectural-grade results.</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card reveal">
-                <i class="fas fa-microscope feature-icon"></i>
-                <h3>Nano-Bubble Tech</h3>
-                <p style="color: var(--text-dim);">Microscopic bubbles penetrate deepest fibers, lifting contaminants without harsh chemicals.</p>
-            </div>
-            <div class="feature-card reveal">
-                <i class="fas fa-leaf feature-icon"></i>
-                <h3>Botanical Logic</h3>
-                <p style="color: var(--text-dim);">Plant-based formulations that respect both your surfaces and the environment.</p>
-            </div>
-            <div class="feature-card reveal">
-                <i class="fas fa-gem feature-icon"></i>
-                <h3>Architectural Finish</h3>
-                <p style="color: var(--text-dim);">We treat your space like a museum — preserving, protecting, and elevating.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="cta-section reveal">
-        <h2>Ready for a Restoration?</h2>
-        <p style="color: rgba(255,255,255,0.9); max-width: 500px; margin: 0 auto;">Book your session online or contact our concierge for a custom architectural quote.</p>
-        <a href="booking.html" class="cta-btn"><i class="fas fa-calendar-check"></i> Start Your Quote</a>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <a href="index.html" class="logo-link footer-logo">
-                    <span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span>
-                </a>
-                <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 15px;">Setting the benchmark for high-end hygiene and space curation since 2026.</p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Navigation</h4>
-                <a href="index.html" class="footer-link">Experience</a>
-                <a href="about.html" class="footer-link">The Science</a>
-                <a href="#" class="footer-link">Sustainability</a>
-                <a href="booking.html" class="footer-link">Concierge</a>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Services</h4>
-                <a href="services.html" class="footer-link">Estate Care</a>
-                <a href="services.html" class="footer-link">Corporate Portfolio</a>
-                <a href="services.html" class="footer-link">Textile Spa</a>
-                <a href="services.html" class="footer-link">Deep-Hygienics</a>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Contact</h4>
-                <p style="color: var(--text-dim); margin-bottom: 10px;"><i class="fas fa-map-marker-alt"></i> Sandton, South Africa</p>
-                <p style="color: var(--text-dim); margin-bottom: 20px;"><i class="fas fa-phone"></i> 068 486 7533</p>
-                <div style="display: flex; gap: 20px; font-size: 1.2rem;">
-                    <a href="#" style="color: var(--text-dim); transition: 0.3s;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" style="color: var(--text-dim); transition: 0.3s;"><i class="fab fa-linkedin"></i></a>
+<!-- Fullscreen Auto Slider - No Arrow Buttons -->
+<div class="hero-slider">
+    <div class="slider-container" id="sliderContainer">
+        
+        <!-- Slide 1: Household & Apartment Deep Clean -->
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <span class="service-badge"><i class="fas fa-home"></i> RESIDENTIAL ELITE</span>
+                <h2>Household & Apartment Deep Clean</h2>
+                <p>Full-home sanitization with botanical logic & HEPA filtration. Kitchens, bathrooms, living spaces — restored to pristine condition.</p>
+                <div class="service-features">
+                    <span class="feature-tag"><i class="fas fa-check-circle"></i> HEPA Filtration</span>
+                    <span class="feature-tag"><i class="fas fa-leaf"></i> Botanical Disinfectants</span>
+                    <span class="feature-tag"><i class="fas fa-microscope"></i> Nano-Bubble Tech</span>
+                    <span class="feature-tag"><i class="fas fa-clock"></i> Same-Day Available</span>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.8rem;">
-            © 2026 SpotlessBubbles — Precision cleaning for the discerning client.
+        
+        <!-- Slide 2: Warehouse & Fumigation -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <span class="service-badge"><i class="fas fa-warehouse"></i> INDUSTRIAL GRADE</span>
+                <h2>Warehouse & Industrial Fumigation</h2>
+                <p>Total pest eradication, spore neutralization & industrial sanitation. Pre-move fumigation for complete peace of mind before inventory arrives.</p>
+                <div class="service-features">
+                    <span class="feature-tag"><i class="fas fa-skull-crossbones"></i> Total Pest Eradication</span>
+                    <span class="feature-tag"><i class="fas fa-wind"></i> Spore Neutralization</span>
+                    <span class="feature-tag"><i class="fas fa-clipboard-check"></i> Certified Protocols</span>
+                    <span class="feature-tag"><i class="fas fa-chart-line"></i> Logistics-Ready</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Move-In / Move-Out Cleaning -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2070&auto=format');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <span class="service-badge"><i class="fas fa-truck-moving"></i> TRANSITION SOLUTIONS</span>
+                <h2>Move-In / Move-Out Deep Clean</h2>
+                <p>Seamless property handover: carpets, appliances, inside cabinets, baseboards, and full disinfection. Ready for inspection or your new beginning.</p>
+                <div class="service-features">
+                    <span class="feature-tag"><i class="fas fa-door-open"></i> Vacate Ready</span>
+                    <span class="feature-tag"><i class="fas fa-home"></i> Settle-In Pristine</span>
+                    <span class="feature-tag"><i class="fas fa-pump-soap"></i> Appliance Detailing</span>
+                    <span class="feature-tag"><i class="fas fa-file-signature"></i> Landlord Approved</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 4: Pre-Move Fumigation -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <span class="service-badge"><i class="fas fa-shield-alt"></i> PROTECTION FIRST</span>
+                <h2>Pre-Move Fumigation</h2>
+                <p>Fumigate before you move into a new place — certified gas/thermal treatment for apartments, homes & warehouses. Peace of mind from day one.</p>
+                <div class="service-features">
+                    <span class="feature-tag"><i class="fas fa-biohazard"></i> Gas/Thermal Treatment</span>
+                    <span class="feature-tag"><i class="fas fa-home"></i> Residential & Commercial</span>
+                    <span class="feature-tag"><i class="fas fa-file-alt"></i> Safety Certified</span>
+                    <span class="feature-tag"><i class="fas fa-calendar-week"></i> 24h Ventilation Check</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 5: Windows & Glass Prism -->
+        <div class="slide" style="background-image: url('./images/wash\ windows.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <span class="service-badge"><i class="fas fa-wind"></i> ARCHITECTURAL CLARITY</span>
+                <h2>Window & Glass Prism Service</h2>
+                <p>Streak-free interior/exterior glass, track cleaning, and screen restoration. Uncompromised transparency for homes and high-rise offices.</p>
+                <div class="service-features">
+                    <span class="feature-tag"><i class="fas fa-tint"></i> Spotless Shine</span>
+                    <span class="feature-tag"><i class="fas fa-ruler-combined"></i> Track Detailing</span>
+                    <span class="feature-tag"><i class="fas fa-building"></i> High-Reach Available</span>
+                    <span class="feature-tag"><i class="fas fa-water"></i> Eco-Solutions</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 6: Car Wash (Coming Soon) -->
+        <div class="slide" style="background-image: url('./images/carwash.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <span class="service-badge"><i class="fas fa-car"></i> COMING SOON — Q4 2026</span>
+                <h2>Car Wash & Nano Detailing</h2>
+                <p>Interior + exterior precision wash with nano-ceramic protection. The ultimate automotive care experience for discerning drivers.</p>
+                <div class="service-features">
+                    <span class="feature-tag"><i class="fas fa-spray-can-sparkles"></i> Foam Cannon Wash</span>
+                    <span class="feature-tag"><i class="fas fa-couch"></i> Interior Steam Clean</span>
+                    <span class="feature-tag"><i class="fas fa-gem"></i> Ceramic Coating Prep</span>
+                    <span class="feature-tag"><i class="fas fa-calendar-alt"></i> Launching Soon</span>
+                </div>
+            </div>
         </div>
     </div>
-</footer>
+
+    <!-- Dots Pagination Only - No Arrows -->
+    <div class="dots-container" id="dotsContainer"></div>
+
+    <!-- CTA Button -->
+    <div style="position: absolute; bottom: 80px; left: 0; right: 0; text-align: center; z-index: 25; pointer-events: none;">
+        <a href="javascript:void(0);" class="hero-cta" id="enterSiteBtn" style="pointer-events: auto; background: var(--primary-teal);">
+            <span>Browse Services</span> <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Footer note -->
+<div class="footer-note">
+    <p><i class="fas fa-leaf" style="color: var(--primary-teal); margin-right: 6px;"></i> Precision hygiene for households, warehouses, and transitional spaces. Client equipment optional — company gear available with extra fee.</p>
+    <p style="margin-top: 6px;">© 2026 SpotlessBubbles — The Science of Curation</p>
+</div>
 
 <script>
-    // Scroll Reveal Logic (matches services page)
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
-        });
-    }, { threshold: 0.1 });
+    (function() {
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('dotsContainer');
+        let currentIndex = 0;
+        let slideInterval;
+        let isTransitioning = false;
+        
+        /* ============================================================ */
+        /* ========== SLIDER SPEED ADJUSTMENT - EASY TO CHANGE ========= */
+        /* ============================================================ */
+        /* 
+           Change the value below (currently 3000) to adjust how fast slides change:
+           
+           - 2000 = 2 seconds (Very Fast)
+           - 3000 = 3 seconds (Fast - CURRENT)
+           - 4000 = 4 seconds (Normal)
+           - 5000 = 5 seconds (Slow)
+           - 7000 = 7 seconds (Very Slow)
+        */
+        const autoSlideDelay = 1000;  // ← CHANGE THIS NUMBER (milliseconds)
+        /* ============================================================ */
+        
+        /* Also adjust the fade transition speed in the CSS above (line ~86) */
+        /* Look for: transition: opacity 0.8s ... (change 0.8s to your preference) */
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        function createDots() {
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (idx === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (!isTransitioning && idx !== currentIndex) {
+                        goToSlide(idx);
+                        resetAutoSlide();
+                    }
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
 
-    // Add smooth hover effect for bento items
-    const bentoItems = document.querySelectorAll('.bento-item');
-    bentoItems.forEach(item => {
-        item.addEventListener('click', () => {
-            if (!item.querySelector('.cta-section')) {
-                window.location.href = 'booking.html';
+        function goToSlide(index) {
+            if (isTransitioning) return;
+            if (index === currentIndex) return;
+            if (index < 0 || index >= slides.length) return;
+            
+            isTransitioning = true;
+            slides[currentIndex].classList.remove('active');
+            currentIndex = index;
+            slides[currentIndex].classList.add('active');
+            
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                if (i === currentIndex) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+            
+            setTimeout(() => { isTransitioning = false; }, 1400);
+        }
+
+        function nextSlide() {
+            if (isTransitioning) return;
+            let next = currentIndex + 1;
+            if (next >= slides.length) next = 0;
+            goToSlide(next);
+        }
+
+        function startAutoSlide() {
+            if (slideInterval) clearInterval(slideInterval);
+            slideInterval = setInterval(() => { if (!isTransitioning) nextSlide(); }, autoSlideDelay);
+        }
+
+        function resetAutoSlide() {
+            if (slideInterval) clearInterval(slideInterval);
+            startAutoSlide();
+        }
+
+        const sliderContainer = document.getElementById('sliderContainer');
+        if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => { if (slideInterval) clearInterval(slideInterval); });
+            sliderContainer.addEventListener('mouseleave', () => { startAutoSlide(); });
+            sliderContainer.addEventListener('touchstart', () => { if (slideInterval) clearInterval(slideInterval); }, { passive: true });
+            sliderContainer.addEventListener('touchend', () => { startAutoSlide(); }, { passive: true });
+        }
+
+        let touchStartX = 0;
+        sliderContainer.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        sliderContainer.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const deltaX = touchEndX - touchStartX;
+            if (Math.abs(deltaX) > 50) {
+                if (deltaX > 0) {
+                    let prev = currentIndex - 1;
+                    if (prev < 0) prev = slides.length - 1;
+                    if (!isTransitioning) goToSlide(prev);
+                } else {
+                    if (!isTransitioning) nextSlide();
+                }
+                resetAutoSlide();
+            }
+        }, { passive: true });
+
+        createDots();
+        startAutoSlide();
+
+        slides.forEach(slide => {
+            const bgImage = slide.style.backgroundImage;
+            if (bgImage && bgImage !== 'none') {
+                const imgUrl = bgImage.slice(5, -2);
+                const img = new Image();
+                img.src = imgUrl;
             }
         });
-    });
 
-    // Set active state for dock based on current page (ensures consistency)
-    const currentPath = window.location.pathname;
-    if (currentPath.includes('index') || currentPath === '/' || currentPath.endsWith('/')) {
-        document.querySelectorAll('.dock-btn').forEach(btn => btn.classList.remove('active'));
-        const homeDock = document.querySelector('.dock-btn:first-child');
-        if (homeDock) homeDock.classList.add('active');
-    }
-
-    // Dynamic year update in footer
-    const footerYearSpan = document.querySelector('footer .container div:last-child');
-    if (footerYearSpan) {
-        const currentYear = new Date().getFullYear();
-        if (currentYear !== 2026) {
-            footerYearSpan.innerHTML = footerYearSpan.innerHTML.replace('2026', currentYear);
+        function adjustCtaPosition() {
+            const ctaWrapper = document.querySelector('.hero-slider > div[style*="bottom: 80px"]');
+            if (ctaWrapper) {
+                if (window.innerWidth <= 480) ctaWrapper.style.bottom = '60px';
+                else if (window.innerWidth <= 768) ctaWrapper.style.bottom = '70px';
+                else ctaWrapper.style.bottom = '80px';
+            }
         }
-    }
+        window.addEventListener('resize', adjustCtaPosition);
+        adjustCtaPosition();
 
-    // Add touch-friendly active state for mobile devices
-    if ('ontouchstart' in window) {
-        const dockBtns = document.querySelectorAll('.dock-btn');
-        dockBtns.forEach(btn => {
-            btn.addEventListener('touchstart', function() {
-                dockBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
+        /* ============================================================ */
+        /* ========== LOADING SCREEN DURATION - EASY TO CHANGE ======== */
+        /* ============================================================ */
+        /* 
+           Change the value below (currently 3000) to adjust loading screen duration:
+           
+           - 2000 = 2 seconds (Short)
+           - 3000 = 3 seconds (Normal - CURRENT)
+           - 4000 = 4 seconds (Long)
+           - 5000 = 5 seconds (Very Long)
+        */
+        const LOADING_DURATION = 4000;  // ← CHANGE THIS NUMBER (milliseconds)
+        /* ============================================================ */
+        
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const enterBtn = document.getElementById('enterSiteBtn');
+        const logoLink = document.getElementById('logoLink');
+        const progressPercentSpan = document.getElementById('progressPercent');
+        const loadingMessageSpan = document.getElementById('loadingMessage');
+        
+        const loadingMessages = [
+            '<i class="fas fa-sparkle"></i> PREPARING PRECISION HYGIENE',
+            '<i class="fas fa-microscope"></i> ACTIVATING NANO-BUBBLE TECH',
+            '<i class="fas fa-leaf"></i> LOADING BOTANICAL SOLUTIONS',
+            '<i class="fas fa-gem"></i> CURATING PRISTINE SPACES',
+            '<i class="fas fa-star"></i> ALMOST READY...'
+        ];
+        let msgIndex = 0;
+        
+        function updateLoadingMessage() {
+            if (loadingMessageSpan) {
+                msgIndex = (msgIndex + 1) % loadingMessages.length;
+                loadingMessageSpan.innerHTML = loadingMessages[msgIndex];
+            }
+        }
+        
+        function updateProgressPercent() {
+            let percent = 0;
+            const messageInterval = setInterval(updateLoadingMessage, 400);
+            const percentInterval = setInterval(() => {
+                if (percent >= 100) {
+                    clearInterval(percentInterval);
+                    clearInterval(messageInterval);
+                } else {
+                    percent += Math.floor(Math.random() * 6) + 4;
+                    if (percent > 100) percent = 100;
+                    if (progressPercentSpan) progressPercentSpan.innerText = percent + '%';
+                }
+            }, 80);
+        }
+
+        function triggerLoadingAndRedirect() {
+            loadingOverlay.classList.add('active');
+            updateProgressPercent();
+            
+            if (enterBtn) {
+                enterBtn.style.pointerEvents = 'none';
+                enterBtn.style.opacity = '0.7';
+            }
+            if (logoLink) {
+                logoLink.style.pointerEvents = 'none';
+            }
+            
+            // Uses the LOADING_DURATION variable above
+            setTimeout(() => {
+                window.location.href = 'home.html';
+            }, LOADING_DURATION);
+        }
+
+        if (enterBtn) {
+            enterBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                triggerLoadingAndRedirect();
             });
-        });
-    }
-</script>
+        }
 
+        if (logoLink) {
+            logoLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                triggerLoadingAndRedirect();
+            });
+        }
+        
+        // Create floating bubbles
+        function createBubbles() {
+            const bubblesBg = document.getElementById('bubblesBg');
+            if (!bubblesBg) return;
+            for (let i = 0; i < 25; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                const size = Math.random() * 40 + 10;
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.animationDuration = Math.random() * 8 + 5 + 's';
+                bubble.style.animationDelay = Math.random() * 5 + 's';
+                bubblesBg.appendChild(bubble);
+            }
+        }
+        createBubbles();
+    })();
+</script>
 </body>
 </html>

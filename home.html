@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>SpotlessBubbles | Professional Clarity</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-teal: #1A7F6E;
+            --primary-teal-dark: #0F5E51;
+            --primary-teal-soft: rgba(26, 127, 110, 0.08);
+            --accent-gold: #CFA64B;
+            --bg-dark: #0B0E11;
+            --surface: #161A1F;
+            --text-main: #F9FAFB;
+            --text-dim: #9CA3AF;
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========== HEADER & NAV STYLES ========== */
+        .site-header {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(11, 14, 17, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .navbar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.875rem 2rem; max-width: 1440px; margin: 0 auto; gap: 2rem;
+        }
+        .logo-link {
+            text-decoration: none; display: flex; align-items: baseline; gap: 2px;
+            font-weight: 700; font-size: 1.35rem; color: var(--text-main);
+        }
+        .logo-highlight { color: var(--primary-teal); font-weight: 800; }
+        .logo-mark { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; margin-left: 4px; }
+        .nav-links { display: flex; align-items: center; gap: 0.5rem; }
+        .nav-item {
+            padding: 0.5rem 1rem; font-size: 0.9rem; font-weight: 500;
+            color: var(--text-dim); text-decoration: none; border-radius: 40px; transition: 0.3s;
+        }
+        .nav-item:hover, .nav-item.active { background: var(--primary-teal-soft); color: var(--primary-teal); }
+        .btn-nav-cta {
+            background: var(--primary-teal); color: white; padding: 0.6rem 1.4rem;
+            border-radius: 40px; font-weight: 600; text-decoration: none; transition: 0.3s;
+        }
+        .btn-nav-cta:hover { background: var(--primary-teal-dark); transform: translateY(-2px); }
+
+        /* ========== ENHANCED DOCKER STYLE BOTTOM NAVIGATION (matching services page) ========== */
+        .bottom-dock {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(11, 14, 17, 0.98); backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border); display: none;
+            justify-content: space-around; align-items: center;
+            padding: 0.7rem 1rem; z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .dock-btn {
+            display: flex; flex-direction: column; align-items: center;
+            text-decoration: none; font-size: 0.7rem; color: var(--text-dim);
+            transition: all 0.3s ease; padding: 0.4rem 0.6rem;
+            border-radius: 40px; gap: 4px;
+        }
+        .dock-btn i { font-size: 1.2rem; transition: transform 0.2s ease; }
+        .dock-btn span { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3px; }
+        .dock-btn:hover { 
+            color: var(--primary-teal); 
+            background: var(--primary-teal-soft); 
+            transform: translateY(-2px);
+        }
+        .dock-btn:hover i { transform: scale(1.05); }
+        .dock-btn.active { 
+            color: var(--primary-teal); 
+            background: var(--primary-teal-soft);
+        }
+
+        /* Desktop hides dock, mobile shows */
+        @media (min-width: 993px) {
+            .bottom-dock { display: none; }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links, .btn-nav-cta { display: none; }
+            .bottom-dock { display: flex; }
+        }
+
+        @media (max-width: 480px) {
+            .dock-btn span { font-size: 0.6rem; }
+            .dock-btn i { font-size: 1rem; }
+            .bottom-dock { padding: 0.6rem 0.8rem; }
+        }
+
+        /* ========== WHATSAPP FLOATING BUTTON (Enhanced styling) ========== */
+        .whatsapp-float {
+            position: fixed; bottom: 100px; right: 30px; background: #25D366;
+            width: 55px; height: 55px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 1.8rem; color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 999; text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background: #20b358; }
+
+        @media (max-width: 992px) {
+            .whatsapp-float { bottom: 90px; right: 20px; width: 50px; height: 50px; font-size: 1.5rem; }
+        }
+
+        /* ========== PREMIUM LAYOUT ELEMENTS ========== */
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 40px; }
+
+        .hero {
+            height: 85vh; display: flex; align-items: center;
+            background: linear-gradient(to right, rgba(11,14,17,0.85), rgba(11,14,17,0.4)), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format');
+            background-size: cover; background-position: center;
+            position: relative;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1.1; margin-bottom: 24px;
+        }
+        .hero h1 span { color: var(--primary-teal); font-style: italic; font-weight: 400; }
+
+        /* --- Professional Image Grid (Bento Style) --- */
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 300px; gap: 24px; margin: 80px 0;
+        }
+        .bento-item {
+            background: var(--surface); border-radius: 24px;
+            overflow: hidden; position: relative; border: 1px solid var(--border);
+            transition: var(--transition); cursor: pointer;
+        }
+        .bento-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: 0.6; transition: var(--transition);
+        }
+        .bento-item:hover { transform: translateY(-5px); border-color: var(--primary-teal); }
+        .bento-item:hover img { transform: scale(1.05); opacity: 0.8; }
+        
+        .bento-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            padding: 32px; background: linear-gradient(transparent, rgba(0,0,0,0.85));
+        }
+        .bento-overlay h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 8px; }
+        .bento-overlay p { font-size: 0.85rem; color: var(--text-dim); }
+
+        .col-8 { grid-column: span 8; }
+        .col-4 { grid-column: span 4; }
+        .row-2 { grid-row: span 2; min-height: 620px; }
+
+        /* --- Feature Section --- */
+        .features-section { padding: 80px 0; background: #06080A; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+        .feature-card {
+            text-align: center; padding: 40px 30px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 20px; transition: var(--transition);
+        }
+        .feature-card:hover { border-color: var(--accent-gold); transform: translateY(-8px); }
+        .feature-icon { font-size: 2.5rem; color: var(--primary-teal); margin-bottom: 20px; display: inline-block; }
+        .feature-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 15px; }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-teal-dark), var(--primary-teal));
+            margin: 80px 0; border-radius: 32px; padding: 80px 60px;
+            text-align: center;
+        }
+        .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; }
+        .cta-btn { background: white; color: var(--primary-teal); padding: 16px 40px; border-radius: 60px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; transition: 0.3s; }
+        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+
+        /* --- Footer --- */
+        footer {
+            background: #06080A; padding: 100px 0 40px;
+            border-top: 1px solid var(--border); margin-top: 60px;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px;
+        }
+        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: inline-block; text-decoration: none; }
+        .footer-link { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
+        .footer-link:hover { color: var(--primary-teal); padding-left: 5px; }
+
+        /* --- Animations --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s var(--transition); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .hero-tag {
+            color: var(--accent-gold); letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: inline-block;
+        }
+
+        @media (max-width: 992px) {
+            .bento-grid { display: flex; flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .container { padding: 0 24px; }
+            .features-grid { grid-template-columns: 1fr; gap: 24px; }
+            .cta-section { padding: 50px 30px; margin: 40px 0; }
+            .hero { height: 70vh; background-position: 70% center; }
+            .bento-overlay h3 { font-size: 1.4rem; }
+            .bento-overlay { padding: 24px; }
+            footer { padding-bottom: 100px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.5rem; }
+            .cta-section h2 { font-size: 1.8rem; }
+            .feature-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar">
+    <a href="index.html" class="logo-link">
+      <span class="logo-word">SPOTLESS</span>
+      <span class="logo-highlight">BUBBLES</span>
+      <span class="logo-mark"></span>
+    </a>
+    <div class="nav-links">
+      <a href="home.html" class="nav-item active"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html" class="nav-item"><i class="fas fa-leaf"></i> About</a>
+      <a href="services.html" class="nav-item"><i class="fas fa-sparkle"></i> Services</a>
+      <a href="booking.html" class="nav-item"><i class="fas fa-calendar-check"></i> Book</a>
+      <a href="contact.html" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
+    </div>
+    <a href="booking.html" class="btn-nav-cta"><i class="fas fa-file-invoice"></i> Get Quote</a>
+  </div>
+</header>
+
+<!-- ENHANCED DOCKER STYLE BOTTOM NAVIGATION (Matches services page exactly - refined styling) -->
+<div class="bottom-dock">
+  <a href="index.html" class="dock-btn active"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="about.html" class="dock-btn"><i class="fas fa-leaf"></i><span>About</span></a>
+  <a href="services.html" class="dock-btn"><i class="fas fa-sparkle"></i><span>Services</span></a>
+  <a href="booking.html" class="dock-btn"><i class="fas fa-calendar-check"></i><span>Book</span></a>
+  <a href="contact.html" class="dock-btn"><i class="fas fa-envelope"></i><span>Contact</span></a>
+</div>
+
+<!-- WHATSAPP FLOATING BUTTON (Enhanced with consistent styling) -->
+<a href="https://wa.me/27684867533" class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+
+<section class="hero">
+    <div class="container">
+        <div class="reveal">
+            <p style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 0.8rem; margin-bottom: 15px;">Elite Hygiene Services</p>
+            <h1>The New <span>Standard</span><br>of Architectural Purity.</h1>
+            <p style="max-width: 500px; color: var(--text-dim); margin-bottom: 40px; font-size: 1.1rem;">
+                Experience deep-tissue cleaning for your home and workspace using proprietary nano-bubble technology.
+            </p>
+            <a href="booking.html" class="btn-nav-cta" style="padding: 18px 40px; font-size: 1rem;"><i class="fas fa-calendar-check"></i> Reserve a Session</a>
+        </div>
+    </div>
+</section>
+
+<section class="container" style="padding-top: 100px;">
+    <div style="text-align: center; margin-bottom: 60px;" class="reveal">
+        <span class="hero-tag" style="color: var(--accent-gold); letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 20px;">Portfolio</span>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem;">Bespoke Solutions</h2>
+        <p style="color: var(--text-dim); max-width: 600px; margin: 15px auto 0;">Engineered clarity for every surface, from residential estates to corporate environments.</p>
+    </div>
+
+    <div class="bento-grid">
+        <div class="bento-item col-8 row-2 reveal">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format" alt="Luxury Living">
+            <div class="bento-overlay">
+                <p style="color: var(--primary-teal); font-weight: 600; letter-spacing: 2px;">01</p>
+                <h3>Estate Curation</h3>
+                <p style="font-size: 0.9rem; color: var(--text-dim);">Full-spectrum residential hygiene with HEPA filtration.</p>
+            </div>
+        </div>
+
+        <div class="bento-item col-4 row-2 reveal">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2070&auto=format" alt="Corporate Office">
+            <div class="bento-overlay">
+                <p style="color: var(--primary-teal); font-weight: 600; letter-spacing: 2px;">02</p>
+                <h3>Corporate Clarity</h3>
+                <p style="font-size: 0.9rem; color: var(--text-dim);">Pristine workspace environments for peak productivity.</p>
+            </div>
+        </div>
+
+        <div class="bento-item col-4 reveal">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format" alt="Sanitization">
+            <div class="bento-overlay">
+                <p style="color: var(--primary-teal); font-weight: 600; letter-spacing: 2px;">03</p>
+                <h3>Deep Sanitization</h3>
+                <p style="font-size: 0.85rem;">Electrostatic & botanical protocols.</p>
+            </div>
+        </div>
+
+        <div class="bento-item col-8 reveal" style="background: linear-gradient(135deg, var(--primary-teal-dark), var(--primary-teal)); border: none;">
+            <div style="padding: 60px; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                <i class="fas fa-quote-left" style="font-size: 2.5rem; opacity: 0.5; margin-bottom: 20px;"></i>
+                <h2 style="font-family: 'Playfair Display', serif; color: white; font-size: 2rem; line-height: 1.3;">"We don't just clean spaces; we restore atmospheres."</h2>
+                <p style="color: rgba(255,255,255,0.8); margin-top: 20px;">— Founder, SpotlessBubbles</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="container">
+        <div style="text-align: center;" class="reveal">
+            <span class="hero-tag" style="color: var(--accent-gold); letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 20px;">The Science</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Why Discerning Clients Choose Us</h2>
+            <p style="color: var(--text-dim); max-width: 600px; margin: 15px auto 0;">Precision, sustainability, and architectural-grade results.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <i class="fas fa-microscope feature-icon"></i>
+                <h3>Nano-Bubble Tech</h3>
+                <p style="color: var(--text-dim);">Microscopic bubbles penetrate deepest fibers, lifting contaminants without harsh chemicals.</p>
+            </div>
+            <div class="feature-card reveal">
+                <i class="fas fa-leaf feature-icon"></i>
+                <h3>Botanical Logic</h3>
+                <p style="color: var(--text-dim);">Plant-based formulations that respect both your surfaces and the environment.</p>
+            </div>
+            <div class="feature-card reveal">
+                <i class="fas fa-gem feature-icon"></i>
+                <h3>Architectural Finish</h3>
+                <p style="color: var(--text-dim);">We treat your space like a museum — preserving, protecting, and elevating.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="cta-section reveal">
+        <h2>Ready for a Restoration?</h2>
+        <p style="color: rgba(255,255,255,0.9); max-width: 500px; margin: 0 auto;">Book your session online or contact our concierge for a custom architectural quote.</p>
+        <a href="booking.html" class="cta-btn"><i class="fas fa-calendar-check"></i> Start Your Quote</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" class="logo-link footer-logo">
+                    <span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span>
+                </a>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 15px;">Setting the benchmark for high-end hygiene and space curation since 2026.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Navigation</h4>
+                <a href="index.html" class="footer-link">Experience</a>
+                <a href="about.html" class="footer-link">The Science</a>
+                <a href="#" class="footer-link">Sustainability</a>
+                <a href="booking.html" class="footer-link">Concierge</a>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Services</h4>
+                <a href="services.html" class="footer-link">Estate Care</a>
+                <a href="services.html" class="footer-link">Corporate Portfolio</a>
+                <a href="services.html" class="footer-link">Textile Spa</a>
+                <a href="services.html" class="footer-link">Deep-Hygienics</a>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Contact</h4>
+                <p style="color: var(--text-dim); margin-bottom: 10px;"><i class="fas fa-map-marker-alt"></i> Sandton, South Africa</p>
+                <p style="color: var(--text-dim); margin-bottom: 20px;"><i class="fas fa-phone"></i> 068 486 7533</p>
+                <div style="display: flex; gap: 20px; font-size: 1.2rem;">
+                    <a href="#" style="color: var(--text-dim); transition: 0.3s;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: var(--text-dim); transition: 0.3s;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.8rem;">
+            © 2026 SpotlessBubbles — Precision cleaning for the discerning client.
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Scroll Reveal Logic (matches services page)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Add smooth hover effect for bento items
+    const bentoItems = document.querySelectorAll('.bento-item');
+    bentoItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (!item.querySelector('.cta-section')) {
+                window.location.href = 'booking.html';
+            }
+        });
+    });
+
+    // Set active state for dock based on current page (ensures consistency)
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('index') || currentPath === '/' || currentPath.endsWith('/')) {
+        document.querySelectorAll('.dock-btn').forEach(btn => btn.classList.remove('active'));
+        const homeDock = document.querySelector('.dock-btn:first-child');
+        if (homeDock) homeDock.classList.add('active');
+    }
+
+    // Dynamic year update in footer
+    const footerYearSpan = document.querySelector('footer .container div:last-child');
+    if (footerYearSpan) {
+        const currentYear = new Date().getFullYear();
+        if (currentYear !== 2026) {
+            footerYearSpan.innerHTML = footerYearSpan.innerHTML.replace('2026', currentYear);
+        }
+    }
+
+    // Add touch-friendly active state for mobile devices
+    if ('ontouchstart' in window) {
+        const dockBtns = document.querySelectorAll('.dock-btn');
+        dockBtns.forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                dockBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    }
+</script>
+
+</body>
+</html>

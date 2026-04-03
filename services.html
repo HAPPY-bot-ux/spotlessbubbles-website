@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Services | SpotlessBubbles — The Science of Curation</title>
+    <title>SpotlessBubbles | Precision Hygiene & Estate Curation</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -54,14 +54,13 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
-        /* ========== ENHANCED DOCKER STYLE BOTTOM NAVIGATION (with refined styling) ========== */
+        /* ========== DOCKER STYLE BOTTOM NAV ========== */
         .bottom-dock {
             position: fixed; bottom: 0; left: 0; right: 0;
             background: rgba(11, 14, 17, 0.98); backdrop-filter: blur(20px);
             border-top: 1px solid var(--border); display: none;
             justify-content: space-around; align-items: center;
             padding: 0.7rem 1rem; z-index: 1000;
-            transition: all 0.3s ease;
         }
         .dock-btn {
             display: flex; flex-direction: column; align-items: center;
@@ -69,36 +68,13 @@
             transition: all 0.3s ease; padding: 0.4rem 0.6rem;
             border-radius: 40px; gap: 4px;
         }
-        .dock-btn i { font-size: 1.2rem; transition: transform 0.2s ease; }
-        .dock-btn span { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3px; }
-        .dock-btn:hover { 
-            color: var(--primary-teal); 
-            background: var(--primary-teal-soft); 
-            transform: translateY(-2px);
-        }
-        .dock-btn:hover i { transform: scale(1.05); }
-        .dock-btn.active { 
-            color: var(--primary-teal); 
-            background: var(--primary-teal-soft);
-        }
+        .dock-btn i { font-size: 1.2rem; }
+        .dock-btn span { font-size: 0.65rem; font-weight: 500; }
+        .dock-btn:hover, .dock-btn.active { color: var(--primary-teal); background: var(--primary-teal-soft); transform: translateY(-2px); }
+        @media (min-width: 993px) { .bottom-dock { display: none; } }
+        @media (max-width: 992px) { .nav-links, .btn-nav-cta { display: none; } .bottom-dock { display: flex; } }
 
-        /* Desktop hides dock, mobile shows */
-        @media (min-width: 993px) {
-            .bottom-dock { display: none; }
-        }
-
-        @media (max-width: 992px) {
-            .nav-links, .btn-nav-cta { display: none; }
-            .bottom-dock { display: flex; }
-        }
-
-        @media (max-width: 480px) {
-            .dock-btn span { font-size: 0.6rem; }
-            .dock-btn i { font-size: 1rem; }
-            .bottom-dock { padding: 0.6rem 0.8rem; }
-        }
-
-        /* ========== WHATSAPP FLOATING BUTTON (enhanced with same style) ========== */
+        /* ========== WHATSAPP FLOAT ========== */
         .whatsapp-float {
             position: fixed; bottom: 100px; right: 30px; background: #25D366;
             width: 55px; height: 55px; border-radius: 50%; display: flex;
@@ -107,19 +83,16 @@
             transition: all 0.3s ease;
         }
         .whatsapp-float:hover { transform: scale(1.1); background: #20b358; }
-
-        @media (max-width: 992px) {
-            .whatsapp-float { bottom: 90px; right: 20px; width: 50px; height: 50px; font-size: 1.5rem; }
-        }
+        @media (max-width: 992px) { .whatsapp-float { bottom: 90px; right: 20px; width: 50px; height: 50px; font-size: 1.5rem; } }
 
         /* ========== HERO ========== */
         .services-hero { padding: 100px 0 60px; text-align: center; }
         .hero-tag { color: var(--accent-gold); letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 20px; display: block; }
         .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4rem); line-height: 1.1; margin-bottom: 20px; }
 
-        /* ========== BENTO GRID (Featured) ========== */
+        /* ========== BENTO GRID (Featured Services) ========== */
         .services-bento {
-            display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(320px, auto); gap: 24px; margin-bottom: 80px;
+            display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-bottom: 80px;
         }
         .bento-card {
             background: var(--surface); border: 1px solid var(--border); padding: 40px;
@@ -128,16 +101,14 @@
             cursor: pointer;
         }
         .bento-card:hover { border-color: var(--primary-teal); transform: translateY(-5px); }
-        .bento-card i { font-size: 2.5rem; color: var(--primary-teal); position: absolute; top: 40px; right: 40px; opacity: 0.3; transition: opacity 0.3s ease; }
-        .bento-card:hover i { opacity: 0.6; }
+        .bento-card i { font-size: 2.5rem; color: var(--primary-teal); position: absolute; top: 40px; right: 40px; opacity: 0.3; }
         .card-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 10px; }
         .card-price { font-weight: 700; color: var(--accent-gold); margin-top: 15px; }
-
         .large { grid-column: span 8; }
         .medium { grid-column: span 4; }
         .tall { grid-row: span 2; grid-column: span 4; }
 
-        /* ========== CATEGORY CARDS ========== */
+        /* ========== CATEGORY CARDS (Household, Warehouse, Move-in etc) ========== */
         .category-section { padding: 100px 0; background: #06080A; }
         .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
         .category-card {
@@ -146,37 +117,35 @@
             cursor: pointer;
         }
         .category-card:hover { border-color: var(--accent-gold); background: #1c2128; transform: translateY(-5px); }
-        .cat-icon { font-size: 2rem; color: var(--accent-gold); margin-bottom: 20px; transition: transform 0.3s ease; }
-        .category-card:hover .cat-icon { transform: scale(1.05); }
+        .cat-icon { font-size: 2rem; color: var(--accent-gold); margin-bottom: 20px; }
+        .badge-soon { background: rgba(207, 166, 75, 0.2); color: var(--accent-gold); border-radius: 40px; font-size: 0.7rem; font-weight: 600; padding: 4px 12px; display: inline-block; margin-top: 12px; }
 
         /* ========== FULL MENU TABLE ========== */
         .menu-section { padding: 100px 0; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 40px; }
         .menu-item {
             padding: 25px; border: 1px solid var(--border);
             display: flex; justify-content: space-between; align-items: flex-start;
             transition: 0.3s; background: var(--surface); border-radius: 12px;
         }
-        .menu-item:hover { background: var(--primary-teal-soft); transform: translateX(5px); border-color: var(--primary-teal); }
+        .menu-item:hover { background: var(--primary-teal-soft); border-color: var(--primary-teal); }
         .menu-info h4 { font-size: 1rem; margin-bottom: 5px; color: var(--text-main); }
         .menu-info p { font-size: 0.8rem; color: var(--text-dim); }
         .menu-price { color: var(--primary-teal); font-weight: 700; font-size: 0.9rem; white-space: nowrap; margin-left: 20px; }
-
-        /* ========== CTA SECTION ========== */
+        .footnote { background: rgba(26,127,110,0.1); border-left: 3px solid var(--primary-teal); padding: 20px; margin-top: 40px; border-radius: 16px; }
+        
+        /* ========== CTA ========== */
         .cta-section {
             background: linear-gradient(135deg, var(--primary-teal-dark), var(--primary-teal));
             margin: 0 auto 100px; border-radius: 24px; padding: 80px 60px;
             text-align: center; max-width: 1000px;
         }
-        .cta-section h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; color: white; }
-        .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 30px; }
         .cta-btn { background: white; color: var(--primary-teal); padding: 16px 40px; border-radius: 60px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; }
         .cta-btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
 
-        /* ========== FOOTER ========== */
         footer { background: #06080A; padding: 100px 0 40px; border-top: 1px solid var(--border); }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; }
-        .footer-link { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; font-size: 0.9rem; transition: 0.3s; }
+        .footer-link { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
         .footer-link:hover { color: var(--primary-teal); padding-left: 5px; }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
@@ -185,20 +154,10 @@
         @media (max-width: 992px) {
             .services-bento, .category-grid, .footer-grid { grid-template-columns: 1fr; }
             .large, .medium, .tall { grid-column: span 1; grid-row: auto; }
-            .hero-title { font-size: 2.5rem; }
             .container { padding: 0 24px; }
             .cta-section { padding: 50px 30px; margin: 0 24px 80px; }
-            .footer-grid { gap: 40px; text-align: center; }
-            .footer-grid div:first-child { text-align: center; }
-        }
-
-        @media (max-width: 480px) {
-            .services-hero { padding: 60px 0 40px; }
-            .bento-card { padding: 30px; }
-            .card-title { font-size: 1.4rem; }
         }
     </style>
-    
 </head>
 <body>
 
@@ -220,7 +179,6 @@
   </div>
 </header>
 
-<!-- ENHANCED DOCKER STYLE BOTTOM NAVIGATION (Consistent with all pages - refined styling) -->
 <div class="bottom-dock">
   <a href="index.html" class="dock-btn"><i class="fas fa-home"></i><span>Home</span></a>
   <a href="about.html" class="dock-btn"><i class="fas fa-leaf"></i><span>About</span></a>
@@ -229,83 +187,118 @@
   <a href="contact.html" class="dock-btn"><i class="fas fa-envelope"></i><span>Contact</span></a>
 </div>
 
-<!-- WHATSAPP FLOATING BUTTON (Enhanced with same styling) -->
 <a href="https://wa.me/27684867533" class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
 
 <section class="container services-hero reveal">
-    <span class="hero-tag">The Master Menu</span>
-    <h1 class="hero-title">Precision hygiene for the <br><span style="color: var(--primary-teal); font-style: italic;">modern estate</span>.</h1>
-    <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto;">Utilizing nano-bubble technology and botanical logic to restore your most valued environments.</p>
+    <span class="hero-tag">Tailored Curation</span>
+    <h1 class="hero-title">Household · Warehouses · <br><span style="color: var(--primary-teal); font-style: italic;">Precision Fumigation</span>.</h1>
+    <p style="color: var(--text-dim); max-width: 620px; margin: 0 auto;">Deep hygiene for apartments, estates, warehouses, and move-in/move-out. Professional fumigation ready before you settle.</p>
 </section>
 
+<!-- BENTO: core service highlights -->
 <section class="container services-bento reveal">
     <div class="bento-card large">
-        <i class="fas fa-home"></i>
-        <h3 class="card-title">Residential Deep Clean</h3>
-        <p style="color: var(--text-dim); font-size: 0.9rem;">Whole-home sanitization with HEPA filtration and botanical disinfectants.</p>
-        <div class="card-price">R 3,490</div>
+        <i class="fas fa-building"></i>
+        <h3 class="card-title">Household & Apartment</h3>
+        <p style="color: var(--text-dim); font-size: 0.9rem;">Full-residence deep clean — from studio penthouses to family homes. Botanical sanitizers + HEPA vacuum.</p>
+        <div class="card-price">From R 2,890</div>
     </div>
     <div class="bento-card tall">
-        <i class="fas fa-couch"></i>
-        <h3 class="card-title">Upholstery <br>Revival</h3>
-        <p style="color: var(--text-dim); font-size: 0.9rem;">Deep tissue extraction for sofas, silk textiles, and velvet surfaces.</p>
-        <div class="card-price">R 1,820</div>
+        <i class="fas fa-warehouse"></i>
+        <h3 class="card-title">Warehouse & Industrial</h3>
+        <p style="color: var(--text-dim); font-size: 0.9rem;">High-volume degreasing, dust control, aisle sanitation, and logistical readiness.</p>
+        <div class="card-price">From R 7,450</div>
     </div>
     <div class="bento-card medium">
-        <i class="fas fa-leaf"></i>
-        <h3 class="card-title">Green Eco-Seal</h3>
-        <p style="color: var(--text-dim); font-size: 0.9rem;">100% plant-based, zero-waste perfection.</p>
-        <div class="card-price">R 3,290</div>
+        <i class="fas fa-skull-crossbones"></i>
+        <h3 class="card-title">Warehouse Fumigation</h3>
+        <p style="color: var(--text-dim); font-size: 0.9rem;">Total pest eradication & spore neutralization for storage facilities.</p>
+        <div class="card-price">From R 9,200</div>
     </div>
     <div class="bento-card medium">
-        <i class="fas fa-hammer"></i>
-        <h3 class="card-title">Post-Construction</h3>
-        <p style="color: var(--text-dim); font-size: 0.9rem;">Final polish for new architectural builds.</p>
-        <div class="card-price">R 7,350</div>
+        <i class="fas fa-truck-moving"></i>
+        <h3 class="card-title">Move-In / Move-Out</h3>
+        <p style="color: var(--text-dim); font-size: 0.9rem;">Vacate or settle-in pristine clean, carpets, appliances & full disinfection.</p>
+        <div class="card-price">R 4,390</div>
     </div>
 </section>
 
+<!-- DOMAIN SPECIFIC: Updated to reflect requested categories (Household, Apartment, Move, Warehouse, Fumigation + Car Wash soon) -->
 <section class="category-section">
     <div class="container reveal">
         <div style="text-align: center;">
-            <span class="hero-tag">By Domain</span>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Choose Your Restoration</h2>
+            <span class="hero-tag">Specialized Divisions</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Core Service Ecosystems</h2>
         </div>
         <div class="category-grid">
             <div class="category-card">
-                <i class="fas fa-university cat-icon"></i>
-                <h3 style="margin-bottom: 10px;">Residential</h3>
-                <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 20px;">Estates, Apartments, and Private Residences.</p>
-                <div style="color: var(--accent-gold); font-weight: 700;">From R 3,490</div>
+                <i class="fas fa-home cat-icon"></i>
+                <h3 style="margin-bottom: 10px;">Household + Apartments</h3>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 20px;">Daily, weekly, deep-clean: kitchens, bathrooms, living zones, balconies.</p>
+                <div style="color: var(--accent-gold); font-weight: 700;">From R 2,490</div>
             </div>
             <div class="category-card">
-                <i class="fas fa-building-user cat-icon"></i>
-                <h3 style="margin-bottom: 10px;">Commercial</h3>
-                <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 20px;">Offices, Retail Hubs, and High-Touch Zones.</p>
-                <div style="color: var(--accent-gold); font-weight: 700;">From R 5,500</div>
+                <i class="fas fa-dolly cat-icon"></i>
+                <h3 style="margin-bottom: 10px;">Move-In / Move-Out</h3>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 20px;">Pre-settlement fumigation optional, full property handover sparkle.</p>
+                <div style="color: var(--accent-gold); font-weight: 700;">R 3,990+</div>
             </div>
             <div class="category-card">
-                <i class="fas fa-wand-sparkles cat-icon"></i>
-                <h3 style="margin-bottom: 10px;">Specialty</h3>
-                <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 20px;">Marble, Stone, and Fine Textile Care.</p>
-                <div style="color: var(--accent-gold); font-weight: 700;">From R 1,450</div>
+                <i class="fas fa-industry cat-icon"></i>
+                <h3 style="margin-bottom: 10px;">Warehouse + Fumigation</h3>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 20px;">Full facility fumigation before moving inventory, structural sanitization.</p>
+                <div style="color: var(--accent-gold); font-weight: 700;">Custom Quote</div>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-car cat-icon"></i>
+                <h3 style="margin-bottom: 10px;">Car Wash (Coming Soon)</h3>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 20px;">Interior + exterior nano detailing — launch Q4 2026.</p>
+                <span class="badge-soon"><i class="fas fa-clock"></i> Anticipated 2026</span>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-wind cat-icon"></i>
+                <h3 style="margin-bottom: 10px;">Pre-Move Fumigation</h3>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 20px;">Fumigate before you move into a new place — total peace of mind.</p>
+                <div style="color: var(--accent-gold); font-weight: 700;">From R 5,200</div>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-tint cat-icon"></i>
+                <h3 style="margin-bottom: 10px;">Window & Glass Prism</h3>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 20px;">Streak-free, high-reach, interior/exterior window restoration.</p>
+                <div style="color: var(--accent-gold); font-weight: 700;">From R 1,990</div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- DETAILED SERVICE MENU: includes all key items like windows, extra products cost, equipment policy, etc -->
 <section class="menu-section">
     <div class="container reveal">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; border-left: 3px solid var(--primary-teal); padding-left: 20px;">Full Service Menu</h2>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; border-left: 3px solid var(--primary-teal); padding-left: 20px;">The Complete Service Ledger</h2>
         <div class="menu-grid" id="fullMenuGrid"></div>
+        
+        <!-- Important note about equipment + extra products & client responsibility -->
+        <div class="footnote">
+            <i class="fas fa-clipboard-list" style="color: var(--accent-gold); margin-right: 12px;"></i>
+            <strong style="color: var(--primary-teal);">Client equipment policy & custom surcharges:</strong> 
+            <span style="color: var(--text-dim); display: inline-block; margin-top: 8px;">Standard cleaning requires client to provide basic equipment (vacuum, mop, buckets). SpotlessBubbles can bring professional-grade machinery (HEPA vacuums, industrial steamers, fumigation units) — additional equipment fee applies based on scope. Any extra products or specific eco-solutions (specialty degreasers, botanical additives) will be billed separately at cost + 15%. Always confirmed before service.</span>
+        </div>
+        
+        <!-- Extra mention for fumigation before move in -->
+        <div class="footnote" style="margin-top: 20px; background: rgba(207,166,75,0.05);">
+            <i class="fas fa-biohazard" style="color: var(--accent-gold); margin-right: 12px;"></i>
+            <strong style="color: var(--accent-gold);">✨ Pre-move Fumigation Package:</strong> 
+            <span style="color: var(--text-dim);">Recommended for new apartments, homes or warehouses before you relocate. Comprehensive fumigation + antimicrobial fogging. Starting from R 5,200 (dependent on square footage). Includes post-fumigation ventilation check.</span>
+        </div>
     </div>
 </section>
 
+<!-- CTA section -->
 <section class="container reveal">
     <div class="cta-section">
-        <h3>Ready for a Restoration?</h3>
-        <p>Book your session online or contact our concierge for a custom architectural quote.</p>
-        <a href="booking.html" class="cta-btn"><i class="fas fa-calendar-check"></i> Start Your Quote</a>
+        <h3>Need a tailored quote for warehouse fumigation or move-in deep clean?</h3>
+        <p>Request a site survey — equipment fee & extra product costs are fully transparent.</p>
+        <a href="booking.html" class="cta-btn"><i class="fas fa-calendar-check"></i> Request Concierge Quote</a>
     </div>
 </section>
 
@@ -316,21 +309,22 @@
                 <a href="index.html" class="logo-link footer-logo">
                     <span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span>
                 </a>
-                <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 15px;">Setting the benchmark for high-end hygiene and space curation since 2026.</p>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 15px;">Precision hygiene for homes, warehouses, and transitional spaces. Science-led curation.</p>
             </div>
             <div>
                 <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Navigation</h4>
                 <a href="index.html" class="footer-link">Experience</a>
                 <a href="about.html" class="footer-link">The Science</a>
-                <a href="#" class="footer-link">Sustainability</a>
+                <a href="services.html" class="footer-link">Services</a>
                 <a href="booking.html" class="footer-link">Concierge</a>
             </div>
             <div>
-                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Services</h4>
-                <a href="services.html" class="footer-link">Estate Care</a>
-                <a href="services.html" class="footer-link">Corporate Portfolio</a>
-                <a href="services.html" class="footer-link">Textile Spa</a>
-                <a href="services.html" class="footer-link">Deep-Hygienics</a>
+                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Core Services</h4>
+                <a href="#" class="footer-link">Household & Apartments</a>
+                <a href="#" class="footer-link">Warehouse Fumigation</a>
+                <a href="#" class="footer-link">Move-In/Move-Out</a>
+                <a href="#" class="footer-link">Window Cleaning</a>
+                <a href="#" class="footer-link">Car Wash (Soon)</a>
             </div>
             <div>
                 <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Contact</h4>
@@ -343,56 +337,49 @@
             </div>
         </div>
         <div style="margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.8rem;">
-            © 2026 SpotlessBubbles — Precision cleaning for the discerning client.
+            © 2026 SpotlessBubbles — Precision cleaning, fumigation & restoration. Client equipment option: additional fee for company equipment. Extra products billed separately.
         </div>
     </div>
 </footer>
 
 <script>
+    // Service catalog: covers all requested categories: household, apartment, move in/out, warehouse, warehouse fumigation, pre-move fumigation, windows, extra products note (already reflected in footnote)
     const services = [
-        { name: "Carpet & Rug Spa", desc: "Hot water extraction, stain removal, deodorizing.", price: "R 2,390" },
-        { name: "Window & Glass Prism", desc: "Streak-free interior/exterior glass & sills.", price: "R 2,750" },
-        { name: "Move-In/Move-Out", desc: "Comprehensive clean for seamless transitions.", price: "R 4,590" },
-        { name: "Marble & Stone Care", desc: "Sealing, polishing, and restoration.", price: "R 4,030" },
-        { name: "Hardwood Renewal", desc: "Buffing and protective coating.", price: "R 2,930" },
-        { name: "High-Touch Sanitization", desc: "Electrostatic spray + UV-C technology.", price: "R 2,560" },
-        { name: "Recurring Maintenance", desc: "Weekly scheduled perfection.", price: "From R 2,190" },
-        { name: "Airbnb Turnover", desc: "Guest-ready sparkle, fast turnaround.", price: "R 1,820" },
-        { name: "Appliance Detailing", desc: "Deep degreasing and stainless shine.", price: "R 1,450" },
-        { name: "Pressure Washing", desc: "Driveways, patios, and exteriors.", price: "R 3,660" }
+        { name: "Household & Apartment Deep Clean", desc: "Kitchen degreasing, bathroom disinfection, floor wash, surface sanitizing.", price: "R 2,890" },
+        { name: "Move-In / Move-Out Intensive", desc: "Empty property clean: inside cabinets, baseboards, appliances, walls.", price: "R 4,390" },
+        { name: "Pre-Move Fumigation (new place)", desc: "Gas/thermal fumigation before you occupy — safe & certified.", price: "R 5,200+" },
+        { name: "Warehouse General Sanitization", desc: "Aisle scrubbing, dock cleaning, high-dust removal, waste management.", price: "R 7,450+" },
+        { name: "Warehouse Full Fumigation", desc: "Total pest elimination, spore control, sealing & post-testing.", price: "From R 9,200" },
+        { name: "Windows & Glass Prism", desc: "Inside/outside track cleaning, streak-free shine, screens included.", price: "R 1,990" },
+        { name: "Car Wash (Coming Soon)", desc: "Exterior foam + interior vacuum & polish — launch Q4 2026.", price: "TBA" },
+        { name: "Extra Products / Specific Solutions", desc: "Custom eco-enzymes, botanical scent additives, heavy-duty degreasers.", price: "Additional cost" },
+        { name: "Company Equipment Rental", desc: "HEPA vacuum, industrial steamer, fumigation fogger (client may provide own).", price: "Extra surcharge" },
+        { name: "Post-Construction Warehouse Clean", desc: "Debris removal, concrete dust extraction, paint residue clean.", price: "R 6,990" }
     ];
 
     const menuGrid = document.getElementById('fullMenuGrid');
-    services.forEach(s => {
-        const div = document.createElement('div');
-        div.className = 'menu-item';
-        div.innerHTML = `
-            <div class="menu-info">
-                <h4>${s.name}</h4>
-                <p>${s.desc}</p>
-            </div>
-            <div class="menu-price">${s.price}</div>
-        `;
-        menuGrid.appendChild(div);
-    });
-
-    // Scroll Reveal Logic with Intersection Observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { 
-            if (entry.isIntersecting) entry.target.classList.add('active'); 
+    if (menuGrid) {
+        services.forEach(s => {
+            const div = document.createElement('div');
+            div.className = 'menu-item';
+            div.innerHTML = `
+                <div class="menu-info">
+                    <h4>${s.name}</h4>
+                    <p>${s.desc}</p>
+                </div>
+                <div class="menu-price">${s.price}</div>
+            `;
+            menuGrid.appendChild(div);
         });
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Add click handlers to bento cards and category cards for potential future interactivity
-    document.querySelectorAll('.bento-card, .category-card').forEach(card => {
-        card.addEventListener('click', function() {
-            // Optional: Add service selection highlight if needed
-            console.log('Service card clicked');
-        });
-    });
-
-    // Set active state for dock based on current page (ensures consistency)
+    // Active dock highlight for services page
     const currentPath = window.location.pathname;
     if (currentPath.includes('services')) {
         document.querySelectorAll('.dock-btn').forEach(btn => btn.classList.remove('active'));
@@ -400,7 +387,7 @@
         if (servicesDock) servicesDock.classList.add('active');
     }
 
-    // Dynamic year update in footer
+    // Dynamic year in footer
     const footerYearSpan = document.querySelector('footer .container div:last-child');
     if (footerYearSpan) {
         const currentYear = new Date().getFullYear();
@@ -409,16 +396,13 @@
         }
     }
 
-    // Add smooth hover effect for dock on mobile (touch devices)
-    if ('ontouchstart' in window) {
-        const dockBtns = document.querySelectorAll('.dock-btn');
-        dockBtns.forEach(btn => {
-            btn.addEventListener('touchstart', function() {
-                dockBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
+    // Add interactive click for bento/category (optional logging)
+    document.querySelectorAll('.bento-card, .category-card').forEach(card => {
+        card.addEventListener('click', function() {
+            // subtle engagement
+            console.log('Service card selected');
         });
-    }
+    });
 </script>
 
 </body>

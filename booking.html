@@ -7,6 +7,9 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <style>
         :root {
@@ -169,25 +172,20 @@
         .modal-overlay.active { display: flex; }
         .modal-content { text-align: center; max-width: 450px; width: 90%; padding: 50px 40px; border: 1px solid var(--primary-teal); background: var(--surface); border-radius: 24px; }
         .success-icon { width: 70px; height: 70px; border: 2px solid var(--primary-teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--primary-teal); margin: 0 auto 25px; }
+        .error-icon { width: 70px; height: 70px; border: 2px solid #e74c3c; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #e74c3c; margin: 0 auto 25px; }
         .loading-bar { width: 100px; height: 2px; background: var(--border); margin: 20px auto 0; position: relative; overflow: hidden; border-radius: 2px; }
         .loading-progress { position: absolute; left: 0; top: 0; height: 100%; background: var(--accent-gold); width: 0%; animation: progressRun 2.5s linear forwards; }
         @keyframes progressRun { to { width: 100%; } }
         .badge-count { background: var(--accent-gold); color: #0B0E11; border-radius: 40px; font-size: 0.7rem; font-weight: 800; padding: 2px 8px; margin-left: 8px; }
-        footer { background: #06080A; padding: 100px 0 40px; border-top: 1px solid var(--border); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; }
-        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: inline-block; text-decoration: none; }
-        .footer-link { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
-        .footer-link:hover { color: var(--primary-teal); padding-left: 5px; }
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s var(--transition); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 992px) {
             .container { padding: 0 24px; }
-            .services-bento, .category-grid, .footer-grid { grid-template-columns: 1fr; }
+            .services-bento, .category-grid { grid-template-columns: 1fr; }
             .large, .medium, .tall { grid-column: span 1; grid-row: auto; }
             .booking-layout { grid-template-columns: 1fr; gap: 40px; }
             .summary-card { position: relative; top: 0; }
-            footer { padding-bottom: 100px; }
         }
     </style>
 </head>
@@ -195,15 +193,15 @@
 
 <header class="site-header">
   <div class="navbar">
-    <a href="home.html" class="logo-link"><span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span><span class="logo-mark"></span></a>
+    <a href="#" class="logo-link"><span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span><span class="logo-mark"></span></a>
     <div class="nav-links">
-      <a href="home.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
-      <a href="about.html" class="nav-item"><i class="fas fa-leaf"></i> About</a>
-      <a href="services.html" class="nav-item"><i class="fas fa-sparkle"></i> Services</a>
-      <a href="booking.html" class="nav-item active"><i class="fas fa-calendar-check"></i> Book</a>
-      <a href="contact.html" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="#" class="nav-item"><i class="fas fa-home"></i> Home</a>
+      <a href="#" class="nav-item"><i class="fas fa-leaf"></i> About</a>
+      <a href="#" class="nav-item"><i class="fas fa-sparkle"></i> Services</a>
+      <a href="#" class="nav-item active"><i class="fas fa-calendar-check"></i> Book</a>
+      <a href="#" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
     </div>
-    <a href="booking.html" class="btn-nav-cta"><i class="fas fa-file-invoice"></i> Get Quote</a>
+    <a href="#" class="btn-nav-cta"><i class="fas fa-file-invoice"></i> Get Quote</a>
   </div>
 </header>
 
@@ -217,12 +215,23 @@
 
 <a href="https://wa.me/27684867533" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+<!-- Success Modal -->
 <div class="modal-overlay" id="successModal">
     <div class="modal-content">
         <div class="success-icon"><i class="fas fa-check"></i></div>
         <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px;">Booking Request Sent</h2>
-        <p style="color: var(--text-dim); margin-bottom: 20px;">Redirecting to WhatsApp for confirmation & quote details...</p>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">Your booking has been submitted. You'll receive a confirmation shortly.</p>
         <div class="loading-bar"><div class="loading-progress"></div></div>
+    </div>
+</div>
+
+<!-- Error Modal -->
+<div class="modal-overlay" id="errorModal">
+    <div class="modal-content">
+        <div class="error-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px;">Submission Failed</h2>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">There was an error sending your booking. Please try again or contact us directly via WhatsApp.</p>
+        <button onclick="closeErrorModal()" style="background: var(--primary-teal); color: white; border: none; padding: 12px 30px; border-radius: 40px; font-weight: 600; cursor: pointer; margin-top: 10px;">Close</button>
     </div>
 </div>
 
@@ -270,314 +279,29 @@
     </div>
 </section>
 
-<!-- RESPONSIVE FOOTER SECTION - Mobile Optimized -->
-<footer>
+<footer style="background: #06080A; padding: 60px 0 40px; border-top: 1px solid rgba(255,255,255,0.08);">
     <div class="container">
-        <div class="footer-grid">
-            <!-- Brand Column -->
-            <div class="footer-brand-col">
-                <a href="index.html" class="logo-link footer-logo">
-                    <span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span>
-                </a>
-                <p class="footer-description">Setting the benchmark for high-end hygiene and space curation since 2026.</p>
-            </div>
-            
-            <!-- Navigation Column -->
-            <div>
-                <h4 class="footer-heading">Navigation</h4>
-                <a href="index.html" class="footer-link">Experience</a>
-                <a href="about.html" class="footer-link">The Science</a>
-                <a href="#" class="footer-link">Sustainability</a>
-                <a href="booking.html" class="footer-link">Concierge</a>
-            </div>
-            
-            <!-- Services Column -->
-            <div>
-                <h4 class="footer-heading">Services</h4>
-                <a href="services.html" class="footer-link">Estate Care</a>
-                <a href="services.html" class="footer-link">Corporate Portfolio</a>
-                <a href="services.html" class="footer-link">Textile Spa</a>
-                <a href="services.html" class="footer-link">Deep-Hygienics</a>
-            </div>
-            
-            <!-- Contact Column -->
-            <div>
-                <h4 class="footer-heading">Contact</h4>
-                <p class="footer-contact"><i class="fas fa-map-marker-alt"></i> Sandton, South Africa</p>
-                <p class="footer-contact"><i class="fas fa-phone"></i> 068 486 7533</p>
-                <div class="social-icons">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
+        <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: 40px;">
+            <div><a href="#" class="logo-link" style="font-size:1.5rem;"><span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span></a><p style="color:#9CA3AF; font-size:0.9rem; margin-top:15px;">Setting the benchmark for high-end hygiene and space curation since 2026.</p></div>
+            <div><h4 style="color:#1A7F6E; margin-bottom:20px;">Navigation</h4><a href="#" style="display:block; color:#9CA3AF; text-decoration:none; margin-bottom:10px;">Experience</a><a href="#" style="display:block; color:#9CA3AF; text-decoration:none; margin-bottom:10px;">The Science</a><a href="#" style="display:block; color:#9CA3AF; text-decoration:none;">Concierge</a></div>
+            <div><h4 style="color:#1A7F6E; margin-bottom:20px;">Services</h4><a href="#" style="display:block; color:#9CA3AF; text-decoration:none; margin-bottom:10px;">Estate Care</a><a href="#" style="display:block; color:#9CA3AF; text-decoration:none; margin-bottom:10px;">Corporate Portfolio</a><a href="#" style="display:block; color:#9CA3AF; text-decoration:none;">Deep-Hygienics</a></div>
+            <div><h4 style="color:#1A7F6E; margin-bottom:20px;">Contact</h4><p style="color:#9CA3AF;"><i class="fas fa-map-marker-alt"></i> Sandton, South Africa</p><p style="color:#9CA3AF; margin:10px 0;"><i class="fas fa-phone"></i> 068 486 7533</p><div style="display:flex; gap:20px;"><a href="#" style="color:#9CA3AF;"><i class="fab fa-instagram"></i></a><a href="#" style="color:#9CA3AF;"><i class="fab fa-linkedin"></i></a></div></div>
         </div>
-        
-        <!-- Copyright Row -->
-        <div class="copyright">
-            © 2026 SpotlessBubbles — Precision cleaning for the discerning client.
-        </div>
+        <div style="margin-top:60px; padding-top:30px; border-top:1px solid rgba(255,255,255,0.08); text-align:center; color:#9CA3AF; font-size:0.75rem;">© 2026 SpotlessBubbles — Precision cleaning for the discerning client.</div>
     </div>
 </footer>
 
-<style>
-    /* Footer Specific Styles - Fully Responsive */
-    footer {
-        background: #06080A;
-        padding: 60px 0 40px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        width: 100%;
-    }
-    
-    .container {
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 0 40px;
-    }
-    
-    /* Footer Grid - Desktop: 4 columns */
-    .footer-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-        margin-bottom: 20px;
-    }
-    
-    /* Brand Column */
-    .footer-brand-col {
-        max-width: 280px;
-    }
-    
-    .logo-link {
-        text-decoration: none;
-        display: inline-flex;
-        align-items: baseline;
-        gap: 2px;
-        font-weight: 700;
-        font-size: 1.35rem;
-        color: #F9FAFB;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .logo-word {
-        font-weight: 700;
-    }
-    
-    .logo-highlight {
-        color: #1A7F6E;
-        font-weight: 800;
-    }
-    
-    .footer-logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        margin-bottom: 20px;
-        display: inline-block;
-        text-decoration: none;
-        letter-spacing: -0.3px;
-    }
-    
-    .footer-description {
-        color: #9CA3AF;
-        font-size: 0.9rem;
-        margin-top: 15px;
-        line-height: 1.5;
-    }
-    
-    /* Headings & Links */
-    .footer-heading {
-        margin-bottom: 25px;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: #1A7F6E;
-        font-weight: 600;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .footer-link {
-        display: block;
-        color: #9CA3AF;
-        text-decoration: none;
-        margin-bottom: 12px;
-        transition: all 0.3s ease;
-        font-size: 0.9rem;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .footer-link:hover {
-        color: #1A7F6E;
-        padding-left: 5px;
-    }
-    
-    /* Contact Info */
-    .footer-contact {
-        color: #9CA3AF;
-        margin-bottom: 10px;
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .footer-contact i {
-        width: 20px;
-        color: #CFA64B;
-    }
-    
-    /* Social Icons */
-    .social-icons {
-        display: flex;
-        gap: 20px;
-        font-size: 1.2rem;
-        margin-top: 15px;
-    }
-    
-    .social-icons a {
-        color: #9CA3AF;
-        transition: all 0.3s ease;
-    }
-    
-    .social-icons a:hover {
-        color: #1A7F6E;
-        transform: translateY(-2px);
-    }
-    
-    /* Copyright */
-    .copyright {
-        margin-top: 60px;
-        padding-top: 30px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        text-align: center;
-        color: #9CA3AF;
-        font-size: 0.75rem;
-        letter-spacing: 0.5px;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    /* ========== MOBILE RESPONSIVE (max-width: 992px) ========== */
-    @media (max-width: 992px) {
-        .container {
-            padding: 0 24px;
-        }
-        
-        /* Stack grid vertically on mobile */
-        .footer-grid {
-            grid-template-columns: 1fr;
-            gap: 35px;
-            text-align: center;
-        }
-        
-        /* Brand column - center align on mobile */
-        .footer-brand-col {
-            max-width: 100%;
-        }
-        
-        .footer-logo {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-        
-        .logo-link {
-            justify-content: center;
-        }
-        
-        .footer-description {
-            text-align: center;
-            max-width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Center align all headings */
-        .footer-heading {
-            text-align: center;
-            margin-bottom: 18px;
-            font-size: 0.9rem;
-        }
-        
-        /* Center align links */
-        .footer-link {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        
-        .footer-link:hover {
-            padding-left: 0;
-            transform: translateX(3px);
-        }
-        
-        /* Contact info - center with inline flex */
-        .footer-contact {
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        /* Social icons - center */
-        .social-icons {
-            justify-content: center;
-            margin-top: 12px;
-        }
-        
-        /* Copyright spacing */
-        .copyright {
-            margin-top: 45px;
-            padding-top: 25px;
-        }
-    }
-    
-    /* ========== EXTRA SMALL DEVICES (max-width: 480px) ========== */
-    @media (max-width: 480px) {
-        footer {
-            padding: 50px 0 30px;
-        }
-        
-        .container {
-            padding: 0 20px;
-        }
-        
-        .footer-grid {
-            gap: 28px;
-        }
-        
-        .footer-heading {
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
-            margin-bottom: 15px;
-        }
-        
-        .footer-link {
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-        }
-        
-        .footer-description {
-            font-size: 0.85rem;
-        }
-        
-        .footer-contact {
-            font-size: 0.85rem;
-        }
-        
-        .copyright {
-            font-size: 0.7rem;
-            margin-top: 35px;
-            padding-top: 20px;
-        }
-        
-        .social-icons {
-            gap: 16px;
-        }
-    }
-</style>
-
-<!-- Font Awesome Icons (required for icons to display) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
-    // Master list of bookable services (all numeric prices)
+    // ==================== EMAILJS CONFIGURATION ====================
+    // IMPORTANT: Replace these with your actual EmailJS credentials
+    const EMAILJS_PUBLIC_KEY = "oKSxsjWm4ZJ9tyLwT";  // Get from EmailJS dashboard
+    const EMAILJS_SERVICE_ID = "service_yz9mpzn"; // Your EmailJS service ID
+    const EMAILJS_TEMPLATE_ID = "template_ggzf0ko"; // Your EmailJS template ID
+    
+    // Initialize EmailJS
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    
+    // ==================== BOOKING STATE ====================
     const allServices = [
         { name: "Household & Apartment Deep Clean", desc: "Full kitchen degreasing, bathroom sanitation, floor wash.", price: 2890 },
         { name: "Move-In / Move-Out Intensive", desc: "Empty property clean: baseboards, appliances, walls.", price: 4390 },
@@ -591,7 +315,7 @@
         { name: "Small Office Cleaning", desc: "Desks, meeting rooms, floors, kitchenette & waste removal.", price: 1200 }
     ];
 
-    let selectedServices = []; // array of { name, price }
+    let selectedServices = [];
     let bookingState = { date: null, time: null };
     let currentViewDate = new Date();
 
@@ -708,16 +432,55 @@
         bookingState.time = t;
         updateSummaryUI();
     };
-    window.handleFinalBooking = () => {
+    
+    function closeErrorModal() {
+        document.getElementById('errorModal').classList.remove('active');
+    }
+    
+    async function sendEmailNotification() {
+        const serviceNames = selectedServices.map(s => s.name).join(', ');
+        const totalPrice = selectedServices.reduce((sum, s) => sum + s.price, 0);
+        
+        const templateParams = {
+            service: serviceNames,
+            date: bookingState.date,
+            time: bookingState.time,
+            price: `R ${totalPrice.toLocaleString()}`
+        };
+        
+        try {
+            const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+            console.log('Email sent successfully:', response);
+            return true;
+        } catch (error) {
+            console.error('Email send failed:', error);
+            return false;
+        }
+    }
+    
+    window.handleFinalBooking = async () => {
         if (selectedServices.length === 0 || !bookingState.date || !bookingState.time) return;
+        
         const modal = document.getElementById('successModal');
         modal.classList.add('active');
+        
+        // Send email notification via EmailJS
+        const emailSent = await sendEmailNotification();
+        
+        if (!emailSent) {
+            modal.classList.remove('active');
+            document.getElementById('errorModal').classList.add('active');
+            return;
+        }
+        
+        // Also open WhatsApp as backup communication
         setTimeout(() => {
-            const servicesList = selectedServices.map(s => `${s.name} (R${s.price})`).join(', ');
+            const serviceNames = selectedServices.map(s => `${s.name} (R${s.price})`).join(', ');
             const total = selectedServices.reduce((sum, s) => sum + s.price, 0);
-            const msg = `Hello SpotlessBubbles, I'd like to book multiple services: ${servicesList}. Appointment on ${bookingState.date} at ${bookingState.time}. Estimated total: R ${total}. Please advise about equipment (client has own / need rental) and any extra products if needed. Thank you.`;
+            const msg = `Hello SpotlessBubbles, I'd like to book multiple services: ${serviceNames}. Appointment on ${bookingState.date} at ${bookingState.time}. Estimated total: R ${total}. Please advise about equipment (client has own / need rental) and any extra products if needed. Thank you.`;
             window.open(`https://wa.me/27684867533?text=${encodeURIComponent(msg)}`);
             modal.classList.remove('active');
+            
             // Reset selection after booking
             selectedServices = [];
             bookingState = { date: null, time: null };
@@ -730,7 +493,7 @@
         }, 2500);
     };
 
-    // Attach multi-select logic to bento & category cards (same toggle)
+    // Attach multi-select logic to bento & category cards
     document.querySelectorAll('.bento-card, .category-card').forEach(card => {
         const name = card.getAttribute('data-name');
         const price = parseInt(card.getAttribute('data-price'));
@@ -745,8 +508,11 @@
     renderCalendar();
     generateTimes();
     updateSummaryUI();
-    const footerYearSpan = document.querySelector('footer .container div:last-child');
-    if (footerYearSpan) { const currentYear = new Date().getFullYear(); if (currentYear !== 2026) footerYearSpan.innerHTML = footerYearSpan.innerHTML.replace('2026', currentYear); }
+    
+    // Display warning if EmailJS not configured
+    if (EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY") {
+        console.warn("⚠️ EmailJS not configured. Please replace EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, and EMAILJS_TEMPLATE_ID with your actual credentials.");
+    }
 </script>
 </body>
 </html>

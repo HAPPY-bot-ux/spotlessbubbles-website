@@ -349,44 +349,312 @@
     </div>
 </section>
 
+<!-- RESPONSIVE FOOTER SECTION - Mobile Optimized -->
 <footer>
     <div class="container">
         <div class="footer-grid">
-            <div>
+            <!-- Brand Column -->
+            <div class="footer-brand-col">
                 <a href="index.html" class="logo-link footer-logo">
                     <span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span>
                 </a>
-                <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 15px;">Setting the benchmark for high-end hygiene and space curation since 2026.</p>
+                <p class="footer-description">Setting the benchmark for high-end hygiene and space curation since 2026.</p>
             </div>
+            
+            <!-- Navigation Column -->
             <div>
-                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Navigation</h4>
+                <h4 class="footer-heading">Navigation</h4>
                 <a href="index.html" class="footer-link">Experience</a>
                 <a href="about.html" class="footer-link">The Science</a>
                 <a href="#" class="footer-link">Sustainability</a>
                 <a href="booking.html" class="footer-link">Concierge</a>
             </div>
+            
+            <!-- Services Column -->
             <div>
-                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Services</h4>
+                <h4 class="footer-heading">Services</h4>
                 <a href="services.html" class="footer-link">Estate Care</a>
                 <a href="services.html" class="footer-link">Corporate Portfolio</a>
                 <a href="services.html" class="footer-link">Textile Spa</a>
                 <a href="services.html" class="footer-link">Deep-Hygienics</a>
             </div>
+            
+            <!-- Contact Column -->
             <div>
-                <h4 style="margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal);">Contact</h4>
-                <p style="color: var(--text-dim); margin-bottom: 10px;"><i class="fas fa-map-marker-alt"></i> Sandton, South Africa</p>
-                <p style="color: var(--text-dim); margin-bottom: 20px;"><i class="fas fa-phone"></i> 068 486 7533</p>
-                <div style="display: flex; gap: 20px; font-size: 1.2rem;">
-                    <a href="#" style="color: var(--text-dim); transition: 0.3s;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" style="color: var(--text-dim); transition: 0.3s;"><i class="fab fa-linkedin"></i></a>
+                <h4 class="footer-heading">Contact</h4>
+                <p class="footer-contact"><i class="fas fa-map-marker-alt"></i> Sandton, South Africa</p>
+                <p class="footer-contact"><i class="fas fa-phone"></i> 068 486 7533</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.8rem;">
+        
+        <!-- Copyright Row -->
+        <div class="copyright">
             © 2026 SpotlessBubbles — Precision cleaning for the discerning client.
         </div>
     </div>
 </footer>
+
+<style>
+    /* Footer Specific Styles - Fully Responsive */
+    footer {
+        background: #06080A;
+        padding: 60px 0 40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        width: 100%;
+    }
+    
+    .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+    
+    /* Footer Grid - Desktop: 4 columns */
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        margin-bottom: 20px;
+    }
+    
+    /* Brand Column */
+    .footer-brand-col {
+        max-width: 280px;
+    }
+    
+    .logo-link {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 2px;
+        font-weight: 700;
+        font-size: 1.35rem;
+        color: #F9FAFB;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    .logo-word {
+        font-weight: 700;
+    }
+    
+    .logo-highlight {
+        color: #1A7F6E;
+        font-weight: 800;
+    }
+    
+    .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        display: inline-block;
+        text-decoration: none;
+        letter-spacing: -0.3px;
+    }
+    
+    .footer-description {
+        color: #9CA3AF;
+        font-size: 0.9rem;
+        margin-top: 15px;
+        line-height: 1.5;
+    }
+    
+    /* Headings & Links */
+    .footer-heading {
+        margin-bottom: 25px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #1A7F6E;
+        font-weight: 600;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    .footer-link {
+        display: block;
+        color: #9CA3AF;
+        text-decoration: none;
+        margin-bottom: 12px;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    .footer-link:hover {
+        color: #1A7F6E;
+        padding-left: 5px;
+    }
+    
+    /* Contact Info */
+    .footer-contact {
+        color: #9CA3AF;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    .footer-contact i {
+        width: 20px;
+        color: #CFA64B;
+    }
+    
+    /* Social Icons */
+    .social-icons {
+        display: flex;
+        gap: 20px;
+        font-size: 1.2rem;
+        margin-top: 15px;
+    }
+    
+    .social-icons a {
+        color: #9CA3AF;
+        transition: all 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+        color: #1A7F6E;
+        transform: translateY(-2px);
+    }
+    
+    /* Copyright */
+    .copyright {
+        margin-top: 60px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        text-align: center;
+        color: #9CA3AF;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    /* ========== MOBILE RESPONSIVE (max-width: 992px) ========== */
+    @media (max-width: 992px) {
+        .container {
+            padding: 0 24px;
+        }
+        
+        /* Stack grid vertically on mobile */
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 35px;
+            text-align: center;
+        }
+        
+        /* Brand column - center align on mobile */
+        .footer-brand-col {
+            max-width: 100%;
+        }
+        
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo-link {
+            justify-content: center;
+        }
+        
+        .footer-description {
+            text-align: center;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Center align all headings */
+        .footer-heading {
+            text-align: center;
+            margin-bottom: 18px;
+            font-size: 0.9rem;
+        }
+        
+        /* Center align links */
+        .footer-link {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .footer-link:hover {
+            padding-left: 0;
+            transform: translateX(3px);
+        }
+        
+        /* Contact info - center with inline flex */
+        .footer-contact {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Social icons - center */
+        .social-icons {
+            justify-content: center;
+            margin-top: 12px;
+        }
+        
+        /* Copyright spacing */
+        .copyright {
+            margin-top: 45px;
+            padding-top: 25px;
+        }
+    }
+    
+    /* ========== EXTRA SMALL DEVICES (max-width: 480px) ========== */
+    @media (max-width: 480px) {
+        footer {
+            padding: 50px 0 30px;
+        }
+        
+        .container {
+            padding: 0 20px;
+        }
+        
+        .footer-grid {
+            gap: 28px;
+        }
+        
+        .footer-heading {
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-link {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+        
+        .footer-description {
+            font-size: 0.85rem;
+        }
+        
+        .footer-contact {
+            font-size: 0.85rem;
+        }
+        
+        .copyright {
+            font-size: 0.7rem;
+            margin-top: 35px;
+            padding-top: 20px;
+        }
+        
+        .social-icons {
+            gap: 16px;
+        }
+    }
+</style>
+
+<!-- Font Awesome Icons (required for icons to display) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <script>
     // Scroll Reveal Logic (matches services page)

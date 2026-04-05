@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
     <style>
         :root {
             --primary-teal: #1A7F6E;
@@ -90,14 +93,42 @@
         .form-control:focus { outline: none; border-color: var(--primary-teal); background: rgba(255,255,255,0.05); }
         textarea.form-control { min-height: 150px; resize: none; }
         
+        /* FIXED: Dropdown styling - dark theme with proper colors */
+        select.form-control {
+            appearance: none;
+            background-color: rgba(22, 26, 31, 0.95);
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+        select.form-control option {
+            background-color: var(--surface);
+            color: var(--text-main);
+            padding: 12px;
+        }
+        select.form-control option:hover,
+        select.form-control option:checked {
+            background-color: var(--primary-teal);
+            color: white;
+        }
+        /* For better dropdown visibility in dark mode */
+        select.form-control::-ms-expand { display: none; }
+        
         .btn-submit {
             width: 100%; background: var(--primary-teal); color: white; border: none;
             padding: 18px; border-radius: 4px; font-weight: 700; font-size: 1rem;
             text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s;
         }
         .btn-submit:hover { background: var(--primary-teal-dark); transform: translateY(-2px); }
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
 
-        /* ========== DOCKER STYLE BOTTOM NAVIGATION (EXACT MATCH FROM SERVICES PAGE) ========== */
+        /* ========== DOCKER STYLE BOTTOM NAVIGATION ========== */
         .bottom-dock {
             position: fixed; bottom: 0; left: 0; right: 0;
             background: rgba(11, 14, 17, 0.98); backdrop-filter: blur(20px);
@@ -116,17 +147,15 @@
         .dock-btn:hover { color: var(--primary-teal); background: var(--primary-teal-soft); transform: translateY(-2px); }
         .dock-btn.active { color: var(--primary-teal); background: var(--primary-teal-soft); }
 
-        /* Desktop hides dock, mobile shows (EXACT MATCH) */
         @media (min-width: 993px) {
             .bottom-dock { display: none; }
         }
-
         @media (max-width: 992px) {
             .nav-links, .btn-nav-cta { display: none; }
             .bottom-dock { display: flex; }
         }
 
-        /* ========== WHATSAPP FLOATING BUTTON (MATCHING SERVICES PAGE) ========== */
+        /* ========== WHATSAPP FLOATING BUTTON ========== */
         .whatsapp-float {
             position: fixed; bottom: 100px; right: 30px; background: #25D366;
             width: 55px; height: 55px; border-radius: 50%; display: flex;
@@ -135,24 +164,11 @@
             transition: 0.3s;
         }
         .whatsapp-float:hover { transform: scale(1.1); background: #20b358; }
-
         @media (max-width: 992px) {
             .whatsapp-float { bottom: 90px; }
         }
 
-        @media (max-width: 480px) {
-            .dock-btn span { font-size: 0.6rem; }
-            .dock-btn i { font-size: 1rem; }
-            .bottom-dock { padding: 0.6rem 0.8rem; }
-        }
-
-        /* ========== SHARED FOOTER ========== */
-        footer { background: #06080A; padding: 100px 0 40px; border-top: 1px solid var(--border); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; }
-        .footer-link { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; font-size: 0.9rem; transition: 0.3s; }
-        .footer-link:hover { color: var(--primary-teal); padding-left: 5px; }
-
-        /* Modal for elegant confirmation */
+        /* ========== MODAL ========== */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(11, 14, 17, 0.98); z-index: 2000;
@@ -179,34 +195,58 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Responsive adjustments */
+        /* Responsive */
         @media (max-width: 992px) {
             .contact-wrapper, .footer-grid { grid-template-columns: 1fr; }
             .form-card { padding: 30px; }
             .container { padding: 0 20px; }
             footer { padding-bottom: 100px; }
         }
-
         @media (max-width: 480px) {
             .contact-hero { padding: 60px 0 30px; }
             .method-icon { width: 40px; height: 40px; font-size: 1rem; }
-            .method-text p { font-size: 0.9rem; }
+        }
+
+        /* Footer Styles */
+        footer { background: #06080A; padding: 60px 0 40px; border-top: 1px solid var(--border); width: 100%; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 20px; }
+        .footer-brand-col { max-width: 280px; }
+        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: inline-block; text-decoration: none; letter-spacing: -0.3px; }
+        .footer-description { color: #9CA3AF; font-size: 0.9rem; margin-top: 15px; line-height: 1.5; }
+        .footer-heading { margin-bottom: 25px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: #1A7F6E; font-weight: 600; }
+        .footer-link { display: block; color: #9CA3AF; text-decoration: none; margin-bottom: 12px; transition: all 0.3s ease; font-size: 0.9rem; }
+        .footer-link:hover { color: #1A7F6E; padding-left: 5px; }
+        .footer-contact { color: #9CA3AF; margin-bottom: 10px; font-size: 0.9rem; display: flex; align-items: center; gap: 10px; }
+        .footer-contact i { width: 20px; color: #CFA64B; }
+        .social-icons { display: flex; gap: 20px; font-size: 1.2rem; margin-top: 15px; }
+        .social-icons a { color: #9CA3AF; transition: all 0.3s ease; }
+        .social-icons a:hover { color: #1A7F6E; transform: translateY(-2px); }
+        .copyright { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.08); text-align: center; color: #9CA3AF; font-size: 0.75rem; }
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 35px; text-align: center; }
+            .footer-brand-col { max-width: 100%; }
+            .footer-logo { display: flex; justify-content: center; }
+            .footer-description { text-align: center; margin-left: auto; margin-right: auto; }
+            .footer-heading { text-align: center; }
+            .footer-link { text-align: center; }
+            .footer-contact { justify-content: center; }
+            .social-icons { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-<!-- Elegant modal for confirmation -->
+<!-- Modal for confirmation -->
 <div class="modal-overlay" id="successModal">
     <div class="modal-content">
         <div class="success-icon"><i class="fas fa-check"></i></div>
-        <h2 class="playfair" style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 15px;">Message Delivered</h2>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 15px;">Message Delivered</h2>
         <p style="color: var(--text-dim); margin-bottom: 30px;">Your inquiry has been received. A concierge will respond within 2 hours. Thank you for trusting SpotlessBubbles.</p>
         <div class="loading-bar"><div class="loading-progress"></div></div>
     </div>
 </div>
 
-<header class="site-header" id="siteHeader">
+<header class="site-header">
   <div class="navbar">
     <a href="home.html" class="logo-link">
       <span class="logo-word">SPOTLESS</span>
@@ -279,7 +319,8 @@
             </div>
             <div class="form-group">
                 <label>Service Category</label>
-                <select class="form-control" id="serviceSelect">
+                <select class="form-control" id="serviceSelect" required>
+                    <option value="">Select a service</option>
                     <option>Residential Deep Clean</option>
                     <option>Commercial Portfolio</option>
                     <option>Textile Restoration</option>
@@ -292,25 +333,21 @@
                 <label>Brief Message</label>
                 <textarea class="form-control" id="briefMsg" placeholder="Tell us about your space, square footage, or specific requirements..."></textarea>
             </div>
-            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Dispatch Inquiry</button>
+            <button type="submit" class="btn-submit" id="submitBtn"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Dispatch Inquiry</button>
         </form>
         <p style="font-size: 0.7rem; text-align: center; margin-top: 20px; color: var(--text-dim);">All inquiries are protected under our privacy protocol.</p>
     </div>
 </section>
 
-<!-- RESPONSIVE FOOTER SECTION - Mobile Optimized -->
 <footer>
     <div class="container">
         <div class="footer-grid">
-            <!-- Brand Column -->
             <div class="footer-brand-col">
                 <a href="index.html" class="logo-link footer-logo">
                     <span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span>
                 </a>
                 <p class="footer-description">Setting the benchmark for high-end hygiene and space curation since 2026.</p>
             </div>
-            
-            <!-- Navigation Column -->
             <div>
                 <h4 class="footer-heading">Navigation</h4>
                 <a href="index.html" class="footer-link">Experience</a>
@@ -318,8 +355,6 @@
                 <a href="#" class="footer-link">Sustainability</a>
                 <a href="booking.html" class="footer-link">Concierge</a>
             </div>
-            
-            <!-- Services Column -->
             <div>
                 <h4 class="footer-heading">Services</h4>
                 <a href="services.html" class="footer-link">Estate Care</a>
@@ -327,8 +362,6 @@
                 <a href="services.html" class="footer-link">Textile Spa</a>
                 <a href="services.html" class="footer-link">Deep-Hygienics</a>
             </div>
-            
-            <!-- Contact Column -->
             <div>
                 <h4 class="footer-heading">Contact</h4>
                 <p class="footer-contact"><i class="fas fa-map-marker-alt"></i> Sandton, South Africa</p>
@@ -339,273 +372,13 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Copyright Row -->
         <div class="copyright">
             © 2026 SpotlessBubbles — Precision cleaning for the discerning client.
         </div>
     </div>
 </footer>
 
-<style>
-    /* Footer Specific Styles - Fully Responsive */
-    footer {
-        background: #06080A;
-        padding: 60px 0 40px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        width: 100%;
-    }
-    
-    .container {
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 0 40px;
-    }
-    
-    /* Footer Grid - Desktop: 4 columns */
-    .footer-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-        margin-bottom: 20px;
-    }
-    
-    /* Brand Column */
-    .footer-brand-col {
-        max-width: 280px;
-    }
-    
-    .logo-link {
-        text-decoration: none;
-        display: inline-flex;
-        align-items: baseline;
-        gap: 2px;
-        font-weight: 700;
-        font-size: 1.35rem;
-        color: #F9FAFB;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .logo-word {
-        font-weight: 700;
-    }
-    
-    .logo-highlight {
-        color: #1A7F6E;
-        font-weight: 800;
-    }
-    
-    .footer-logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        margin-bottom: 20px;
-        display: inline-block;
-        text-decoration: none;
-        letter-spacing: -0.3px;
-    }
-    
-    .footer-description {
-        color: #9CA3AF;
-        font-size: 0.9rem;
-        margin-top: 15px;
-        line-height: 1.5;
-    }
-    
-    /* Headings & Links */
-    .footer-heading {
-        margin-bottom: 25px;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: #1A7F6E;
-        font-weight: 600;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .footer-link {
-        display: block;
-        color: #9CA3AF;
-        text-decoration: none;
-        margin-bottom: 12px;
-        transition: all 0.3s ease;
-        font-size: 0.9rem;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .footer-link:hover {
-        color: #1A7F6E;
-        padding-left: 5px;
-    }
-    
-    /* Contact Info */
-    .footer-contact {
-        color: #9CA3AF;
-        margin-bottom: 10px;
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .footer-contact i {
-        width: 20px;
-        color: #CFA64B;
-    }
-    
-    /* Social Icons */
-    .social-icons {
-        display: flex;
-        gap: 20px;
-        font-size: 1.2rem;
-        margin-top: 15px;
-    }
-    
-    .social-icons a {
-        color: #9CA3AF;
-        transition: all 0.3s ease;
-    }
-    
-    .social-icons a:hover {
-        color: #1A7F6E;
-        transform: translateY(-2px);
-    }
-    
-    /* Copyright */
-    .copyright {
-        margin-top: 60px;
-        padding-top: 30px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        text-align: center;
-        color: #9CA3AF;
-        font-size: 0.75rem;
-        letter-spacing: 0.5px;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    /* ========== MOBILE RESPONSIVE (max-width: 992px) ========== */
-    @media (max-width: 992px) {
-        .container {
-            padding: 0 24px;
-        }
-        
-        /* Stack grid vertically on mobile */
-        .footer-grid {
-            grid-template-columns: 1fr;
-            gap: 35px;
-            text-align: center;
-        }
-        
-        /* Brand column - center align on mobile */
-        .footer-brand-col {
-            max-width: 100%;
-        }
-        
-        .footer-logo {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-        
-        .logo-link {
-            justify-content: center;
-        }
-        
-        .footer-description {
-            text-align: center;
-            max-width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Center align all headings */
-        .footer-heading {
-            text-align: center;
-            margin-bottom: 18px;
-            font-size: 0.9rem;
-        }
-        
-        /* Center align links */
-        .footer-link {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        
-        .footer-link:hover {
-            padding-left: 0;
-            transform: translateX(3px);
-        }
-        
-        /* Contact info - center with inline flex */
-        .footer-contact {
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        /* Social icons - center */
-        .social-icons {
-            justify-content: center;
-            margin-top: 12px;
-        }
-        
-        /* Copyright spacing */
-        .copyright {
-            margin-top: 45px;
-            padding-top: 25px;
-        }
-    }
-    
-    /* ========== EXTRA SMALL DEVICES (max-width: 480px) ========== */
-    @media (max-width: 480px) {
-        footer {
-            padding: 50px 0 30px;
-        }
-        
-        .container {
-            padding: 0 20px;
-        }
-        
-        .footer-grid {
-            gap: 28px;
-        }
-        
-        .footer-heading {
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
-            margin-bottom: 15px;
-        }
-        
-        .footer-link {
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-        }
-        
-        .footer-description {
-            font-size: 0.85rem;
-        }
-        
-        .footer-contact {
-            font-size: 0.85rem;
-        }
-        
-        .copyright {
-            font-size: 0.7rem;
-            margin-top: 35px;
-            padding-top: 20px;
-        }
-        
-        .social-icons {
-            gap: 16px;
-        }
-    }
-</style>
-
-<!-- Font Awesome Icons (required for icons to display) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<!-- DOCKER STYLE BOTTOM NAVIGATION (EXACT MATCH FROM SERVICES PAGE - same dimensions, padding, hover effects) -->
+<!-- DOCKER NAVIGATION -->
 <div class="bottom-dock">
   <a href="index.html" class="dock-btn"><i class="fas fa-home"></i><span>Home</span></a>
   <a href="about.html" class="dock-btn"><i class="fas fa-leaf"></i><span>About</span></a>
@@ -614,19 +387,24 @@
   <a href="contact.html" class="dock-btn active"><i class="fas fa-envelope"></i><span>Contact</span></a>
 </div>
 
-<!-- WHATSAPP FLOATING BUTTON (MATCHING SERVICES PAGE STYLE & SIZE) -->
+<!-- WHATSAPP FLOATING BUTTON -->
 <a href="https://wa.me/27684867533" class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
 
 <script>
+    // Initialize EmailJS with your Public Key
+    (function() {
+        emailjs.init("oKSxsjWm4ZJ9tyLwT");
+    })();
+
     // Intersection Observer for reveal animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Elegant modal & form handling
     const modal = document.getElementById('successModal');
     const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
 
     function resetForm() {
         document.getElementById('fullName').value = '';
@@ -635,65 +413,116 @@
         document.getElementById('briefMsg').value = '';
     }
 
-    contactForm.addEventListener('submit', function(e) {
+    // Helper to show temporary button feedback
+    function setButtonFeedback(btn, text, bgColor) {
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = text;
+        btn.style.background = bgColor;
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.background = 'var(--primary-teal)';
+            btn.disabled = false;
+        }, 2500);
+    }
+
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        const nameInput = document.getElementById('fullName');
-        const emailInput = document.getElementById('emailAddr');
+        const name = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('emailAddr').value.trim();
+        const service = document.getElementById('serviceSelect').value;
+        const message = document.getElementById('briefMsg').value.trim() || "No additional details provided.";
         
-        if (!nameInput.value.trim() || !emailInput.value.trim()) {
-            const btn = this.querySelector('.btn-submit');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Name & Email Required';
-            btn.style.background = '#b33b2c';
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = 'var(--primary-teal)';
-            }, 1800);
+        // Get current timestamp
+        const now = new Date();
+        const timestamp = now.toLocaleString('en-ZA', { 
+            dateStyle: 'full', 
+            timeStyle: 'medium' 
+        });
+
+        // Validation
+        if (!name || !email) {
+            setButtonFeedback(submitBtn, '<i class="fas fa-exclamation-triangle"></i> Name & Email Required', '#b33b2c');
+            return;
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+            setButtonFeedback(submitBtn, '<i class="fas fa-exclamation-triangle"></i> Valid Email Required', '#b33b2c');
+            return;
+        }
+        if (!service || service === "") {
+            setButtonFeedback(submitBtn, '<i class="fas fa-exclamation-triangle"></i> Select a Service', '#b33b2c');
             return;
         }
 
-        const name = nameInput.value.trim();
-        const email = emailInput.value.trim();
-        const service = document.getElementById('serviceSelect').value;
-        const message = document.getElementById('briefMsg').value || "No additional details provided.";
-        
-        modal.classList.add('active');
-        
-        setTimeout(() => {
-            const waMsg = `Hello SpotlessBubbles, I'm ${name} (${email}). I'm interested in the "${service}" category. Message: ${message.substring(0, 180)}. Please get back to me.`;
+        // Disable button and show sending state
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+        submitBtn.disabled = true;
+
+        // Prepare template parameters matching your EmailJS template variables
+        // Your template uses: {{name}}, {{email}}, {{service}}, {{message}}, {{time}}
+        const templateParams = {
+            name: name,
+            email: email,
+            service: service,
+            message: message,
+            time: timestamp
+        };
+
+        try {
+            // Your EmailJS configuration
+            const serviceId = 'service_yz9mpzn';
+            const templateId = 'template_7u6mhp4';
+            
+            const response = await emailjs.send(serviceId, templateId, templateParams);
+            
+            if (response.status === 200) {
+                // Show success modal
+                modal.classList.add('active');
+                
+                // Auto close modal after 2.5 seconds
+                setTimeout(() => {
+                    modal.classList.remove('active');
+                    resetForm();
+                    
+                    // Success feedback on button
+                    submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Inquiry Sent!';
+                    submitBtn.style.background = '#25D366';
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.style.background = 'var(--primary-teal)';
+                        submitBtn.disabled = false;
+                    }, 2000);
+                }, 2500);
+            } else {
+                throw new Error('EmailJS response not OK');
+            }
+        } catch (error) {
+            console.error('EmailJS Error:', error);
+            // Fallback: Show error and open WhatsApp as backup
+            setButtonFeedback(submitBtn, '<i class="fas fa-exclamation-triangle"></i> Retry or WhatsApp', '#b33b2c');
+            
+            // Open WhatsApp as backup
+            const waMsg = `Hello SpotlessBubbles, I'm ${name} (${email}). Interested in "${service}". Message: ${message.substring(0, 180)}. Please contact me.`;
             window.open(`https://wa.me/27684867533?text=${encodeURIComponent(waMsg)}`, '_blank');
-            
-            modal.classList.remove('active');
-            resetForm();
-            
-            const btn = contactForm.querySelector('.btn-submit');
-            const originalBtnText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check-circle"></i> Inquiry Sent → WhatsApp';
-            btn.style.background = '#25D366';
-            setTimeout(() => {
-                btn.innerHTML = originalBtnText;
-                btn.style.background = 'var(--primary-teal)';
-            }, 2500);
-        }, 2500);
+        }
     });
 
     // Set active state for dock based on current page
-    const currentPath = window.location.pathname;
-    if (currentPath.includes('contact')) {
+    if (window.location.pathname.includes('contact')) {
         document.querySelectorAll('.dock-btn').forEach(btn => btn.classList.remove('active'));
         const contactDock = document.querySelector('.dock-btn:last-child');
         if(contactDock) contactDock.classList.add('active');
     }
     
-    // Update footer year dynamically
-    const footerYearSpan = document.querySelector('footer .container div:last-child');
+    // Update footer year
+    const footerYearSpan = document.querySelector('.copyright');
     if (footerYearSpan) {
         const currentYear = new Date().getFullYear();
-        if (currentYear !== 2026) {
-            footerYearSpan.innerHTML = footerYearSpan.innerHTML.replace('2026', currentYear);
-        }
+        footerYearSpan.innerHTML = footerYearSpan.innerHTML.replace('2026', currentYear);
     }
 </script>
+
 </body>
 </html>

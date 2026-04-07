@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <title>SpotlessBubbles | Multi-Service Booking — Clean, Fumigate, Detail</title>
+    <title>SpotlessBubbles | Premium Multi-Service Booking</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
         :root {
@@ -17,6 +19,7 @@
             --primary-teal-dark: #0F5E51;
             --primary-teal-soft: rgba(26, 127, 110, 0.08);
             --accent-gold: #CFA64B;
+            --accent-gold-dark: #B8922E;
             --bg-dark: #0B0E11;
             --surface: #161A1F;
             --text-main: #F9FAFB;
@@ -198,8 +201,8 @@
       <a href="home.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
       <a href="about.html" class="nav-item"><i class="fas fa-leaf"></i> About</a>
       <a href="services.html" class="nav-item"><i class="fas fa-sparkle"></i> Services</a>
-      <a href="booking.html" class="nav-item active"><i class="fas fa-calendar-check"></i> Book</a>
-      <a href="contact.html" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="services.html" class="nav-item active"><i class="fas fa-calendar-check"></i> Book</a>
+      <a href="services.html" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
     </div>
     <a href="booking.html" class="btn-nav-cta"><i class="fas fa-file-invoice"></i> Get Quote</a>
   </div>
@@ -215,17 +218,15 @@
 
 <a href="https://wa.me/27684867533" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-<!-- Success Modal -->
 <div class="modal-overlay" id="successModal">
     <div class="modal-content">
         <div class="success-icon"><i class="fas fa-check"></i></div>
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px;">Booking Request Sent</h2>
-        <p style="color: var(--text-dim); margin-bottom: 20px;">Your booking has been submitted. You'll receive a confirmation shortly.</p>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px;">Booking Confirmed</h2>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">Your premium booking has been submitted. A professional invoice PDF is being generated...</p>
         <div class="loading-bar"><div class="loading-progress"></div></div>
     </div>
 </div>
 
-<!-- Error Modal -->
 <div class="modal-overlay" id="errorModal">
     <div class="modal-content">
         <div class="error-icon"><i class="fas fa-exclamation-triangle"></i></div>
@@ -289,19 +290,28 @@
         </div>
         <div style="margin-top:60px; padding-top:30px; border-top:1px solid rgba(255,255,255,0.08); text-align:center; color:#9CA3AF; font-size:0.75rem;">© 2026 SpotlessBubbles — Precision cleaning for the discerning client.</div>
     </div>
-</footer>
+</section>
 
 <script>
-    // ==================== EMAILJS CONFIGURATION ====================
-    // IMPORTANT: Replace these with your actual EmailJS credentials
-    const EMAILJS_PUBLIC_KEY = "oKSxsjWm4ZJ9tyLwT";  // Get from EmailJS dashboard
-    const EMAILJS_SERVICE_ID = "service_yz9mpzn"; // Your EmailJS service ID
-    const EMAILJS_TEMPLATE_ID = "template_ggzf0ko"; // Your EmailJS template ID
-    
-    // Initialize EmailJS
+    const EMAILJS_PUBLIC_KEY = "oKSxsjWm4ZJ9tyLwT";
+    const EMAILJS_SERVICE_ID = "service_yz9mpzn";
+    const EMAILJS_TEMPLATE_ID = "template_ggzf0ko";
     emailjs.init(EMAILJS_PUBLIC_KEY);
     
-    // ==================== BOOKING STATE ====================
+    const BANKING_DETAILS = {
+        bankName: "First National Bank (FNB)",
+        accountHolder: "DF NYAMUKAPA (PTY) LTD",
+        accountNumber: "63120900659",
+        accountType: "GOLD BUSINESS ACCOUNT",
+        branchCode: "200909",
+        swiftCode: "FIRNZAJJ",
+        branchName: "CENTURY CITY 004",
+        referenceNote: "Booking Invoice + Your Name"
+    };
+
+    let selectedServices = [];
+    let bookingState = { date: null, time: null };
+    let currentViewDate = new Date();
     const allServices = [
         { name: "Household & Apartment Deep Clean", desc: "Full kitchen degreasing, bathroom sanitation, floor wash.", price: 2890 },
         { name: "Move-In / Move-Out Intensive", desc: "Empty property clean: baseboards, appliances, walls.", price: 4390 },
@@ -314,10 +324,6 @@
         { name: "Windows & Glass Prism", desc: "Inside/outside track cleaning, streak-free shine.", price: 1990 },
         { name: "Small Office Cleaning", desc: "Desks, meeting rooms, floors, kitchenette & waste removal.", price: 1200 }
     ];
-
-    let selectedServices = [];
-    let bookingState = { date: null, time: null };
-    let currentViewDate = new Date();
 
     function renderFullMenu() {
         const container = document.getElementById('fullMenuGrid');
@@ -336,13 +342,9 @@
 
     function toggleServiceSelection(name, price, element) {
         const existingIndex = selectedServices.findIndex(s => s.name === name);
-        if (existingIndex !== -1) {
-            selectedServices.splice(existingIndex, 1);
-            element.classList.remove('selected');
-        } else {
-            selectedServices.push({ name, price });
-            element.classList.add('selected');
-        }
+        if (existingIndex !== -1) selectedServices.splice(existingIndex, 1);
+        else selectedServices.push({ name, price });
+        if(element) element.classList.toggle('selected');
         updateAllSelectionHighlights();
         updateSummaryUI();
     }
@@ -369,36 +371,24 @@
         const totalPrice = selectedServices.reduce((sum, s) => sum + s.price, 0);
         document.getElementById('displayTotal').innerText = `R ${totalPrice.toLocaleString()}`;
         document.getElementById('serviceCountBadge').innerText = selectedServices.length;
-
-        if (selectedServices.length === 0) {
-            container.innerHTML = `<p style="color: var(--text-dim); text-align: center; padding: 20px 0;"><i class="fas fa-hand-pointer"></i> Select services from menu</p>`;
-        } else {
+        if (selectedServices.length === 0) container.innerHTML = `<p style="color: var(--text-dim); text-align: center; padding: 20px 0;"><i class="fas fa-hand-pointer"></i> Select services from menu</p>`;
+        else {
             let html = `<div style="max-height: 240px; overflow-y: auto; margin-bottom: 8px;">`;
-            selectedServices.forEach((s, idx) => {
-                html += `<div class="service-list-item"><span style="flex:1; font-size:0.8rem;">${s.name}</span><span style="color:var(--accent-gold); font-weight:600;">R ${s.price.toLocaleString()}</span><button class="remove-service" onclick="removeServiceFromCart(${idx})"><i class="fas fa-trash-alt"></i></button></div>`;
-            });
-            html += `</div>`;
-            container.innerHTML = html;
+            selectedServices.forEach((s, idx) => html += `<div class="service-list-item"><span style="flex:1; font-size:0.8rem;">${s.name}</span><span style="color:var(--accent-gold); font-weight:600;">R ${s.price.toLocaleString()}</span><button class="remove-service" onclick="removeServiceFromCart(${idx})"><i class="fas fa-trash-alt"></i></button></div>`);
+            html += `</div>`; container.innerHTML = html;
         }
-
         const canProceed = selectedServices.length > 0 && bookingState.date && bookingState.time;
         document.getElementById('confirmBtn').disabled = !canProceed;
-        if (bookingState.date && bookingState.time) {
-            document.getElementById('dateSummary').style.display = 'block';
-            document.getElementById('displayDateTime').innerHTML = `${bookingState.date} @ ${bookingState.time}`;
-        } else {
-            document.getElementById('dateSummary').style.display = 'none';
-        }
+        if (bookingState.date && bookingState.time) { document.getElementById('dateSummary').style.display = 'block'; document.getElementById('displayDateTime').innerHTML = `${bookingState.date} @ ${bookingState.time}`; }
+        else document.getElementById('dateSummary').style.display = 'none';
     }
 
     function renderCalendar() {
         const grid = document.getElementById('daysGrid');
-        const label = document.getElementById('currentMonthLabel');
-        if (!grid) return;
+        if(!grid) return;
         grid.innerHTML = "";
-        const year = currentViewDate.getFullYear();
-        const month = currentViewDate.getMonth();
-        label.innerText = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(currentViewDate);
+        const year = currentViewDate.getFullYear(), month = currentViewDate.getMonth();
+        document.getElementById('currentMonthLabel').innerText = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(currentViewDate);
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         for (let i = 0; i < firstDay; i++) grid.innerHTML += `<div class="day empty"></div>`;
@@ -418,53 +408,141 @@
     };
     function generateTimes() {
         const grid = document.getElementById('timeGrid');
-        if (!grid) return;
+        if(!grid) return;
         grid.innerHTML = "";
         const times = ["08:00 AM", "09:30 AM", "11:00 AM", "01:00 PM", "02:30 PM", "04:00 PM"];
-        times.forEach(t => {
-            const isSelected = bookingState.time === t ? 'selected' : '';
-            grid.innerHTML += `<div class="slot ${isSelected}" onclick="selectTime('${t}', this)">${t}</div>`;
-        });
+        times.forEach(t => { const isSelected = bookingState.time === t ? 'selected' : ''; grid.innerHTML += `<div class="slot ${isSelected}" onclick="selectTime('${t}', this)">${t}</div>`; });
     }
-    window.selectTime = (t, el) => {
-        document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
-        el.classList.add('selected');
-        bookingState.time = t;
-        updateSummaryUI();
-    };
-    
-    function closeErrorModal() {
-        document.getElementById('errorModal').classList.remove('active');
-    }
-    
+    window.selectTime = (t, el) => { document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected')); el.classList.add('selected'); bookingState.time = t; updateSummaryUI(); };
+    function closeErrorModal() { document.getElementById('errorModal').classList.remove('active'); }
+
     async function sendEmailNotification() {
         const serviceNames = selectedServices.map(s => s.name).join(', ');
         const totalPrice = selectedServices.reduce((sum, s) => sum + s.price, 0);
-        
-        const templateParams = {
-            service: serviceNames,
-            date: bookingState.date,
-            time: bookingState.time,
-            price: `R ${totalPrice.toLocaleString()}`
-        };
-        
-        try {
-            const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-            console.log('Email sent successfully:', response);
-            return true;
-        } catch (error) {
-            console.error('Email send failed:', error);
-            return false;
-        }
+        try { await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, { service: serviceNames, date: bookingState.date, time: bookingState.time, price: `R ${totalPrice.toLocaleString()}` }); return true; } catch(e) { return false; }
     }
-    
+
+    // REDESIGNED PROFESSIONAL PDF: Removed "professional invoice" heading, client name/email fields.
+    function generatePremiumBookingPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+        
+        const teal = [26, 127, 110];
+        const gold = [207, 166, 75];
+        const lightGray = [248, 249, 250];
+        
+        // Premium header with teal and gold accents
+        doc.setFillColor(...teal);
+        doc.rect(0, 0, 210, 38, "F");
+        doc.setFillColor(...gold);
+        doc.rect(0, 36, 210, 2, "F");
+        
+        // Brand & decorative line
+        doc.setTextColor(255, 255, 255);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(24);
+        doc.text("SPOTLESS BUBBLES", 20, 22);
+        doc.setFontSize(9);
+        doc.setFont("helvetica", "normal");
+        doc.text("Premium Hygiene & Space Curation", 20, 30);
+        
+        // Booking summary header (elegant)
+        doc.setTextColor(60, 60, 60);
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "bold");
+        doc.text("Booking Confirmation", 20, 58);
+        
+        // Date & Time card
+        doc.setDrawColor(...gold);
+        doc.setLineWidth(0.4);
+        doc.roundedRect(140, 48, 55, 28, 3, 3);
+        doc.setFontSize(8);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor(...teal);
+        doc.text("APPOINTMENT", 145, 56);
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(80, 80, 80);
+        doc.setFontSize(9);
+        doc.text(`${bookingState.date || "TBD"}`, 145, 64);
+        doc.text(`${bookingState.time || "TBD"}`, 145, 72);
+        
+        // Services table header
+        let y = 92;
+        doc.setFillColor(...lightGray);
+        doc.rect(20, y, 170, 9, "F");
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(9);
+        doc.setTextColor(...teal);
+        doc.text("Service Description", 25, y + 6);
+        doc.text("Amount (ZAR)", 165, y + 6, { align: "right" });
+        
+        y += 12;
+        doc.setTextColor(50, 50, 50);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        
+        selectedServices.forEach((s, i) => {
+            doc.text(s.name, 25, y);
+            doc.text(`R ${s.price.toLocaleString()}`, 165, y, { align: "right" });
+            y += 7;
+        });
+        
+        const total = selectedServices.reduce((sum, s) => sum + s.price, 0);
+        y += 5;
+        doc.setDrawColor(200, 200, 200);
+        doc.line(20, y-3, 190, y-3);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor(...gold);
+        doc.setFontSize(11);
+        doc.text("TOTAL", 25, y);
+        doc.text(`R ${total.toLocaleString()}`, 165, y, { align: "right" });
+        
+        // Elegant banking details box
+        y += 20;
+        doc.setFillColor(245, 247, 250);
+        doc.roundedRect(20, y, 170, 58, 4, 4, "F");
+        doc.setTextColor(...teal);
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "bold");
+        doc.text("PAYMENT INFORMATION", 30, y + 8);
+        
+        doc.setTextColor(70, 70, 70);
+        doc.setFontSize(8.5);
+        doc.setFont("helvetica", "normal");
+        doc.text(`Bank: ${BANKING_DETAILS.bankName}`, 30, y + 20);
+        doc.text(`Account Holder: ${BANKING_DETAILS.accountHolder}`, 30, y + 28);
+        doc.text(`Account Number: ${BANKING_DETAILS.accountNumber}`, 30, y + 36);
+        doc.text(`Branch Code: ${BANKING_DETAILS.branchCode} | SWIFT: ${BANKING_DETAILS.swiftCode}`, 30, y + 44);
+        
+        // Reference note in gold highlight
+        doc.setFillColor(255, 248, 225);
+        doc.roundedRect(20, y + 62, 170, 18, 3, 3, "F");
+        doc.setTextColor(146, 64, 14);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(7.5);
+        doc.text("REFERENCE", 25, y + 71);
+        doc.setFont("helvetica", "normal");
+        doc.text(`${BANKING_DETAILS.referenceNote} — Send proof to WhatsApp 068 486 7533`, 48, y + 71);
+        
+        // Footer with elegant gold line
+        const pageHeight = doc.internal.pageSize.height;
+        doc.setDrawColor(...gold);
+        doc.setLineWidth(0.3);
+        doc.line(20, pageHeight - 18, 190, pageHeight - 18);
+        doc.setTextColor(130, 130, 130);
+        doc.setFontSize(7);
+        doc.text("SpotlessBubbles | Sandton, South Africa | 068 486 7533", 105, pageHeight - 10, { align: "center" });
+        doc.text("This document serves as your service confirmation — valid for 3 months", 105, pageHeight - 4, { align: "center" });
+        
+        doc.save(`SpotlessBubbles_Booking_${bookingState.date.replace(/-/g, '_')}.pdf`);
+    }
+
     window.handleFinalBooking = async () => {
         if (selectedServices.length === 0 || !bookingState.date || !bookingState.time) return;
         
         const modal = document.getElementById('successModal');
         modal.classList.add('active');
         
-        // Send email notification via EmailJS
         const emailSent = await sendEmailNotification();
         
         if (!emailSent) {
@@ -473,46 +551,33 @@
             return;
         }
         
-        // Also open WhatsApp as backup communication
+        generatePremiumBookingPDF();  // Generates redesigned PDF without "professional invoice" text or client fields
+        
         setTimeout(() => {
             const serviceNames = selectedServices.map(s => `${s.name} (R${s.price})`).join(', ');
             const total = selectedServices.reduce((sum, s) => sum + s.price, 0);
-            const msg = `Hello SpotlessBubbles, I'd like to book multiple services: ${serviceNames}. Appointment on ${bookingState.date} at ${bookingState.time}. Estimated total: R ${total}. Please advise about equipment (client has own / need rental) and any extra products if needed. Thank you.`;
+            const msg = `Hello SpotlessBubbles, I'd like to book: ${serviceNames}. Appointment on ${bookingState.date} at ${bookingState.time}. Total: R ${total}. Banking details received via PDF. Please confirm.`;
             window.open(`https://wa.me/27684867533?text=${encodeURIComponent(msg)}`);
-            modal.classList.remove('active');
             
-            // Reset selection after booking
-            selectedServices = [];
-            bookingState = { date: null, time: null };
+            selectedServices = []; bookingState = { date: null, time: null };
             document.querySelectorAll('.bento-card, .category-card, .menu-item').forEach(el => el.classList.remove('selected'));
             document.querySelectorAll('.day').forEach(el => el.classList.remove('selected'));
             document.querySelectorAll('.slot').forEach(el => el.classList.remove('selected'));
-            generateTimes();
-            updateSummaryUI();
-            renderCalendar();
-        }, 2500);
+            generateTimes(); updateSummaryUI(); renderCalendar();
+            modal.classList.remove('active');
+        }, 2800);
     };
 
-    // Attach multi-select logic to bento & category cards
     document.querySelectorAll('.bento-card, .category-card').forEach(card => {
         const name = card.getAttribute('data-name');
         const price = parseInt(card.getAttribute('data-price'));
-        if (name && !isNaN(price)) {
-            card.onclick = (e) => { e.stopPropagation(); toggleServiceSelection(name, price, card); };
-        }
+        if (name && !isNaN(price)) card.onclick = (e) => { e.stopPropagation(); toggleServiceSelection(name, price, card); };
     });
-
+    
     const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    renderFullMenu();
-    renderCalendar();
-    generateTimes();
-    updateSummaryUI();
     
-    // Display warning if EmailJS not configured
-    if (EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY") {
-        console.warn("⚠️ EmailJS not configured. Please replace EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, and EMAILJS_TEMPLATE_ID with your actual credentials.");
-    }
+    renderFullMenu(); renderCalendar(); generateTimes(); updateSummaryUI();
 </script>
 </body>
 </html>

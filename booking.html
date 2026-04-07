@@ -183,6 +183,81 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s var(--transition); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        /* Client Info Modal Styles */
+        .client-info-modal .modal-content {
+            max-width: 480px;
+            padding: 40px 35px;
+        }
+        .client-info-modal .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .client-info-modal label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            letter-spacing: 0.5px;
+        }
+        .client-info-modal input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .client-info-modal input:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+            box-shadow: 0 0 0 2px rgba(26, 127, 110, 0.2);
+        }
+        .client-info-modal .modal-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .client-info-modal .btn-submit {
+            flex: 1;
+            background: var(--primary-teal);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .client-info-modal .btn-submit:hover {
+            background: var(--primary-teal-dark);
+            transform: translateY(-2px);
+        }
+        .client-info-modal .btn-cancel {
+            flex: 1;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 12px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .client-info-modal .btn-cancel:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+        .info-note {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-align: center;
+            margin-top: 15px;
+        }
+
         @media (max-width: 992px) {
             .container { padding: 0 24px; }
             .services-bento, .category-grid { grid-template-columns: 1fr; }
@@ -201,8 +276,8 @@
       <a href="home.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
       <a href="about.html" class="nav-item"><i class="fas fa-leaf"></i> About</a>
       <a href="services.html" class="nav-item"><i class="fas fa-sparkle"></i> Services</a>
-      <a href="services.html" class="nav-item active"><i class="fas fa-calendar-check"></i> Book</a>
-      <a href="services.html" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="booking.html" class="nav-item active"><i class="fas fa-calendar-check"></i> Book</a>
+      <a href="contact.html" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
     </div>
     <a href="booking.html" class="btn-nav-cta"><i class="fas fa-file-invoice"></i> Get Quote</a>
   </div>
@@ -233,6 +308,28 @@
         <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px;">Submission Failed</h2>
         <p style="color: var(--text-dim); margin-bottom: 20px;">There was an error sending your booking. Please try again or contact us directly via WhatsApp.</p>
         <button onclick="closeErrorModal()" style="background: var(--primary-teal); color: white; border: none; padding: 12px 30px; border-radius: 40px; font-weight: 600; cursor: pointer; margin-top: 10px;">Close</button>
+    </div>
+</div>
+
+<!-- Client Info Modal -->
+<div class="modal-overlay client-info-modal" id="clientInfoModal">
+    <div class="modal-content">
+        <div class="success-icon" style="width: 60px; height: 60px; font-size: 1.5rem;"><i class="fas fa-user-circle"></i></div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 8px;">Your Details</h2>
+        <p style="color: var(--text-dim); margin-bottom: 25px;">Please provide your contact information</p>
+        <div class="input-group">
+            <label><i class="fas fa-user"></i> Full Name</label>
+            <input type="text" id="clientName" placeholder="e.g., John Doe" autocomplete="name">
+        </div>
+        <div class="input-group">
+            <label><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="clientEmail" placeholder="e.g., john@example.com" autocomplete="email">
+        </div>
+        <div class="modal-buttons">
+            <button class="btn-cancel" onclick="closeClientInfoModal()">Cancel</button>
+            <button class="btn-submit" onclick="submitClientInfoAndProceed()">Continue →</button>
+        </div>
+        <div class="info-note"><i class="fas fa-lock"></i> Your information is secure and only used for booking confirmation.</div>
     </div>
 </div>
 
@@ -275,7 +372,7 @@
                 <div class="calendar-container"><div class="cal-header"><button onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button><h3 id="currentMonthLabel" style="font-family: 'Playfair Display', serif; font-size: 1.3rem;">April 2026</h3><button onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button></div>
                 <div class="cal-grid" id="daysGrid"></div><div class="time-slots" id="timeGrid"></div></div>
             </div>
-            <aside><div class="summary-card"><h3 style="font-family: 'Playfair Display', serif; margin-bottom: 20px; font-size: 1.4rem;">Reservation Summary <span id="serviceCountBadge" class="badge-count">0</span></h3><div id="selectedServicesList"><p style="color: var(--text-dim); text-align: center; padding: 20px 0;">✨ Select services from above ✨</p></div><div id="dateSummary" style="margin-top: 20px; display: none; border-top: 1px solid var(--border); padding-top: 20px;"><div class="summary-row"><span style="color: var(--accent-gold);"><i class="far fa-calendar-alt"></i> Appointment</span><span id="displayDateTime" style="font-weight: 600;"></span></div></div><div class="total-box"><div class="summary-row" style="font-size: 1.2rem; font-weight: 800;"><span>Total Estimate</span><span id="displayTotal" style="color: var(--primary-teal);">R 0</span></div><p style="font-size: 0.7rem; color: var(--text-dim); margin-top: 10px;">*Final quote based on assessment + any equipment/add-ons.</p></div><button class="btn-confirm" id="confirmBtn" disabled onclick="handleFinalBooking()">Request Booking</button></div></aside>
+            <aside><div class="summary-card"><h3 style="font-family: 'Playfair Display', serif; margin-bottom: 20px; font-size: 1.4rem;">Reservation Summary <span id="serviceCountBadge" class="badge-count">0</span></h3><div id="selectedServicesList"><p style="color: var(--text-dim); text-align: center; padding: 20px 0;">✨ Select services from above ✨</p></div><div id="dateSummary" style="margin-top: 20px; display: none; border-top: 1px solid var(--border); padding-top: 20px;"><div class="summary-row"><span style="color: var(--accent-gold);"><i class="far fa-calendar-alt"></i> Appointment</span><span id="displayDateTime" style="font-weight: 600;"></span></div></div><div class="total-box"><div class="summary-row" style="font-size: 1.2rem; font-weight: 800;"><span>Total Estimate</span><span id="displayTotal" style="color: var(--primary-teal);">R 0</span></div><p style="font-size: 0.7rem; color: var(--text-dim); margin-top: 10px;">*Final quote based on assessment + any equipment/add-ons.</p></div><button class="btn-confirm" id="confirmBtn" disabled onclick="openClientInfoModal()">Request Booking</button></div></aside>
         </div>
     </div>
 </section>
@@ -309,9 +406,13 @@
         referenceNote: "Booking Invoice + Your Name"
     };
 
+    const BUSINESS_WHATSAPP = "27810390794";
+    
     let selectedServices = [];
     let bookingState = { date: null, time: null };
     let currentViewDate = new Date();
+    let pendingClientInfo = null;
+    
     const allServices = [
         { name: "Household & Apartment Deep Clean", desc: "Full kitchen degreasing, bathroom sanitation, floor wash.", price: 2890 },
         { name: "Move-In / Move-Out Intensive", desc: "Empty property clean: baseboards, appliances, walls.", price: 4390 },
@@ -415,15 +516,43 @@
     }
     window.selectTime = (t, el) => { document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected')); el.classList.add('selected'); bookingState.time = t; updateSummaryUI(); };
     function closeErrorModal() { document.getElementById('errorModal').classList.remove('active'); }
-
-    async function sendEmailNotification() {
-        const serviceNames = selectedServices.map(s => s.name).join(', ');
-        const totalPrice = selectedServices.reduce((sum, s) => sum + s.price, 0);
-        try { await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, { service: serviceNames, date: bookingState.date, time: bookingState.time, price: `R ${totalPrice.toLocaleString()}` }); return true; } catch(e) { return false; }
+    
+    function openClientInfoModal() {
+        if (selectedServices.length === 0 || !bookingState.date || !bookingState.time) return;
+        document.getElementById('clientInfoModal').classList.add('active');
+        document.getElementById('clientName').value = '';
+        document.getElementById('clientEmail').value = '';
+    }
+    
+    function closeClientInfoModal() {
+        document.getElementById('clientInfoModal').classList.remove('active');
     }
 
-    // REDESIGNED PROFESSIONAL PDF: Removed "professional invoice" heading, client name/email fields.
-    function generatePremiumBookingPDF() {
+    async function sendEmailNotification(clientName, clientEmail) {
+        const serviceNames = selectedServices.map(s => s.name).join(', ');
+        const totalPrice = selectedServices.reduce((sum, s) => sum + s.price, 0);
+        try { 
+            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, { 
+                service: serviceNames, 
+                date: bookingState.date, 
+                time: bookingState.time, 
+                price: `R ${totalPrice.toLocaleString()}`,
+                client_name: clientName,
+                client_email: clientEmail
+            }); 
+            return true; 
+        } catch(e) { return false; }
+    }
+
+    function sendWhatsAppNotificationToBusiness(clientName, clientEmail) {
+        const serviceDetails = selectedServices.map(s => `• ${s.name}: R${s.price}`).join('%0A');
+        const total = selectedServices.reduce((sum, s) => sum + s.price, 0);
+        const message = `🆕 *NEW BOOKING REQUEST* 🆕%0A%0A👤 *Client Name:* ${clientName}%0A📧 *Email:* ${clientEmail}%0A📅 *Date:* ${bookingState.date}%0A⏰ *Time:* ${bookingState.time}%0A%0A🛠 *Services Selected:*%0A${serviceDetails}%0A%0A💰 *Total Amount:* R${total.toLocaleString()}%0A%0A📎 *PDF Invoice Generated* ✅%0A📞 *Please contact client to confirm booking.*`;
+        const whatsappUrl = `https://wa.me/${BUSINESS_WHATSAPP}?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+    }
+
+    function generatePremiumBookingPDF(clientName, clientEmail) {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
         
@@ -431,13 +560,11 @@
         const gold = [207, 166, 75];
         const lightGray = [248, 249, 250];
         
-        // Premium header with teal and gold accents
         doc.setFillColor(...teal);
         doc.rect(0, 0, 210, 38, "F");
         doc.setFillColor(...gold);
         doc.rect(0, 36, 210, 2, "F");
         
-        // Brand & decorative line
         doc.setTextColor(255, 255, 255);
         doc.setFont("helvetica", "bold");
         doc.setFontSize(24);
@@ -446,16 +573,21 @@
         doc.setFont("helvetica", "normal");
         doc.text("Premium Hygiene & Space Curation", 20, 30);
         
-        // Booking summary header (elegant)
         doc.setTextColor(60, 60, 60);
         doc.setFontSize(16);
         doc.setFont("helvetica", "bold");
         doc.text("Booking Confirmation", 20, 58);
         
-        // Date & Time card
+        // Client details section
+        doc.setFontSize(9);
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(80, 80, 80);
+        doc.text(`Client: ${clientName}`, 20, 72);
+        doc.text(`Email: ${clientEmail}`, 20, 80);
+        
         doc.setDrawColor(...gold);
         doc.setLineWidth(0.4);
-        doc.roundedRect(140, 48, 55, 28, 3, 3);
+        doc.roundedRect(140, 48, 55, 35, 3, 3);
         doc.setFontSize(8);
         doc.setFont("helvetica", "bold");
         doc.setTextColor(...teal);
@@ -463,11 +595,10 @@
         doc.setFont("helvetica", "normal");
         doc.setTextColor(80, 80, 80);
         doc.setFontSize(9);
-        doc.text(`${bookingState.date || "TBD"}`, 145, 64);
-        doc.text(`${bookingState.time || "TBD"}`, 145, 72);
+        doc.text(`${bookingState.date || "TBD"}`, 145, 66);
+        doc.text(`${bookingState.time || "TBD"}`, 145, 76);
         
-        // Services table header
-        let y = 92;
+        let y = 100;
         doc.setFillColor(...lightGray);
         doc.rect(20, y, 170, 9, "F");
         doc.setFont("helvetica", "bold");
@@ -481,7 +612,7 @@
         doc.setFont("helvetica", "normal");
         doc.setFontSize(9);
         
-        selectedServices.forEach((s, i) => {
+        selectedServices.forEach((s) => {
             doc.text(s.name, 25, y);
             doc.text(`R ${s.price.toLocaleString()}`, 165, y, { align: "right" });
             y += 7;
@@ -497,7 +628,6 @@
         doc.text("TOTAL", 25, y);
         doc.text(`R ${total.toLocaleString()}`, 165, y, { align: "right" });
         
-        // Elegant banking details box
         y += 20;
         doc.setFillColor(245, 247, 250);
         doc.roundedRect(20, y, 170, 58, 4, 4, "F");
@@ -514,7 +644,6 @@
         doc.text(`Account Number: ${BANKING_DETAILS.accountNumber}`, 30, y + 36);
         doc.text(`Branch Code: ${BANKING_DETAILS.branchCode} | SWIFT: ${BANKING_DETAILS.swiftCode}`, 30, y + 44);
         
-        // Reference note in gold highlight
         doc.setFillColor(255, 248, 225);
         doc.roundedRect(20, y + 62, 170, 18, 3, 3, "F");
         doc.setTextColor(146, 64, 14);
@@ -524,7 +653,6 @@
         doc.setFont("helvetica", "normal");
         doc.text(`${BANKING_DETAILS.referenceNote} — Send proof to WhatsApp 068 486 7533`, 48, y + 71);
         
-        // Footer with elegant gold line
         const pageHeight = doc.internal.pageSize.height;
         doc.setDrawColor(...gold);
         doc.setLineWidth(0.3);
@@ -534,16 +662,28 @@
         doc.text("SpotlessBubbles | Sandton, South Africa | 068 486 7533", 105, pageHeight - 10, { align: "center" });
         doc.text("This document serves as your service confirmation — valid for 3 months", 105, pageHeight - 4, { align: "center" });
         
-        doc.save(`SpotlessBubbles_Booking_${bookingState.date.replace(/-/g, '_')}.pdf`);
+        doc.save(`SpotlessBubbles_Booking_${clientName.replace(/\s/g, '_')}_${bookingState.date.replace(/-/g, '_')}.pdf`);
     }
 
-    window.handleFinalBooking = async () => {
-        if (selectedServices.length === 0 || !bookingState.date || !bookingState.time) return;
+    window.submitClientInfoAndProceed = async () => {
+        const clientName = document.getElementById('clientName').value.trim();
+        const clientEmail = document.getElementById('clientEmail').value.trim();
+        
+        if (!clientName) {
+            alert("Please enter your full name.");
+            return;
+        }
+        if (!clientEmail || !clientEmail.includes('@')) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+        
+        closeClientInfoModal();
         
         const modal = document.getElementById('successModal');
         modal.classList.add('active');
         
-        const emailSent = await sendEmailNotification();
+        const emailSent = await sendEmailNotification(clientName, clientEmail);
         
         if (!emailSent) {
             modal.classList.remove('active');
@@ -551,12 +691,13 @@
             return;
         }
         
-        generatePremiumBookingPDF();  // Generates redesigned PDF without "professional invoice" text or client fields
+        generatePremiumBookingPDF(clientName, clientEmail);
+        sendWhatsAppNotificationToBusiness(clientName, clientEmail);
         
         setTimeout(() => {
             const serviceNames = selectedServices.map(s => `${s.name} (R${s.price})`).join(', ');
             const total = selectedServices.reduce((sum, s) => sum + s.price, 0);
-            const msg = `Hello SpotlessBubbles, I'd like to book: ${serviceNames}. Appointment on ${bookingState.date} at ${bookingState.time}. Total: R ${total}. Banking details received via PDF. Please confirm.`;
+            const msg = `Hello SpotlessBubbles, I'd like to book: ${serviceNames}. Appointment on ${bookingState.date} at ${bookingState.time}. Total: R ${total}. My name: ${clientName}, Email: ${clientEmail}. Please confirm.`;
             window.open(`https://wa.me/27684867533?text=${encodeURIComponent(msg)}`);
             
             selectedServices = []; bookingState = { date: null, time: null };

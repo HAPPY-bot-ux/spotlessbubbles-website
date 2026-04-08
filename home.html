@@ -3,707 +3,910 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>SpotlessBubbles | Professional Clarity</title>
+    <title>SPOTLESS BUBBLES | Architectural Purity — Ultra-Luxury Concierge</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Google Fonts + Premium Font Stack -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <style>
-        :root {
-            --primary-teal: #1A7F6E;
-            --primary-teal-dark: #0F5E51;
-            --primary-teal-soft: rgba(26, 127, 110, 0.08);
-            --accent-gold: #CFA64B;
-            --bg-dark: #0B0E11;
-            --surface: #161A1F;
-            --text-main: #F9FAFB;
-            --text-dim: #9CA3AF;
-            --border: rgba(255, 255, 255, 0.08);
-            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-deep: #05070A;
+            --bg-elevated: #0D1117;
+            --bg-card: #11161E;
+            --border-lux: rgba(255, 255, 255, 0.06);
+            --gold-primary: #D4AF6A;
+            --gold-glow: rgba(212, 175, 106, 0.25);
+            --platinum: #E5E9F0;
+            --teal-aurora: #2C9B8E;
+            --text-body: #B0B7C6;
+            --text-heading: #F3F6FC;
+            --transition-smooth: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.6;
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
-        /* ========== HEADER & NAV STYLES ========== */
+        /* custom scroll */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0A0E14; }
+        ::-webkit-scrollbar-thumb { background: var(--gold-primary); border-radius: 10px; }
+
+        /* premium glass header */
         .site-header {
-            position: sticky; top: 0; z-index: 1000;
-            background: rgba(11, 14, 17, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 24px;
+            left: 5%;
+            right: 5%;
+            z-index: 2000;
+            background: rgba(5, 7, 10, 0.75);
+            backdrop-filter: blur(20px);
+            border-radius: 80px;
+            border: 1px solid rgba(212, 175, 106, 0.25);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transition: all 0.4s;
         }
         .navbar {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0.875rem 2rem; max-width: 1440px; margin: 0 auto; gap: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.9rem 2.2rem;
+            max-width: 1600px;
+            margin: 0 auto;
         }
         .logo-link {
-            text-decoration: none; display: flex; align-items: baseline; gap: 2px;
-            font-weight: 700; font-size: 1.35rem; color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.02em;
         }
-        .logo-highlight { color: var(--primary-teal); font-weight: 800; }
-        .logo-mark { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; margin-left: 4px; }
-        .nav-links { display: flex; align-items: center; gap: 0.5rem; }
+        .logo-word {
+            color: var(--platinum);
+            font-weight: 600;
+        }
+        .logo-highlight {
+            color: var(--gold-primary);
+            font-weight: 800;
+            background: linear-gradient(135deg, #D4AF6A, #F3E5AB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.75rem;
+        }
         .nav-item {
-            padding: 0.5rem 1rem; font-size: 0.9rem; font-weight: 500;
-            color: var(--text-dim); text-decoration: none; border-radius: 40px; transition: 0.3s;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-body);
+            text-decoration: none;
+            border-radius: 60px;
+            transition: 0.3s;
+            letter-spacing: 0.3px;
         }
-        .nav-item:hover, .nav-item.active { background: var(--primary-teal-soft); color: var(--primary-teal); }
+        .nav-item i { margin-right: 6px; font-size: 0.8rem; }
+        .nav-item:hover, .nav-item.active {
+            background: rgba(212, 175, 106, 0.12);
+            color: var(--gold-primary);
+            border: 0.5px solid rgba(212, 175, 106, 0.3);
+        }
         .btn-nav-cta {
-            background: var(--primary-teal); color: white; padding: 0.6rem 1.4rem;
-            border-radius: 40px; font-weight: 600; text-decoration: none; transition: 0.3s;
+            background: linear-gradient(135deg, #D4AF6A 0%, #B88E3F 100%);
+            color: #05070A;
+            padding: 0.65rem 1.7rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        .btn-nav-cta:hover { background: var(--primary-teal-dark); transform: translateY(-2px); }
+        .btn-nav-cta:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #E4BF7A, #C9A14F);
+            box-shadow: 0 8px 22px rgba(212,175,106,0.3);
+        }
 
-        /* ========== ENHANCED DOCKER STYLE BOTTOM NAVIGATION (matching services page) ========== */
+        /* bottom dock (luxury) */
         .bottom-dock {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(11, 14, 17, 0.98); backdrop-filter: blur(20px);
-            border-top: 1px solid var(--border); display: none;
-            justify-content: space-around; align-items: center;
-            padding: 0.7rem 1rem; z-index: 1000;
-            transition: all 0.3s ease;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(13, 17, 23, 0.96);
+            backdrop-filter: blur(28px);
+            border-radius: 80px;
+            border: 1px solid rgba(212, 175, 106, 0.35);
+            display: none;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            z-index: 1200;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
         }
         .dock-btn {
-            display: flex; flex-direction: column; align-items: center;
-            text-decoration: none; font-size: 0.7rem; color: var(--text-dim);
-            transition: all 0.3s ease; padding: 0.4rem 0.6rem;
-            border-radius: 40px; gap: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.4rem 1rem;
+            border-radius: 60px;
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 0.7rem;
+            transition: 0.2s;
         }
-        .dock-btn i { font-size: 1.2rem; transition: transform 0.2s ease; }
-        .dock-btn span { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3px; }
-        .dock-btn:hover { 
-            color: var(--primary-teal); 
-            background: var(--primary-teal-soft); 
-            transform: translateY(-2px);
+        .dock-btn i { font-size: 1.1rem; margin-bottom: 3px; }
+        .dock-btn.active, .dock-btn:hover {
+            background: rgba(212, 175, 106, 0.2);
+            color: var(--gold-primary);
         }
-        .dock-btn:hover i { transform: scale(1.05); }
-        .dock-btn.active { 
-            color: var(--primary-teal); 
-            background: var(--primary-teal-soft);
-        }
-
-        /* Desktop hides dock, mobile shows */
-        @media (min-width: 993px) {
-            .bottom-dock { display: none; }
-        }
-
         @media (max-width: 992px) {
             .nav-links, .btn-nav-cta { display: none; }
             .bottom-dock { display: flex; }
+            .site-header { top: 16px; left: 4%; right: 4%; }
+        }
+        @media (max-width: 580px) {
+            .dock-btn span { display: none; }
+            .dock-btn i { font-size: 1.3rem; margin: 0; }
+            .dock-btn { padding: 0.5rem 0.9rem; }
         }
 
-        @media (max-width: 480px) {
-            .dock-btn span { font-size: 0.6rem; }
-            .dock-btn i { font-size: 1rem; }
-            .bottom-dock { padding: 0.6rem 0.8rem; }
-        }
-
-        /* ========== WHATSAPP FLOATING BUTTON (Enhanced styling) ========== */
+        /* floating whatsapp - ultra refined */
         .whatsapp-float {
-            position: fixed; bottom: 100px; right: 30px; background: #25D366;
-            width: 55px; height: 55px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 1.8rem; color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 999; text-decoration: none;
-            transition: all 0.3s ease;
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            background: #25D366;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+            z-index: 1100;
+            transition: all 0.3s;
+            text-decoration: none;
         }
-        .whatsapp-float:hover { transform: scale(1.1); background: #20b358; }
+        .whatsapp-float:hover { transform: scale(1.08); background: #20b458; }
+        @media (max-width: 992px) { .whatsapp-float { bottom: 100px; right: 20px; width: 52px; height: 52px; } }
 
-        @media (max-width: 992px) {
-            .whatsapp-float { bottom: 90px; right: 20px; width: 50px; height: 50px; font-size: 1.5rem; }
+        /* hero cinematic */
+        .hero-lux {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at 80% 30%, rgba(0,0,0,0.5), #030507 80%),
+                        url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2070&auto=format') no-repeat center/cover;
+            background-blend-mode: overlay;
         }
+        .hero-content {
+            max-width: 700px;
+            padding: 0 5%;
+            margin-top: 5rem;
+        }
+        .prestige-badge {
+            color: var(--gold-primary);
+            letter-spacing: 5px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            border-left: 3px solid var(--gold-primary);
+            padding-left: 1rem;
+        }
+        .hero-lux h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--text-heading);
+            margin-bottom: 1.8rem;
+        }
+        .hero-lux h1 span {
+            background: linear-gradient(135deg, #D4AF6A, #EED9A7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin-bottom: 2.5rem;
+            color: #BCC3D0;
+        }
+        .hero-btn {
+            background: transparent;
+            border: 1.5px solid var(--gold-primary);
+            padding: 1rem 2.2rem;
+            border-radius: 60px;
+            color: var(--gold-primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.4s;
+        }
+        .hero-btn:hover { background: var(--gold-primary); color: #05070A; box-shadow: 0 8px 20px rgba(212,175,106,0.3); }
 
-        /* ========== PREMIUM LAYOUT ELEMENTS ========== */
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 40px; }
+        /* Container */
+        .container-lux {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        @media (max-width: 768px) { .container-lux { padding: 0 24px; } }
 
-        .hero {
-            height: 85vh; display: flex; align-items: center;
-            background: linear-gradient(to right, rgba(11,14,17,0.85), rgba(11,14,17,0.4)), 
-                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format');
-            background-size: cover; background-position: center;
+        /* Unique masonry gallery - crystal clarity grid */
+        .gallery-master {
+            padding: 100px 0;
+        }
+        .section-tag {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-tag span {
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            background: rgba(212,175,106,0.1);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-top: 1rem;
+        }
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            grid-auto-flow: dense;
+        }
+        .grid-card {
+            background: var(--bg-card);
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid var(--border-lux);
+            transition: var(--transition-smooth);
+            position: relative;
+            backdrop-filter: blur(2px);
+        }
+        .grid-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.6);
+        }
+        .grid-card-img {
+            height: 260px;
+            overflow: hidden;
             position: relative;
         }
-        .hero h1 {
-            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5.5rem);
-            line-height: 1.1; margin-bottom: 24px;
+        .grid-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
         }
-        .hero h1 span { color: var(--primary-teal); font-style: italic; font-weight: 400; }
+        .grid-card:hover .grid-card-img img { transform: scale(1.05); }
+        .card-content {
+            padding: 1.8rem;
+        }
+        .card-meta {
+            font-size: 0.7rem;
+            color: var(--gold-primary);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .card-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        .card-content p {
+            font-size: 0.85rem;
+            color: var(--text-body);
+        }
+        .grid-card.featured {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .grid-card.featured .grid-card-img { height: 380px; }
+        @media (max-width: 1100px) {
+            .masonry-grid { grid-template-columns: repeat(2,1fr); gap: 20px; }
+            .grid-card.featured { grid-column: span 1; grid-row: span 1; }
+            .grid-card.featured .grid-card-img { height: 260px; }
+        }
+        @media (max-width: 640px) { .masonry-grid { grid-template-columns: 1fr; } }
 
-        /* --- Professional Image Grid (Bento Style) --- */
-        .bento-grid {
-            display: grid; grid-template-columns: repeat(12, 1fr);
-            grid-auto-rows: 300px; gap: 24px; margin: 80px 0;
+        /* service pillars */
+        .pillars {
+            background: radial-gradient(ellipse at 30% 40%, #0D1117, #05070A);
+            padding: 100px 0;
+            border-top: 1px solid rgba(212,175,106,0.2);
+            border-bottom: 1px solid rgba(212,175,106,0.2);
         }
-        .bento-item {
-            background: var(--surface); border-radius: 24px;
-            overflow: hidden; position: relative; border: 1px solid var(--border);
-            transition: var(--transition); cursor: pointer;
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 40px;
+            margin-top: 3rem;
         }
-        .bento-item img {
-            width: 100%; height: 100%; object-fit: cover;
-            opacity: 0.6; transition: var(--transition);
-        }
-        .bento-item:hover { transform: translateY(-5px); border-color: var(--primary-teal); }
-        .bento-item:hover img { transform: scale(1.05); opacity: 0.8; }
-        
-        .bento-overlay {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            padding: 32px; background: linear-gradient(transparent, rgba(0,0,0,0.85));
-        }
-        .bento-overlay h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 8px; }
-        .bento-overlay p { font-size: 0.85rem; color: var(--text-dim); }
-
-        .col-8 { grid-column: span 8; }
-        .col-4 { grid-column: span 4; }
-        .row-2 { grid-row: span 2; min-height: 620px; }
-
-        /* --- Feature Section --- */
-        .features-section { padding: 80px 0; background: #06080A; }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
-        .feature-card {
-            text-align: center; padding: 40px 30px;
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 20px; transition: var(--transition);
-        }
-        .feature-card:hover { border-color: var(--accent-gold); transform: translateY(-8px); }
-        .feature-icon { font-size: 2.5rem; color: var(--primary-teal); margin-bottom: 20px; display: inline-block; }
-        .feature-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 15px; }
-
-        /* --- CTA Section --- */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary-teal-dark), var(--primary-teal));
-            margin: 80px 0; border-radius: 32px; padding: 80px 60px;
+        .pillar-card {
+            background: rgba(17, 22, 30, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 36px;
+            padding: 2.5rem 2rem;
             text-align: center;
+            border: 1px solid rgba(212,175,106,0.2);
+            transition: 0.4s;
         }
-        .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; }
-        .cta-btn { background: white; color: var(--primary-teal); padding: 16px 40px; border-radius: 60px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; transition: 0.3s; }
-        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-
-        /* --- Footer --- */
-        footer {
-            background: #06080A; padding: 100px 0 40px;
-            border-top: 1px solid var(--border); margin-top: 60px;
+        .pillar-card i {
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 1.5rem;
         }
-        .footer-grid {
-            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px;
+        .pillar-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
         }
-        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: inline-block; text-decoration: none; }
-        .footer-link { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
-        .footer-link:hover { color: var(--primary-teal); padding-left: 5px; }
-
-        /* --- Animations --- */
-        .reveal { opacity: 0; transform: translateY(30px); transition: 1s var(--transition); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        .hero-tag {
-            color: var(--accent-gold); letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: inline-block;
+        .pillar-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-6px);
         }
+        @media (max-width: 860px) { .pillar-grid { grid-template-columns: 1fr; gap: 25px; } }
 
+        /* cinematic quote block */
+        .quote-monument {
+            padding: 90px 0;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2070&auto=format') center/cover fixed;
+            position: relative;
+            z-index: 2;
+        }
+        .quote-monument::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(5,7,10,0.75);
+            z-index: -1;
+        }
+        .quote-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .quote-monument i {
+            font-size: 3rem;
+            color: var(--gold-primary);
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+        .quote-monument h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: white;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+        .cta-luxury {
+            background: linear-gradient(125deg, #0F141C, #0A0E16);
+            border-radius: 48px;
+            padding: 70px 40px;
+            text-align: center;
+            margin: 80px auto;
+            border: 1px solid rgba(212,175,106,0.3);
+        }
+        .cta-luxury h3 {
+            font-size: 2.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: white;
+        }
+        .btn-gold {
+            background: var(--gold-primary);
+            color: #05070A;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 2rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-gold:hover { background: #E7C27D; transform: scale(1.02); }
+
+        /* footer luxury */
+        .footer-luxe {
+            background: #030507;
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(212,175,106,0.2);
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+        }
+        .footer-logo-luxe .logo-link { font-size: 1.7rem; }
+        .footer-description {
+            color: #7F8A9B;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+        .footer-links h4, .footer-contact h4 {
+            color: var(--gold-primary);
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.2rem;
+        }
+        .footer-links a {
+            display: block;
+            color: #9AA2B5;
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        .footer-links a:hover { color: var(--gold-primary); padding-left: 5px; }
+        .footer-contact p {
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .social-icons a {
+            color: #9AA2B5;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover { color: var(--gold-primary); }
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.7rem;
+            color: #6A7285;
+        }
         @media (max-width: 992px) {
-            .bento-grid { display: flex; flex-direction: column; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            .container { padding: 0 24px; }
-            .features-grid { grid-template-columns: 1fr; gap: 24px; }
-            .cta-section { padding: 50px 30px; margin: 40px 0; }
-            .hero { height: 70vh; background-position: 70% center; }
-            .bento-overlay h3 { font-size: 1.4rem; }
-            .bento-overlay { padding: 24px; }
-            footer { padding-bottom: 100px; }
+            .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 35px; }
+            .footer-contact p { justify-content: center; }
+            .social-icons { justify-content: center; display: flex; }
         }
 
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 2.5rem; }
-            .cta-section h2 { font-size: 1.8rem; }
-            .feature-card { padding: 30px 20px; }
+        .reveal-lux {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .reveal-lux.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="navbar">
-    <a href="index.html" class="logo-link">
-      <span class="logo-word">SPOTLESS</span>
-      <span class="logo-highlight">BUBBLES</span>
-      <span class="logo-mark"></span>
-    </a>
-    <div class="nav-links">
-      <a href="home.html" class="nav-item active"><i class="fas fa-home"></i> Home</a>
-      <a href="about.html" class="nav-item"><i class="fas fa-leaf"></i> About</a>
-      <a href="services.html" class="nav-item"><i class="fas fa-sparkle"></i> Services</a>
-      <a href="booking.html" class="nav-item"><i class="fas fa-calendar-check"></i> Book</a>
-      <a href="contact.html" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
+    <div class="navbar">
+        <a href="index.html" class="logo-link">
+            <span class="logo-word">SPOTLESS</span>
+            <span class="logo-highlight">BUBBLES</span>
+        </a>
+        <div class="nav-links">
+            <a href="home.html" class="nav-item active"><i class="fas fa-home"></i> Home</a>
+            <a href="about.html" class="nav-item"><i class="fas fa-feather-alt"></i> About</a>
+            <a href="services.html" class="nav-item"><i class="fas fa-gem"></i> Services</a>
+            <a href="booking.html" class="nav-item"><i class="fas fa-calendar-alt"></i> Book</a>
+            <a href="contact.html" class="nav-item"><i class="fas fa-pen-fancy"></i> Contact</a>
+        </div>
+        <a href="booking.html" class="btn-nav-cta"><i class="fas fa-clipboard-list"></i> Concierge Quote</a>
     </div>
-    <a href="booking.html" class="btn-nav-cta"><i class="fas fa-file-invoice"></i> Get Quote</a>
-  </div>
 </header>
 
-<!-- ENHANCED DOCKER STYLE BOTTOM NAVIGATION (Matches services page exactly - refined styling) -->
 <div class="bottom-dock">
-  <a href="index.html" class="dock-btn active"><i class="fas fa-home"></i><span>Home</span></a>
-  <a href="about.html" class="dock-btn"><i class="fas fa-leaf"></i><span>About</span></a>
-  <a href="services.html" class="dock-btn"><i class="fas fa-sparkle"></i><span>Services</span></a>
-  <a href="booking.html" class="dock-btn"><i class="fas fa-calendar-check"></i><span>Book</span></a>
-  <a href="contact.html" class="dock-btn"><i class="fas fa-envelope"></i><span>Contact</span></a>
+    <a href="index.html" class="dock-btn active"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="about.html" class="dock-btn"><i class="fas fa-leaf"></i><span>About</span></a>
+    <a href="services.html" class="dock-btn"><i class="fas fa-gem"></i><span>Services</span></a>
+    <a href="booking.html" class="dock-btn"><i class="fas fa-calendar-check"></i><span>Book</span></a>
+    <a href="contact.html" class="dock-btn"><i class="fas fa-envelope"></i><span>Contact</span></a>
 </div>
 
-<!-- WHATSAPP FLOATING BUTTON (Enhanced with consistent styling) -->
 <a href="https://wa.me/27684867533" class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+ <!-- background: radial-gradient(circle at 80% 30%, rgba(0,0,0,0.5), #030507 80%),
+                        url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2070&auto=format') -->
+<!-- Hero section -->
+<section class="hero-lux">
+    <div class="hero-content">
+        <div class="prestige-badge">BESPOKE ENVIRONMENTAL ARCHITECTURE</div>
+        <h1>Beyond clean.<br><span>The new standard</span> of purity.</h1>
+        <p class="hero-sub">Nano-biotic restoration for estates, galleries, and private residences — where precision meets artistry.</p>
+        <a href="booking.html" class="hero-btn">Reserve an experience <i class="fas fa-arrow-right"></i></a>
+    </div>
+</section>
 
-<section class="hero">
-    <div class="container">
-        <div class="reveal">
-            <p style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 0.8rem; margin-bottom: 15px;">Elite Hygiene Services</p>
-            <h1>The New <span>Standard</span><br>of Architectural Purity.</h1>
-            <p style="max-width: 500px; color: var(--text-dim); margin-bottom: 40px; font-size: 1.1rem;">
-                Experience deep-tissue cleaning for your home and workspace using proprietary nano-bubble technology.
-            </p>
-            <a href="booking.html" class="btn-nav-cta" style="padding: 18px 40px; font-size: 1rem;"><i class="fas fa-calendar-check"></i> Reserve a Session</a>
+<style>
+    /* Reset & base */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .hero-lux {
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background: linear-gradient(135deg, #0a0f1a 0%, #0c1220 100%); */
+        position: relative;
+        padding: 2rem;
+    }
+
+    /* Optional: subtle background texture for luxury feel */
+    .hero-lux::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+    }
+
+    .hero-content {
+        max-width: 880px;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;          /* ← CENTERS ALL TEXT + inline/block children */
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Prestige badge - centered + elegant */
+    .prestige-badge {
+        display: inline-block;        /* allows margin auto, but text-align center on parent handles it */
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #d4c9a6;
+        background: rgba(212, 201, 166, 0.12);
+        backdrop-filter: blur(2px);
+        padding: 0.6rem 1.3rem;
+        border-radius: 40px;
+        margin-bottom: 1.8rem;
+        font-weight: 500;
+        border: 0.5px solid rgba(212, 201, 166, 0.3);
+        white-space: nowrap;
+    }
+
+    /* Responsive badge: allow wrap on very small devices */
+    @media (max-width: 480px) {
+        .prestige-badge {
+            white-space: normal;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            padding: 0.5rem 1rem;
+        }
+    }
+
+    /* Headline styles - perfectly centered, elegant hierarchy */
+    .hero-content h1 {
+        font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+        font-size: 4.2rem;
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        color: #ffffff;
+        margin-bottom: 1.2rem;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+
+    .hero-content h1 span {
+        font-weight: 700;
+        background: linear-gradient(135deg, #f5e7c8 0%, #e3d4ae 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        display: inline-block;
+    }
+
+    /* Subtitle paragraph */
+    .hero-sub {
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        font-size: 1.18rem;
+        line-height: 1.5;
+        color: #d4dfed;
+        max-width: 650px;
+        margin: 0 auto 2.2rem auto;   /* ← center block + bottom margin */
+        font-weight: 400;
+        opacity: 0.9;
+    }
+
+    /* CTA Button - centered & elegant */
+    .hero-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: transparent;
+        border: 1.5px solid rgba(212, 201, 166, 0.65);
+        padding: 1rem 2.5rem;
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #f2ecd9;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        backdrop-filter: blur(4px);
+        background: rgba(10, 15, 26, 0.55);
+        cursor: pointer;
+    }
+
+    .hero-btn i {
+        transition: transform 0.3s ease;
+        font-size: 0.9rem;
+    }
+
+    .hero-btn:hover {
+        background: #d4c9a6;
+        border-color: #d4c9a6;
+        color: #0a0f1a;
+        box-shadow: 0 12px 28px -8px rgba(0,0,0,0.4);
+        transform: translateY(-2px);
+    }
+
+    .hero-btn:hover i {
+        transform: translateX(6px);
+        color: #0a0f1a;
+    }
+
+    /* ============================================
+       DESKTOP FINE-TUNING (extra polish)
+    ============================================ */
+    @media (min-width: 1024px) {
+        .hero-content h1 {
+            font-size: 5rem;
+        }
+        .hero-sub {
+            font-size: 1.28rem;
+            max-width: 700px;
+        }
+        .hero-btn {
+            padding: 1.1rem 2.8rem;
+            font-size: 1.05rem;
+        }
+    }
+
+    /* ============================================
+       MOBILE OPTIMIZATION: text remains centered,
+       button full-width on very small? NO — we keep it
+       professional, but ensure no overflow, good spacing.
+       "centered and professional" means no full-width button.
+    ============================================ */
+    @media (max-width: 768px) {
+        .hero-lux {
+            padding: 1.5rem;
+            min-height: 90vh;
+        }
+        .hero-content h1 {
+            font-size: 2.6rem;
+        }
+        .hero-sub {
+            font-size: 1rem;
+            padding: 0 0.5rem;
+        }
+        .hero-btn {
+            padding: 0.85rem 2rem;
+            font-size: 0.9rem;
+            gap: 8px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-content h1 {
+            font-size: 2.1rem;
+            line-height: 1.25;
+        }
+        .prestige-badge {
+            font-size: 0.65rem;
+            margin-bottom: 1.2rem;
+        }
+        .hero-sub {
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
+        }
+        .hero-btn {
+            padding: 0.75rem 1.8rem;
+        }
+    }
+
+    /* Ensure FontAwesome icons load smoothly */
+    .fas, .far {
+        font-family: "Font Awesome 6 Free";
+    }
+</style>
+
+<!-- Add required font imports for consistency -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</section>
+
+<!-- Unique Masonry Grid: information-rich, immaculate -->
+<div class="container-lux gallery-master">
+    <div class="section-tag reveal-lux"><span>PORTFOLIO OF EXCELLENCE</span></div>
+    <h2 class="section-title reveal-lux" style="text-align:center;">Spatial Curation <br> Masterpieces</h2>
+    <div class="masonry-grid" style="margin-top: 50px;">
+        <div class="grid-card featured reveal-lux">
+            <div class="grid-card-img"><img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2070&auto=format" alt="estate"></div>
+            <div class="card-content">
+                <div class="card-meta">01 — ESTATE CURATION</div>
+                <h3>Private Residences</h3>
+                <p>Holistic deep-hygiene for multi-level estates, using nano-bubble & botanical infusion. Preserving marble, rare wood, and art finishes.</p>
+            </div>
+        </div>
+        <div class="grid-card reveal-lux">
+            <div class="grid-card-img"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2070&auto=format" alt="corporate"></div>
+            <div class="card-content">
+                <div class="card-meta">02 — CORPORATE</div>
+                <h3>Executive Suites</h3>
+                <p>Zero-downtime sanitation with electrostatic protocols, elevating office wellbeing & brand prestige.</p>
+            </div>
+        </div>
+        <div class="grid-card reveal-lux">
+            <div class="grid-card-img"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format" alt="deep clean"></div>
+            <div class="card-content">
+                <div class="card-meta">03 — DEEP SANITIZATION</div>
+                <h3>Medical Grade Logic</h3>
+                <p>Hospital-level disinfection with botanical assurance — certified allergen elimination.</p>
+            </div>
+        </div>
+        <div class="grid-card reveal-lux">
+            <div class="grid-card-img"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2070&auto=format" alt="textile"></div>
+            <div class="card-content">
+                <div class="card-meta">04 — TEXTILE SPA</div>
+                <h3>Fabric Restoration</h3>
+                <p>High-end upholstery, rugs & drapes — steam molecular extraction without residue.</p>
+            </div>
+        </div>
+        <div class="grid-card reveal-lux">
+            <div class="grid-card-img"><img src="https://images.unsplash.com/photo-1600607687644-c8f6f5f2b236?q=80&w=2070&auto=format" alt="gallery"></div>
+            <div class="card-content">
+                <div class="card-meta">05 — ART & GALLERY</div>
+                <h3>Conservation Grade</h3>
+                <p>Climate-sensitive dust mitigation & archival air purification for collectors.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- three pillars science -->
+<section class="pillars">
+    <div class="container-lux">
+        <div class="section-tag reveal-lux" style="text-align:center;"><span>THE METRIC OF PURITY</span></div>
+        <h2 class="section-title reveal-lux" style="text-align:center;">Engineering invisible perfection</h2>
+        <div class="pillar-grid">
+            <div class="pillar-card reveal-lux"><i class="fas fa-atom"></i><h3>Nano-Bubble Matrix</h3><p>Trillions of active nanobubbles penetrate micro-crevices, lifting contaminants without caustic residues. Sustainable brilliance.</p></div>
+            <div class="pillar-card reveal-lux"><i class="fas fa-seedling"></i><h3>Botanical Intelligence</h3><p>Plant-derived enzymes + hypoallergenic formulas. No toxins, only pure freshness and lasting protection.</p></div>
+            <div class="pillar-card reveal-lux"><i class="fas fa-chart-line"></i><h3>Architectural Finish</h3><p>Post-cleaning surface sealing with anti-static barrier — dust repelling & gloss restoration.</p></div>
         </div>
     </div>
 </section>
 
-<section class="container" style="padding-top: 100px;">
-    <div style="text-align: center; margin-bottom: 60px;" class="reveal">
-        <span class="hero-tag" style="color: var(--accent-gold); letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 20px;">Portfolio</span>
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem;">Bespoke Solutions</h2>
-        <p style="color: var(--text-dim); max-width: 600px; margin: 15px auto 0;">Engineered clarity for every surface, from residential estates to corporate environments.</p>
+<!-- testimonial / atmosphere quote -->
+<div class="quote-monument">
+    <div class="quote-inner">
+        <i class="fas fa-quote-right"></i>
+        <h2>"We don’t just clean surfaces — we restore the atmosphere, the energy, the silence of absolute purity."</h2>
+        <p style="margin-top: 2rem; color: #D4AF6A;">— FOUNDER, SPOTLESS BUBBLES</p>
     </div>
+</div>
 
-    <div class="bento-grid">
-        <div class="bento-item col-8 row-2 reveal">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format" alt="Luxury Living">
-            <div class="bento-overlay">
-                <p style="color: var(--primary-teal); font-weight: 600; letter-spacing: 2px;">01</p>
-                <h3>Estate Curation</h3>
-                <p style="font-size: 0.9rem; color: var(--text-dim);">Full-spectrum residential hygiene with HEPA filtration.</p>
-            </div>
-        </div>
-
-        <div class="bento-item col-4 row-2 reveal">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2070&auto=format" alt="Corporate Office">
-            <div class="bento-overlay">
-                <p style="color: var(--primary-teal); font-weight: 600; letter-spacing: 2px;">02</p>
-                <h3>Corporate Clarity</h3>
-                <p style="font-size: 0.9rem; color: var(--text-dim);">Pristine workspace environments for peak productivity.</p>
-            </div>
-        </div>
-
-        <div class="bento-item col-4 reveal">
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format" alt="Sanitization">
-            <div class="bento-overlay">
-                <p style="color: var(--primary-teal); font-weight: 600; letter-spacing: 2px;">03</p>
-                <h3>Deep Sanitization</h3>
-                <p style="font-size: 0.85rem;">Electrostatic & botanical protocols.</p>
-            </div>
-        </div>
-
-        <div class="bento-item col-8 reveal" style="background: linear-gradient(135deg, var(--primary-teal-dark), var(--primary-teal)); border: none;">
-            <div style="padding: 60px; height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                <i class="fas fa-quote-left" style="font-size: 2.5rem; opacity: 0.5; margin-bottom: 20px;"></i>
-                <h2 style="font-family: 'Playfair Display', serif; color: white; font-size: 2rem; line-height: 1.3;">"We don't just clean spaces; we restore atmospheres."</h2>
-                <p style="color: rgba(255,255,255,0.8); margin-top: 20px;">— Founder, SpotlessBubbles</p>
-            </div>
-        </div>
+<!-- CTA Gold Section -->
+<div class="container-lux">
+    <div class="cta-luxury reveal-lux">
+        <h3>Elevate your environment</h3>
+        <p style="margin-top: 1rem; max-width: 500px; margin-left: auto; margin-right: auto;">Experience the $10M curation. Tailored quotes & white-glove scheduling.</p>
+        <a href="booking.html" class="btn-gold"><i class="fas fa-calendar-week"></i> Book private consultation</a>
     </div>
-</section>
+</div>
 
-<section class="features-section">
-    <div class="container">
-        <div style="text-align: center;" class="reveal">
-            <span class="hero-tag" style="color: var(--accent-gold); letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 20px;">The Science</span>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Why Discerning Clients Choose Us</h2>
-            <p style="color: var(--text-dim); max-width: 600px; margin: 15px auto 0;">Precision, sustainability, and architectural-grade results.</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card reveal">
-                <i class="fas fa-microscope feature-icon"></i>
-                <h3>Nano-Bubble Tech</h3>
-                <p style="color: var(--text-dim);">Microscopic bubbles penetrate deepest fibers, lifting contaminants without harsh chemicals.</p>
+<!-- FOOTER LUXURY -->
+<footer class="footer-luxe">
+    <div class="container-lux">
+        <div class="footer-inner">
+            <div class="footer-logo-luxe">
+                <a href="index.html" class="logo-link"><span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span></a>
+                <p class="footer-description">Setting the benchmark for high-end hygiene and spatial curation since 2026. Molecular purity, concierge delivery.</p>
             </div>
-            <div class="feature-card reveal">
-                <i class="fas fa-leaf feature-icon"></i>
-                <h3>Botanical Logic</h3>
-                <p style="color: var(--text-dim);">Plant-based formulations that respect both your surfaces and the environment.</p>
+            <div class="footer-links">
+                <h4>DISCOVER</h4>
+                <a href="about.html">Our Philosophy</a>
+                <a href="services.html">Service Ecosystem</a>
+                <a href="#">Sustainability Index</a>
+                <a href="booking.html">Concierge Desk</a>
             </div>
-            <div class="feature-card reveal">
-                <i class="fas fa-gem feature-icon"></i>
-                <h3>Architectural Finish</h3>
-                <p style="color: var(--text-dim);">We treat your space like a museum — preserving, protecting, and elevating.</p>
+            <div class="footer-links">
+                <h4>CAPABILITIES</h4>
+                <a href="services.html">Estate Care</a>
+                <a href="services.html">Corporate Portfolio</a>
+                <a href="services.html">Art & Antique</a>
+                <a href="services.html">Deep Hygiene</a>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="cta-section reveal">
-        <h2>Ready for a Restoration?</h2>
-        <p style="color: rgba(255,255,255,0.9); max-width: 500px; margin: 0 auto;">Book your session online or contact our concierge for a custom architectural quote.</p>
-        <a href="booking.html" class="cta-btn"><i class="fas fa-calendar-check"></i> Start Your Quote</a>
-    </div>
-</section>
-
-<!-- RESPONSIVE FOOTER SECTION - Mobile Optimized -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <!-- Brand Column -->
-            <div class="footer-brand-col">
-                <a href="index.html" class="logo-link footer-logo">
-                    <span class="logo-word">SPOTLESS</span><span class="logo-highlight">BUBBLES</span>
-                </a>
-                <p class="footer-description">Setting the benchmark for high-end hygiene and space curation since 2026.</p>
-            </div>
-            
-            <!-- Navigation Column -->
-            <div>
-                <h4 class="footer-heading">Navigation</h4>
-                <a href="index.html" class="footer-link">Experience</a>
-                <a href="about.html" class="footer-link">The Science</a>
-                <a href="#" class="footer-link">Sustainability</a>
-                <a href="booking.html" class="footer-link">Concierge</a>
-            </div>
-            
-            <!-- Services Column -->
-            <div>
-                <h4 class="footer-heading">Services</h4>
-                <a href="services.html" class="footer-link">Estate Care</a>
-                <a href="services.html" class="footer-link">Corporate Portfolio</a>
-                <a href="services.html" class="footer-link">Textile Spa</a>
-                <a href="services.html" class="footer-link">Deep-Hygienics</a>
-            </div>
-            
-            <!-- Contact Column -->
-            <div>
-                <h4 class="footer-heading">Contact</h4>
-                <p class="footer-contact"><i class="fas fa-map-marker-alt"></i> Sandton, South Africa</p>
-                <p class="footer-contact"><i class="fas fa-phone"></i> 068 486 7533</p>
+            <div class="footer-contact">
+                <h4>ATELIER</h4>
+                <p><i class="fas fa-map-pin"></i> Sandton, 2196, South Africa</p>
+                <p><i class="fas fa-phone-alt"></i> +27 68 486 7533</p>
                 <div class="social-icons">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
                 </div>
             </div>
         </div>
-        
-        <!-- Copyright Row -->
         <div class="copyright">
-            © 2026 SpotlessBubbles — Precision cleaning for the discerning client.
+            © 2026 SPOTLESS BUBBLES — Ultra-luxury environmental hygiene. All rights reserved.
         </div>
     </div>
 </footer>
 
-<style>
-    /* Footer Specific Styles - Fully Responsive */
-    footer {
-        background: #06080A;
-        padding: 60px 0 40px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        width: 100%;
-    }
-    
-    .container {
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 0 40px;
-    }
-    
-    /* Footer Grid - Desktop: 4 columns */
-    .footer-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-        margin-bottom: 20px;
-    }
-    
-    /* Brand Column */
-    .footer-brand-col {
-        max-width: 280px;
-    }
-    
-    .logo-link {
-        text-decoration: none;
-        display: inline-flex;
-        align-items: baseline;
-        gap: 2px;
-        font-weight: 700;
-        font-size: 1.35rem;
-        color: #F9FAFB;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .logo-word {
-        font-weight: 700;
-    }
-    
-    .logo-highlight {
-        color: #1A7F6E;
-        font-weight: 800;
-    }
-    
-    .footer-logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        margin-bottom: 20px;
-        display: inline-block;
-        text-decoration: none;
-        letter-spacing: -0.3px;
-    }
-    
-    .footer-description {
-        color: #9CA3AF;
-        font-size: 0.9rem;
-        margin-top: 15px;
-        line-height: 1.5;
-    }
-    
-    /* Headings & Links */
-    .footer-heading {
-        margin-bottom: 25px;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: #1A7F6E;
-        font-weight: 600;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .footer-link {
-        display: block;
-        color: #9CA3AF;
-        text-decoration: none;
-        margin-bottom: 12px;
-        transition: all 0.3s ease;
-        font-size: 0.9rem;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .footer-link:hover {
-        color: #1A7F6E;
-        padding-left: 5px;
-    }
-    
-    /* Contact Info */
-    .footer-contact {
-        color: #9CA3AF;
-        margin-bottom: 10px;
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .footer-contact i {
-        width: 20px;
-        color: #CFA64B;
-    }
-    
-    /* Social Icons */
-    .social-icons {
-        display: flex;
-        gap: 20px;
-        font-size: 1.2rem;
-        margin-top: 15px;
-    }
-    
-    .social-icons a {
-        color: #9CA3AF;
-        transition: all 0.3s ease;
-    }
-    
-    .social-icons a:hover {
-        color: #1A7F6E;
-        transform: translateY(-2px);
-    }
-    
-    /* Copyright */
-    .copyright {
-        margin-top: 60px;
-        padding-top: 30px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        text-align: center;
-        color: #9CA3AF;
-        font-size: 0.75rem;
-        letter-spacing: 0.5px;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    /* ========== MOBILE RESPONSIVE (max-width: 992px) ========== */
-    @media (max-width: 992px) {
-        .container {
-            padding: 0 24px;
-        }
-        
-        /* Stack grid vertically on mobile */
-        .footer-grid {
-            grid-template-columns: 1fr;
-            gap: 35px;
-            text-align: center;
-        }
-        
-        /* Brand column - center align on mobile */
-        .footer-brand-col {
-            max-width: 100%;
-        }
-        
-        .footer-logo {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-        
-        .logo-link {
-            justify-content: center;
-        }
-        
-        .footer-description {
-            text-align: center;
-            max-width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Center align all headings */
-        .footer-heading {
-            text-align: center;
-            margin-bottom: 18px;
-            font-size: 0.9rem;
-        }
-        
-        /* Center align links */
-        .footer-link {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        
-        .footer-link:hover {
-            padding-left: 0;
-            transform: translateX(3px);
-        }
-        
-        /* Contact info - center with inline flex */
-        .footer-contact {
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        /* Social icons - center */
-        .social-icons {
-            justify-content: center;
-            margin-top: 12px;
-        }
-        
-        /* Copyright spacing */
-        .copyright {
-            margin-top: 45px;
-            padding-top: 25px;
-        }
-    }
-    
-    /* ========== EXTRA SMALL DEVICES (max-width: 480px) ========== */
-    @media (max-width: 480px) {
-        footer {
-            padding: 50px 0 30px;
-        }
-        
-        .container {
-            padding: 0 20px;
-        }
-        
-        .footer-grid {
-            gap: 28px;
-        }
-        
-        .footer-heading {
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
-            margin-bottom: 15px;
-        }
-        
-        .footer-link {
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-        }
-        
-        .footer-description {
-            font-size: 0.85rem;
-        }
-        
-        .footer-contact {
-            font-size: 0.85rem;
-        }
-        
-        .copyright {
-            font-size: 0.7rem;
-            margin-top: 35px;
-            padding-top: 20px;
-        }
-        
-        .social-icons {
-            gap: 16px;
-        }
-    }
-</style>
-
-<!-- Font Awesome Icons (required for icons to display) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
 <script>
-    // Scroll Reveal Logic (matches services page)
-    const observer = new IntersectionObserver((entries) => {
+    const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
+            if(entry.isIntersecting) entry.target.classList.add('active');
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+    document.querySelectorAll('.reveal-lux').forEach(el => scrollObserver.observe(el));
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // active dock state by url
+    const path = window.location.pathname;
+    const dockBtns = document.querySelectorAll('.dock-btn');
+    if(path.includes('index') || path === '/' || path.endsWith('/')) dockBtns[0]?.classList.add('active');
+    else if(path.includes('about')) dockBtns[1]?.classList.add('active');
+    else if(path.includes('services')) dockBtns[2]?.classList.add('active');
+    else if(path.includes('booking')) dockBtns[3]?.classList.add('active');
+    else if(path.includes('contact')) dockBtns[4]?.classList.add('active');
 
-    // Add smooth hover effect for bento items
-    const bentoItems = document.querySelectorAll('.bento-item');
-    bentoItems.forEach(item => {
-        item.addEventListener('click', () => {
-            if (!item.querySelector('.cta-section')) {
-                window.location.href = 'booking.html';
-            }
-        });
+    // interactive grid click (booking)
+    const cards = document.querySelectorAll('.grid-card');
+    cards.forEach(card => {
+        card.addEventListener('click', () => window.location.href = 'booking.html');
+        card.style.cursor = 'pointer';
     });
-
-    // Set active state for dock based on current page (ensures consistency)
-    const currentPath = window.location.pathname;
-    if (currentPath.includes('index') || currentPath === '/' || currentPath.endsWith('/')) {
-        document.querySelectorAll('.dock-btn').forEach(btn => btn.classList.remove('active'));
-        const homeDock = document.querySelector('.dock-btn:first-child');
-        if (homeDock) homeDock.classList.add('active');
-    }
-
-    // Dynamic year update in footer
-    const footerYearSpan = document.querySelector('footer .container div:last-child');
-    if (footerYearSpan) {
-        const currentYear = new Date().getFullYear();
-        if (currentYear !== 2026) {
-            footerYearSpan.innerHTML = footerYearSpan.innerHTML.replace('2026', currentYear);
-        }
-    }
-
-    // Add touch-friendly active state for mobile devices
-    if ('ontouchstart' in window) {
-        const dockBtns = document.querySelectorAll('.dock-btn');
-        dockBtns.forEach(btn => {
-            btn.addEventListener('touchstart', function() {
-                dockBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    }
 </script>
-
 </body>
 </html>

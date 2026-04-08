@@ -1,0 +1,95 @@
+# robots.txt for Spotless Bubbles - Ultra-Luxury Concierge
+# Domain: https://www.spotlessbubbles.co.za
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.spotlessbubbles.co.za/sitemap.xml
+
+# Crawl delay to be respectful to server resources
+Crawl-delay: 1
+
+# ============================================
+# BLOCK ACCESS TO SENSITIVE / ADMIN AREAS
+# ============================================
+
+# Block email service and configuration files
+Disallow: /emailjs/
+Disallow: /assets/email/
+Disallow: /config/
+Disallow: /.env
+Disallow: /credentials/
+
+# Block common admin paths (if any exist)
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /cpanel/
+Disallow: /webmail/
+
+# Block temporary and backup files
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /backup/
+Disallow: /*.bak$
+Disallow: /*.log$
+Disallow: /*.tmp$
+
+# Block version control directories
+Disallow: /.git/
+Disallow: /.svn/
+Disallow: /.hg/
+Disallow: /.idea/
+Disallow: /.vscode/
+
+# Block system directories
+Disallow: /includes/
+Disallow: /vendor/
+Disallow: /node_modules/
+
+# Block error logs and debug files
+Disallow: /error_log
+Disallow: /debug.log
+Disallow: /php_error.log
+
+# Block API endpoints from being indexed
+Disallow: /api/
+Disallow: /webhook/
+
+# ============================================
+# OPTIONAL: Block specific query parameters
+# ============================================
+
+# Prevent indexing of pages with tracking parameters
+Disallow: /*?utm_*
+Disallow: /*?fbclid=*
+Disallow: /*?gclid=*
+Disallow: /*?ref=*
+
+# ============================================
+# ALLOW CRITICAL RESOURCES FOR RENDERING
+# ============================================
+
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/img/
+Allow: /assets/fonts/
+Allow: /assets/icons/
+Allow: /images/
+Allow: /styles/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.woff$
+Allow: /*.woff2$
+
+# ============================================
+# HOST definition (optional, for Google)
+# ============================================
+
+Host: https://www.spotlessbubbles.co.za
